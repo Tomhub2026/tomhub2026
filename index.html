@@ -9,119 +9,75 @@
 
 <body>
 
-  <header class="topbar">
-    <div class="logo">TomHub</div>
+<header class="topbar">
+  <div class="logo">TomHub</div>
+  <nav>
+    <a href="#anasayfa">Ana Sayfa</a>
+    <a href="#kayit">Kayıt</a>
+    <a href="#hakkinda">Hakkında</a>
+  </nav>
+</header>
 
-    <nav>
-      <a href="#anasayfa">Ana Sayfa</a>
-      <a href="#kayit">Kayıt</a>
-      <a href="#hakkinda">Hakkında</a>
-    </nav>
-  </header>
+<main>
 
-  <main>
+<section id="anasayfa" class="hero">
+  <div>
+    <span class="badge">Ücretsiz TomHub</span>
+    <h1>TomHub'a hoş geldin</h1>
+    <p>Basit, hızlı ve mobil uyumlu TomHub.</p>
+    <a class="button" href="#kayit">Kayıt Ol</a>
+  </div>
+</section>
 
-    <section id="anasayfa" class="hero">
-      <div>
-        <span class="badge">Ücretsiz TomHub</span>
+<section id="kayit" class="card">
 
-        <h1>TomHub'a hoş geldin</h1>
+  <div id="registerArea">
+    <h2>Kayıt Ol</h2>
+    <p class="muted">TomHub'a katılmak için bilgilerini gir.</p>
 
-        <p>Basit, hızlı ve mobil uyumlu TomHub başlangıç sitesi.</p>
+    <form id="registerForm">
 
-        <a class="button" href="#kayit">Kayıt Ol</a>
-      </div>
-    </section>
+      <label for="name">Kullanıcı adı</label>
+      <input id="name" required maxlength="30" placeholder="Kullanıcı adın">
 
+      <label for="email">E-posta</label>
+      <input id="email" type="email" required placeholder="ornek@mail.com">
 
-    <section id="kayit" class="card">
+      <label for="password">Şifre</label>
+      <input id="password" type="password" required minlength="6" placeholder="En az 6 karakter">
 
-      <div id="registerArea">
+      <button class="button" type="submit">Kayıt Ol</button>
 
-        <h2>Kayıt Ol</h2>
+    </form>
 
-        <p class="muted">
-          TomHub'a katılmak için bilgilerini gir.
-        </p>
+    <div id="message" class="message"></div>
+  </div>
 
-        <form id="registerForm">
+</section>
 
-          <label for="name">Kullanıcı adı</label>
-          <input
-            id="name"
-            required
-            maxlength="30"
-            placeholder="Kullanıcı adın"
-          >
+<section id="icerik" class="card" style="display:none;">
 
-          <label for="email">E-posta</label>
-          <input
-            id="email"
-            type="email"
-            required
-            placeholder="ornek@mail.com"
-          >
+  <h2>TomHub'a Hoş Geldin! 🎉</h2>
 
-          <label for="password">Şifre</label>
-          <input
-            id="password"
-            type="password"
-            required
-            minlength="6"
-            placeholder="En az 6 karakter"
-          >
+  <p id="welcomeName"></p>
 
-          <button class="button" type="submit">
-            Kayıt Ol
-          </button>
+  <p>Başarıyla giriş yaptın.</p>
 
-        </form>
+  <h3>TomHub</h3>
+  <p>Buradan TomHub'ı kullanmaya başlayabilirsin.</p>
 
-        <div id="message" class="message"></div>
+</section>
 
-      </div>
+<section id="hakkinda" class="info">
+  <h2>TomHub</h2>
+  <p>Bu sayfa GitHub Pages üzerinde ücretsiz yayınlanmaktadır.</p>
+</section>
 
+</main>
 
-      <div id="welcomeArea" style="display:none;">
+<footer>© 2026 TomHub</footer>
 
-        <h2>Hoş geldin! 🎉</h2>
-
-        <p>
-          TomHub'a başarıyla kayıt oldun.
-        </p>
-
-        <p id="welcomeName"></p>
-
-        <button
-          class="button"
-          type="button"
-          onclick="location.reload()"
-        >
-          TomHub'a Devam Et
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <section id="hakkinda" class="info">
-
-      <h2>TomHub</h2>
-
-      <p>
-        Bu sayfa GitHub Pages üzerinde ücretsiz yayınlanabilecek şekilde hazırlanmıştır.
-      </p>
-
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 TomHub
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
