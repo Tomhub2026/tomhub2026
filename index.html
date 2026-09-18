@@ -1,16 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>İlk Gönderim</title>
+  <title>Gönderiler</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #f2f2f2;
       margin: 0;
       padding: 20px;
     }
@@ -18,57 +19,48 @@
     .container {
       max-width: 600px;
       margin: auto;
-    }
-
-    h1 {
-      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
     }
 
     textarea {
       width: 100%;
+      height: 100px;
       box-sizing: border-box;
-      min-height: 120px;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      resize: vertical;
+      padding: 10px;
+      margin-bottom: 10px;
     }
 
     button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 14px;
+      padding: 10px 16px;
       border: none;
-      border-radius: 10px;
-      background: #222;
-      color: white;
-      font-size: 16px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
-    button:disabled {
-      opacity: 0.6;
+    #sendButton {
+      background: #222;
+      color: white;
     }
 
     .post {
-      background: white;
       margin-top: 15px;
       padding: 15px;
+      background: #f5f5f5;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .date {
-      color: #777;
       font-size: 12px;
+      color: #777;
       margin-top: 8px;
     }
 
-    #message {
-      text-align: center;
+    .likeButton {
       margin-top: 10px;
-      font-size: 14px;
+      background: white;
+      border: 1px solid #ddd;
     }
   </style>
 </head>
@@ -76,6 +68,7 @@
 <body>
 
 <div class="container">
+
   <h1>Gönderiler</h1>
 
   <textarea id="postText" placeholder="Gönderini yaz..."></textarea>
@@ -85,10 +78,13 @@
   <div id="message"></div>
 
   <div id="posts"></div>
+
 </div>
 
 <script>
+
   const SUPABASE_URL = "https://pkwyvdrqglqcqwukyssp.supabase.co";
+
   const SUPABASE_KEY = "sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
 
   const supabaseClient = window.supabase.createClient(
@@ -96,81 +92,165 @@
     SUPABASE_KEY
   );
 
+
   const postText = document.getElementById("postText");
   const sendButton = document.getElementById("sendButton");
   const posts = document.getElementById("posts");
   const message = document.getElementById("message");
 
+
   async function loadPosts() {
+
     const { data, error } = await supabaseClient
       .from("posts")
       .select("*")
       .order("created_at", { ascending: false });
 
+
     if (error) {
+
       message.textContent = "Gönderiler yüklenemedi.";
+
       console.error(error);
+
       return;
     }
+
 
     posts.innerHTML = "";
 
+
     data.forEach(post => {
+
       const div = document.createElement("div");
+
       div.className = "post";
+
 
       div.innerHTML = `
         <div>${escapeHtml(post.content || "")}</div>
+
         <div class="date">
-          ${post.created_at ? new Date(post.created_at).toLocaleString("tr-TR") : ""}
+          ${post.created_at
+            ? new Date(post.created_at).toLocaleString("tr-TR")
+            : ""}
         </div>
+
+        <button class="likeButton">
+          ❤️ <span>${post.likes || 0}</span>
+        </button>
       `;
 
+
       posts.appendChild(div);
+
+
+      const likeButton = div.querySelector(".likeButton");
+
+
+      likeButton.addEventListener("click", async () => {
+
+        likeButton.disabled = true;
+
+
+        const newLikes = (post.likes || 0) + 1;
+
+
+        const { error } = await supabaseClient
+          .from("posts")
+          .update({
+            likes: newLikes
+          })
+          .eq("id", post.id);
+
+
+        if (error) {
+
+          console.error(error);
+
+          likeButton.disabled = false;
+
+          return;
+        }
+
+
+        await loadPosts();
+
+      });
+
     });
+
   }
 
+
   async function sendPost() {
+
     const content = postText.value.trim();
 
+
     if (!content) {
+
       message.textContent = "Önce bir şey yaz.";
+
       return;
     }
 
+
     sendButton.disabled = true;
+
     message.textContent = "Gönderiliyor...";
+
 
     const { error } = await supabaseClient
       .from("posts")
       .insert([
         {
-          content: content
+          content: content,
+          likes: 0
         }
       ]);
 
+
     if (error) {
+
       message.textContent = "Gönderi gönderilemedi.";
+
       console.error(error);
+
     } else {
+
       postText.value = "";
+
       message.textContent = "Gönderildi!";
+
       await loadPosts();
+
     }
 
+
     sendButton.disabled = false;
+
   }
 
+
   function escapeHtml(text) {
+
     const div = document.createElement("div");
+
     div.textContent = text;
+
     return div.innerHTML;
+
   }
+
 
   sendButton.addEventListener("click", sendPost);
 
+
   loadPosts();
+
 </script>
 
 </body>
 </html>
+```
