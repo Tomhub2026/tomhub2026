@@ -1,25 +1,24 @@
-const form = document.getElementById('registerForm');
-const message = document.getElementById('message');
-const registerArea = document.getElementById('registerArea');
-const welcomeArea = document.getElementById('welcomeArea');
-const welcomeName = document.getElementById('welcomeName');
+const form = document.getElementById("registerForm");
+const registerArea = document.getElementById("registerArea");
+const contentArea = document.getElementById("icerik");
+const welcomeName = document.getElementById("welcomeName");
 
-form.addEventListener('submit', (event) => {
+form.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
-  const user = {
+  localStorage.setItem("tomhubUser", JSON.stringify({
     name: name,
     email: email,
     password: password
-  };
+  }));
 
-  localStorage.setItem('tomhubUser', JSON.stringify(user));
+  registerArea.style.display = "none";
+  contentArea.style.display = "block";
+  welcomeName.textContent = "Kullanıcı: " + name;
 
-  registerArea.style.display = 'none';
-  welcomeArea.style.display = 'block';
-  welcomeName.textContent = `Kullanıcı: ${name}`;
+  contentArea.scrollIntoView({ behavior: "smooth" });
 });
