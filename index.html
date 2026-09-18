@@ -3,81 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TomHub</title>
-  <link rel="stylesheet" href="style.css">
+  <title>İlk Gönderim</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 120px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #222;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+    }
+
+    .post {
+      background: white;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .date {
+      color: #777;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="logo">TomHub</div>
-  <nav>
-    <a href="#anasayfa">Ana Sayfa</a>
-    <a href="#kayit">Kayıt</a>
-    <a href="#hakkinda">Hakkında</a>
-  </nav>
-</header>
+<div class="container">
+  <h1>Gönderiler</h1>
 
-<main>
+  <textarea id="postText" placeholder="Gönderini yaz..."></textarea>
 
-<section id="anasayfa" class="hero">
-  <div>
-    <span class="badge">Ücretsiz TomHub</span>
-    <h1>TomHub'a hoş geldin</h1>
-    <p>Basit, hızlı ve mobil uyumlu TomHub.</p>
-    <a class="button" href="#kayit">Kayıt Ol</a>
-  </div>
-</section>
+  <button id="sendButton">Gönder</button>
 
-<section id="kayit" class="card">
+  <div id="message"></div>
 
-  <div id="registerArea">
-    <h2>Kayıt Ol</h2>
-    <p class="muted">TomHub'a katılmak için bilgilerini gir.</p>
+  <div id="posts"></div>
+</div>
 
-    <form id="registerForm">
+<script>
+  const SUPABASE_URL = "https://pkwyvdrqglqcqwukyssp.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
 
-      <label for="name">Kullanıcı adı</label>
-      <input id="name" required maxlength="30" placeholder="Kullanıcı adın">
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-      <label for="email">E-posta</label>
-      <input id="email" type="email" required placeholder="ornek@mail.com">
+  const postText = document.getElementById("postText");
+  const sendButton = document.getElementById("sendButton");
+  const posts = document.getElementById("posts");
+  const message = document.getElementById("message");
 
-      <label for="password">Şifre</label>
-      <input id="password" type="password" required minlength="6" placeholder="En az 6 karakter">
+  async function loadPosts() {
+    const { data, error } = await supabaseClient
+      .from("posts")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-      <button class="button" type="submit">Kayıt Ol</button>
+    if (error) {
+      message.textContent = "Gönderiler yüklenemedi.";
+      console.error(error);
+      return;
+    }
 
-    </form>
+    posts.innerHTML = "";
 
-    <div id="message" class="message"></div>
-  </div>
+    data.forEach(post => {
+      const div = document.createElement("div");
+      div.className = "post";
 
-</section>
+      div.innerHTML = `
+        <div>${escapeHtml(post.content || "")}</div>
+        <div class="date">
+          ${post.created_at ? new Date(post.created_at).toLocaleString("tr-TR") : ""}
+        </div>
+      `;
 
-<section id="icerik" class="card" style="display:none;">
+      posts.appendChild(div);
+    });
+  }
 
-  <h2>TomHub'a Hoş Geldin! 🎉</h2>
+  async function sendPost() {
+    const content = postText.value.trim();
 
-  <p id="welcomeName"></p>
+    if (!content) {
+      message.textContent = "Önce bir şey yaz.";
+      return;
+    }
 
-  <p>Başarıyla giriş yaptın.</p>
+    sendButton.disabled = true;
+    message.textContent = "Gönderiliyor...";
 
-  <h3>TomHub</h3>
-  <p>Buradan TomHub'ı kullanmaya başlayabilirsin.</p>
+    const { error } = await supabaseClient
+      .from("posts")
+      .insert([
+        {
+          content: content
+        }
+      ]);
 
-</section>
+    if (error) {
+      message.textContent = "Gönderi gönderilemedi.";
+      console.error(error);
+    } else {
+      postText.value = "";
+      message.textContent = "Gönderildi!";
+      await loadPosts();
+    }
 
-<section id="hakkinda" class="info">
-  <h2>TomHub</h2>
-  <p>Bu sayfa GitHub Pages üzerinde ücretsiz yayınlanmaktadır.</p>
-</section>
+    sendButton.disabled = false;
+  }
 
-</main>
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
 
-<footer>© 2026 TomHub</footer>
+  sendButton.addEventListener("click", sendPost);
 
-<script src="script.js"></script>
+  loadPosts();
+</script>
 
 </body>
 </html>
