@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Gönderiler</title>
+  <title>Tomhub</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -23,97 +22,134 @@
     .container {
       max-width: 600px;
       margin: auto;
+    }
+
+    .box {
       background: white;
       padding: 20px;
       border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      margin-bottom: 15px;
     }
 
-    h1 {
+    h1, h2 {
       margin-top: 0;
-      text-align: center;
     }
 
-    textarea {
+    textarea,
+    input {
       width: 100%;
-      height: 110px;
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      resize: vertical;
       font-size: 15px;
+      margin-bottom: 10px;
     }
 
-    textarea:focus {
-      outline: none;
-      border-color: #222;
-    }
-
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    #counter {
-      font-size: 12px;
-      color: #777;
+    textarea {
+      height: 100px;
+      resize: vertical;
     }
 
     button {
-      padding: 10px 16px;
+      padding: 9px 14px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      background: #222;
+      color: white;
       font-size: 14px;
+      margin: 3px;
     }
 
     button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+      opacity: .5;
     }
 
-    #sendButton {
-      background: #222;
-      color: white;
+    .secondary {
+      background: #eee;
+      color: #222;
     }
 
-    #message {
-      margin-top: 12px;
-      font-size: 14px;
-      min-height: 20px;
+    .danger {
+      background: #c62828;
     }
 
     .post {
-      margin-top: 15px;
-      padding: 15px;
       background: #f5f5f5;
+      padding: 15px;
       border-radius: 10px;
-      word-wrap: break-word;
+      margin-top: 15px;
     }
 
     .content {
       white-space: pre-wrap;
       line-height: 1.5;
+      word-wrap: break-word;
     }
 
     .date {
-      font-size: 12px;
       color: #777;
+      font-size: 12px;
       margin-top: 10px;
     }
 
-    .likeButton {
+    .actions {
       margin-top: 10px;
+    }
+
+    .comments {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .comment {
       background: white;
-      border: 1px solid #ddd;
+      padding: 8px;
+      border-radius: 8px;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .profile {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #222;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .username {
+      font-weight: bold;
+    }
+
+    .small {
+      color: #777;
+      font-size: 12px;
+    }
+
+    #message {
+      margin-top: 10px;
+      min-height: 20px;
+      font-size: 14px;
     }
 
     .empty {
       text-align: center;
       color: #777;
-      margin-top: 25px;
+      padding: 20px;
     }
   </style>
 </head>
@@ -122,139 +158,404 @@
 
 <div class="container">
 
-  <h1>Gönderiler</h1>
+  <!-- PROFİL -->
+  <div class="box">
+    <h2>👤 Profilim</h2>
 
-  <textarea
-    id="postText"
-    maxlength="1000"
-    placeholder="Gönderini yaz..."
-  ></textarea>
+    <input
+      id="username"
+      maxlength="30"
+      placeholder="Kullanıcı adın"
+    >
 
-  <div class="bottom">
-    <span id="counter">0 / 1000</span>
-    <button id="sendButton">Gönder</button>
+    <input
+      id="bio"
+      maxlength="150"
+      placeholder="Hakkında"
+    >
+
+    <button id="saveProfile">Profili Kaydet</button>
+
+    <div id="profileMessage"></div>
   </div>
 
-  <div id="message"></div>
 
-  <div id="posts"></div>
+  <!-- GÖNDERİ -->
+  <div class="box">
+    <h2>📝 Gönderi Yaz</h2>
+
+    <textarea
+      id="postText"
+      maxlength="1000"
+      placeholder="Gönderini yaz..."
+    ></textarea>
+
+    <div>
+      <span id="counter">0 / 1000</span>
+      <button id="sendButton">Gönder</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
+
+
+  <!-- GÖNDERİLER -->
+  <div class="box">
+    <h2>📱 Gönderiler</h2>
+    <div id="posts"></div>
+  </div>
 
 </div>
 
+
 <script>
 
-  const SUPABASE_URL =
-    "https://pkwyvdrqglqcqwukyssp.supabase.co";
+const SUPABASE_URL =
+  "https://pkwyvdrqglqcqwukyssp.supabase.co";
 
-  const SUPABASE_KEY =
-    "sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
+const SUPABASE_KEY =
+  "sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
 
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
-
-
-  const postText = document.getElementById("postText");
-  const sendButton = document.getElementById("sendButton");
-  const posts = document.getElementById("posts");
-  const message = document.getElementById("message");
-  const counter = document.getElementById("counter");
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-  postText.addEventListener("input", () => {
-    counter.textContent =
-      postText.value.length + " / 1000";
-  });
+/* ANONİM KULLANICI KİMLİĞİ */
+
+let userId =
+  localStorage.getItem("tomhub_user_id");
+
+if (!userId) {
+  userId =
+    "user_" +
+    Date.now() +
+    "_" +
+    Math.random()
+      .toString(36)
+      .substring(2, 10);
+
+  localStorage.setItem(
+    "tomhub_user_id",
+    userId
+  );
+}
 
 
-  function escapeHtml(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
+/* ELEMENTLER */
+
+const postText =
+  document.getElementById("postText");
+
+const sendButton =
+  document.getElementById("sendButton");
+
+const posts =
+  document.getElementById("posts");
+
+const message =
+  document.getElementById("message");
+
+const counter =
+  document.getElementById("counter");
+
+const username =
+  document.getElementById("username");
+
+const bio =
+  document.getElementById("bio");
+
+const saveProfile =
+  document.getElementById("saveProfile");
+
+const profileMessage =
+  document.getElementById("profileMessage");
+
+
+/* HTML GÜVENLİĞİ */
+
+function escapeHtml(text) {
+  const div =
+    document.createElement("div");
+
+  div.textContent = text || "";
+
+  return div.innerHTML;
+}
+
+
+/* PROFİLİ YÜKLE */
+
+async function loadProfile() {
+
+  const { data, error } =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+  if (error) {
+    console.error(error);
+    return;
   }
 
+  if (data) {
+    username.value =
+      data.username || "";
 
-  async function loadPosts() {
+    bio.value =
+      data.bio || "";
+  }
+}
 
-    message.textContent = "Gönderiler yükleniyor...";
 
-    const { data, error } = await supabaseClient
+/* PROFİLİ KAYDET */
+
+saveProfile.addEventListener(
+  "click",
+  async () => {
+
+    const name =
+      username.value.trim() ||
+      "Kullanıcı";
+
+    const about =
+      bio.value.trim();
+
+    saveProfile.disabled = true;
+
+    const { data: existing } =
+      await supabaseClient
+        .from("profiles")
+        .select("id")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+    let error;
+
+    if (existing) {
+
+      ({ error } =
+        await supabaseClient
+          .from("profiles")
+          .update({
+            username: name,
+            bio: about
+          })
+          .eq("user_id", userId));
+
+    } else {
+
+      ({ error } =
+        await supabaseClient
+          .from("profiles")
+          .insert({
+            user_id: userId,
+            username: name,
+            bio: about
+          }));
+    }
+
+    if (error) {
+
+      console.error(error);
+
+      profileMessage.textContent =
+        "Profil kaydedilemedi.";
+
+    } else {
+
+      profileMessage.textContent =
+        "Profil kaydedildi.";
+
+      await loadPosts();
+    }
+
+    saveProfile.disabled = false;
+  }
+);
+
+
+/* KARAKTER SAYACI */
+
+postText.addEventListener(
+  "input",
+  () => {
+
+    counter.textContent =
+      postText.value.length +
+      " / 1000";
+  }
+);
+
+
+/* GÖNDERİLERİ YÜKLE */
+
+async function loadPosts() {
+
+  message.textContent =
+    "Gönderiler yükleniyor...";
+
+  const { data, error } =
+    await supabaseClient
       .from("posts")
       .select("*")
       .order("created_at", {
         ascending: false
       });
 
+  if (error) {
 
-    if (error) {
+    console.error(error);
 
-      message.textContent =
-        "Gönderiler yüklenemedi.";
+    message.textContent =
+      "Gönderiler yüklenemedi.";
 
-      console.error(error);
+    return;
+  }
 
-      return;
+  posts.innerHTML = "";
+
+  message.textContent = "";
+
+  if (!data || data.length === 0) {
+
+    posts.innerHTML =
+      '<div class="empty">Henüz gönderi yok.</div>';
+
+    return;
+  }
+
+
+  for (const post of data) {
+
+    const div =
+      document.createElement("div");
+
+    div.className = "post";
+
+
+    /* PROFİL */
+
+    let profile = null;
+
+    if (post.user_id) {
+
+      const result =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq("user_id", post.user_id)
+          .maybeSingle();
+
+      profile = result.data;
     }
 
-
-    posts.innerHTML = "";
-
-    message.textContent = "";
-
-
-    if (!data || data.length === 0) {
-
-      posts.innerHTML =
-        '<div class="empty">Henüz gönderi yok.</div>';
-
-      return;
-    }
+    const displayName =
+      profile?.username ||
+      "Kullanıcı";
 
 
-    data.forEach(post => {
+    div.innerHTML = `
 
-      const div = document.createElement("div");
+      <div class="profile">
 
-      div.className = "post";
-
-
-      div.innerHTML = `
-        <div class="content">
-          ${escapeHtml(post.content || "")}
+        <div class="avatar">
+          ${escapeHtml(
+            displayName
+              .charAt(0)
+              .toUpperCase()
+          )}
         </div>
 
-        <div class="date">
-          ${
-            post.created_at
-              ? new Date(post.created_at)
-                  .toLocaleString("tr-TR")
-              : ""
-          }
+        <div>
+          <div class="username">
+            ${escapeHtml(displayName)}
+          </div>
+
+          <div class="small">
+            ${escapeHtml(
+              profile?.bio || ""
+            )}
+          </div>
         </div>
+
+      </div>
+
+
+      <div class="content">
+        ${escapeHtml(
+          post.content || ""
+        )}
+      </div>
+
+
+      <div class="date">
+        ${
+          post.created_at
+            ? new Date(
+                post.created_at
+              ).toLocaleString("tr-TR")
+            : ""
+        }
+      </div>
+
+
+      <div class="actions">
 
         <button class="likeButton">
-          ❤️ <span>${post.likes || 0}</span>
+          ❤️ ${post.likes || 0}
         </button>
-      `;
+
+        <button class="commentButton">
+          💬 Yorum
+        </button>
+
+        ${
+          post.user_id === userId
+            ? `
+              <button
+                class="deleteButton danger"
+              >
+                🗑️ Sil
+              </button>
+            `
+            : `
+              <button
+                class="followButton secondary"
+              >
+                👥 Takip Et
+              </button>
+            `
+        }
+
+      </div>
 
 
-      posts.appendChild(div);
+      <div class="comments"></div>
+
+    `;
 
 
-      const likeButton =
-        div.querySelector(".likeButton");
+    posts.appendChild(div);
 
 
-      likeButton.addEventListener("click", async () => {
+    /* LIKE */
+
+    const likeButton =
+      div.querySelector(".likeButton");
+
+    likeButton.addEventListener(
+      "click",
+      async () => {
 
         likeButton.disabled = true;
 
-
         const newLikes =
           (post.likes || 0) + 1;
-
 
         const { error } =
           await supabaseClient
@@ -264,95 +565,419 @@
             })
             .eq("id", post.id);
 
-
         if (error) {
 
           console.error(error);
 
+          alert(
+            "Beğeni gönderilemedi."
+          );
+
           likeButton.disabled = false;
 
-          alert(
-            "Beğeni gönderilemedi. Supabase UPDATE iznini kontrol et."
-          );
+          return;
+        }
+
+        await loadPosts();
+      }
+    );
+
+
+    /* SİL */
+
+    const deleteButton =
+      div.querySelector(".deleteButton");
+
+    if (deleteButton) {
+
+      deleteButton.addEventListener(
+        "click",
+        async () => {
+
+          const ok =
+            confirm(
+              "Bu gönderiyi silmek istiyor musun?"
+            );
+
+          if (!ok) return;
+
+          deleteButton.disabled = true;
+
+          const { error } =
+            await supabaseClient
+              .from("posts")
+              .delete()
+              .eq("id", post.id)
+              .eq("user_id", userId);
+
+          if (error) {
+
+            console.error(error);
+
+            alert(
+              "Gönderi silinemedi."
+            );
+
+            deleteButton.disabled = false;
+
+            return;
+          }
+
+          await loadPosts();
+        }
+      );
+    }
+
+
+    /* TAKİP */
+
+    const followButton =
+      div.querySelector(".followButton");
+
+    if (followButton && post.user_id) {
+
+      followButton.addEventListener(
+        "click",
+        async () => {
+
+          if (post.user_id === userId) {
+            return;
+          }
+
+          followButton.disabled = true;
+
+          const { data: existingFollow } =
+            await supabaseClient
+              .from("follows")
+              .select("id")
+              .eq("follower_id", userId)
+              .eq("following_id", post.user_id)
+              .maybeSingle();
+
+          if (existingFollow) {
+
+            const { error } =
+              await supabaseClient
+                .from("follows")
+                .delete()
+                .eq("id", existingFollow.id);
+
+            if (error) {
+              console.error(error);
+            } else {
+              followButton.textContent =
+                "👥 Takip Et";
+            }
+
+          } else {
+
+            const { error } =
+              await supabaseClient
+                .from("follows")
+                .insert({
+                  follower_id: userId,
+                  following_id: post.user_id
+                });
+
+            if (error) {
+              console.error(error);
+            } else {
+              followButton.textContent =
+                "✓ Takiptesin";
+            }
+          }
+
+          followButton.disabled = false;
+        }
+      );
+    }
+
+
+    /* YORUM BUTONU */
+
+    const commentButton =
+      div.querySelector(
+        ".commentButton"
+      );
+
+    const comments =
+      div.querySelector(".comments");
+
+
+    commentButton.addEventListener(
+      "click",
+      async () => {
+
+        if (
+          comments.innerHTML !== ""
+        ) {
+
+          comments.innerHTML = "";
 
           return;
         }
 
 
-        await loadPosts();
+        comments.innerHTML = `
+          <input
+            class="commentInput"
+            maxlength="500"
+            placeholder="Yorumunu yaz..."
+          >
 
-      });
+          <button class="sendComment">
+            Yorum Yap
+          </button>
 
-    });
+          <div class="commentList">
+            Yükleniyor...
+          </div>
+        `;
 
+
+        const input =
+          comments.querySelector(
+            ".commentInput"
+          );
+
+        const sendComment =
+          comments.querySelector(
+            ".sendComment"
+          );
+
+        const commentList =
+          comments.querySelector(
+            ".commentList"
+          );
+
+
+        async function loadComments() {
+
+          const { data, error } =
+            await supabaseClient
+              .from("comments")
+              .select("*")
+              .eq("post_id", post.id)
+              .order("created_at", {
+                ascending: true
+              });
+
+          if (error) {
+
+            console.error(error);
+
+            commentList.textContent =
+              "Yorumlar yüklenemedi.";
+
+            return;
+          }
+
+          if (
+            !data ||
+            data.length === 0
+          ) {
+
+            commentList.innerHTML =
+              '<div class="small">Henüz yorum yok.</div>';
+
+            return;
+          }
+
+
+          commentList.innerHTML = "";
+
+          data.forEach(comment => {
+
+            const item =
+              document.createElement(
+                "div"
+              );
+
+            item.className =
+              "comment";
+
+            item.innerHTML = `
+              ${escapeHtml(
+                comment.content
+              )}
+
+              ${
+                comment.user_id === userId
+                  ? `
+                    <button
+                      class="danger deleteComment"
+                    >
+                      Sil
+                    </button>
+                  `
+                  : ""
+              }
+            `;
+
+
+            const deleteComment =
+              item.querySelector(
+                ".deleteComment"
+              );
+
+
+            if (deleteComment) {
+
+              deleteComment.addEventListener(
+                "click",
+                async () => {
+
+                  const { error } =
+                    await supabaseClient
+                      .from("comments")
+                      .delete()
+                      .eq("id", comment.id)
+                      .eq(
+                        "user_id",
+                        userId
+                      );
+
+                  if (error) {
+
+                    console.error(error);
+
+                    alert(
+                      "Yorum silinemedi."
+                    );
+
+                    return;
+                  }
+
+                  await loadComments();
+                }
+              );
+            }
+
+
+            commentList.appendChild(item);
+          });
+        }
+
+
+        sendComment.addEventListener(
+          "click",
+          async () => {
+
+            const text =
+              input.value.trim();
+
+            if (!text) return;
+
+            sendComment.disabled =
+              true;
+
+            const { error } =
+              await supabaseClient
+                .from("comments")
+                .insert({
+                  post_id: post.id,
+                  user_id: userId,
+                  content: text
+                });
+
+            if (error) {
+
+              console.error(error);
+
+              alert(
+                "Yorum gönderilemedi."
+              );
+
+              sendComment.disabled =
+                false;
+
+              return;
+            }
+
+            input.value = "";
+
+            sendComment.disabled =
+              false;
+
+            await loadComments();
+          }
+        );
+
+
+        await loadComments();
+      }
+    );
   }
+}
 
 
-  async function sendPost() {
+/* GÖNDERİ EKLE */
 
-    const content =
-      postText.value.trim();
+async function sendPost() {
 
+  const content =
+    postText.value.trim();
 
-    if (!content) {
-
-      message.textContent =
-        "Önce bir şey yaz.";
-
-      return;
-    }
-
-
-    sendButton.disabled = true;
+  if (!content) {
 
     message.textContent =
-      "Gönderiliyor...";
+      "Önce bir şey yaz.";
 
-
-    const { error } =
-      await supabaseClient
-        .from("posts")
-        .insert([
-          {
-            content: content,
-            likes: 0
-          }
-        ]);
-
-
-    if (error) {
-
-      message.textContent =
-        "Gönderi gönderilemedi.";
-
-      console.error(error);
-
-    } else {
-
-      postText.value = "";
-
-      counter.textContent = "0 / 1000";
-
-      message.textContent =
-        "Gönderildi!";
-
-      await loadPosts();
-
-    }
-
-
-    sendButton.disabled = false;
-
+    return;
   }
 
 
-  sendButton.addEventListener(
-    "click",
-    sendPost
-  );
+  sendButton.disabled = true;
+
+  message.textContent =
+    "Gönderiliyor...";
 
 
-  loadPosts();
+  const { error } =
+    await supabaseClient
+      .from("posts")
+      .insert({
+        content: content,
+        likes: 0,
+        user_id: userId
+      });
+
+
+  if (error) {
+
+    console.error(error);
+
+    message.textContent =
+      "Gönderi gönderilemedi.";
+
+  } else {
+
+    postText.value = "";
+
+    counter.textContent =
+      "0 / 1000";
+
+    message.textContent =
+      "Gönderildi!";
+
+    await loadPosts();
+  }
+
+
+  sendButton.disabled = false;
+}
+
+
+sendButton.addEventListener(
+  "click",
+  sendPost
+);
+
+
+/* BAŞLANGIÇ */
+
+loadProfile();
+loadPosts();
 
 </script>
 
