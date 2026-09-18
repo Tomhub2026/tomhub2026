@@ -1,0 +1,21 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:#f4f7ff}
+.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 22px;background:#11182b;border-bottom:1px solid #27314b}
+.logo{font-size:24px;font-weight:800}
+nav{display:flex;gap:16px}
+nav a{color:#dce5ff;text-decoration:none}
+main{max-width:900px;margin:auto;padding:20px}
+.hero{min-height:55vh;display:flex;align-items:center;padding:50px 10px}
+.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#263b73;color:#cfe0ff}
+h1{font-size:clamp(42px,9vw,76px);line-height:1;margin:18px 0}
+.hero p{font-size:20px;color:#b8c2d9;max-width:600px}
+.button{display:inline-block;border:0;border-radius:12px;background:#238636;color:white;padding:13px 20px;font-size:17px;font-weight:700;text-decoration:none;cursor:pointer}
+.card,.info{margin:25px 0;padding:26px;border:1px solid #2a3652;border-radius:18px;background:#121a2d}
+form{display:grid;gap:10px}
+label{margin-top:8px;font-weight:700}
+input{width:100%;padding:14px;border-radius:10px;border:1px solid #3b4865;background:#0b1020;color:white;font-size:16px}
+.message{margin-top:15px;min-height:24px;color:#8ee6a0}
+.muted{color:#aeb9d0}
+footer{text-align:center;padding:30px;color:#8792aa}
+@media(max-width:600px){nav{gap:9px;font-size:14px}.topbar{padding:14px}.hero{min-height:48vh}}

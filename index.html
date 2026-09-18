@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TomHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">TomHub</div>
+    <nav>
+      <a href="#anasayfa">Ana Sayfa</a>
+      <a href="#kayit">Kayıt</a>
+      <a href="#hakkinda">Hakkında</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="anasayfa" class="hero">
+      <div>
+        <span class="badge">Ücretsiz TomHub</span>
+        <h1>TomHub'a hoş geldin</h1>
+        <p>Basit, hızlı ve mobil uyumlu TomHub başlangıç sitesi.</p>
+        <a class="button" href="#kayit">Kayıt Ol</a>
+      </div>
+    </section>
+
+    <section id="kayit" class="card">
+      <h2>Kayıt Ol</h2>
+      <p class="muted">Bu ilk sürümde kayıt bilgileri yalnızca bu cihazın tarayıcısında saklanır.</p>
+      <form id="registerForm">
+        <label for="name">Kullanıcı adı</label>
+        <input id="name" required maxlength="30" placeholder="Kullanıcı adın">
+
+        <label for="email">E-posta</label>
+        <input id="email" type="email" required placeholder="ornek@mail.com">
+
+        <label for="password">Şifre</label>
+        <input id="password" type="password" required minlength="6" placeholder="En az 6 karakter">
+
+        <button class="button" type="submit">Kayıt Ol</button>
+      </form>
+      <div id="message" class="message"></div>
+    </section>
+
+    <section id="hakkinda" class="info">
+      <h2>TomHub</h2>
+      <p>Bu sayfa GitHub Pages üzerinde ücretsiz yayınlanabilecek şekilde hazırlanmıştır.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 TomHub</footer>
+  <script src="script.js"></script>
+</body>
+</html>
