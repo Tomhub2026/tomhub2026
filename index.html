@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TomHub - Güvenilir Siteler</title>
+
 <meta name="description" content="TomHub - Faydalı ve kaliteli internet sitelerini keşfet.">
 
 <style>
@@ -31,9 +32,9 @@ a{
   text-decoration:none;
 }
 
-/* =========================
-   ÜST BİLGİ ŞERİDİ
-========================= */
+button{
+  font-family:inherit;
+}
 
 .top-strip{
   height:30px;
@@ -57,10 +58,6 @@ a{
 .top-strip b{
   color:#d9a91b;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 header{
   height:78px;
@@ -111,20 +108,12 @@ header{
   box-shadow:0 0 14px rgba(220,174,34,.18);
 }
 
-/* =========================
-   ANA ALAN
-========================= */
-
 .container{
   width:100%;
   max-width:1050px;
   margin:auto;
   padding:15px;
 }
-
-/* =========================
-   SOSYAL İKONLAR
-========================= */
 
 .socials{
   display:flex;
@@ -156,16 +145,16 @@ header{
   background:#df2027;
 }
 
-/* =========================
-   ANA BANNER
-========================= */
-
 .hero{
   border:1px solid #33290f;
   border-radius:14px;
   overflow:hidden;
   background:
-    radial-gradient(circle at 20% 40%,rgba(214,169,35,.12),transparent 30%),
+    radial-gradient(
+      circle at 20% 40%,
+      rgba(214,169,35,.12),
+      transparent 30%
+    ),
     linear-gradient(135deg,#090a0c,#11100c);
   min-height:210px;
   display:flex;
@@ -214,10 +203,6 @@ header{
   font-size:13px;
 }
 
-/* =========================
-   ARAMA
-========================= */
-
 .search{
   display:flex;
   max-width:700px;
@@ -249,10 +234,6 @@ header{
   border-radius:0 10px 10px 0;
   cursor:pointer;
 }
-
-/* =========================
-   KATEGORİLER
-========================= */
 
 .section-head{
   display:flex;
@@ -301,12 +282,127 @@ header{
   box-shadow:0 0 12px rgba(210,165,30,.08);
 }
 
-/* =========================
-   SİTELER
-========================= */
+/* SPONSORLU BÖLÜM */
+
+.sponsored-section{
+  margin-top:30px;
+}
+
+.sponsored-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:13px;
+}
+
+.sponsored-title h2{
+  font-size:23px;
+}
+
+.sponsored-title span{
+  color:#d7aa25;
+  font-size:11px;
+  border:1px solid #493914;
+  background:#100e08;
+  padding:6px 9px;
+  border-radius:7px;
+}
+
+.sponsored-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.sponsored-card{
+  min-height:155px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(214,169,35,.13),
+      transparent 48%
+    ),
+    #090a0c;
+  border:1px solid #493914;
+  border-radius:10px;
+  padding:14px;
+  position:relative;
+  overflow:hidden;
+}
+
+.sponsored-card:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:#dcae22;
+}
+
+.sponsored-badge{
+  display:inline-block;
+  color:#111;
+  background:#dcae22;
+  font-size:9px;
+  font-weight:900;
+  padding:4px 7px;
+  border-radius:5px;
+  margin-bottom:10px;
+}
+
+.sponsored-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.sponsored-icon{
+  width:45px;
+  height:45px;
+  min-width:45px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#17140a;
+  border:1px solid #4b3b12;
+  font-size:23px;
+}
+
+.sponsored-name{
+  font-size:15px;
+  font-weight:800;
+}
+
+.sponsored-desc{
+  color:#777;
+  font-size:10px;
+  margin-top:4px;
+  line-height:1.35;
+}
+
+.sponsored-button{
+  display:inline-block;
+  margin-top:12px;
+  background:#dcae22;
+  color:#111;
+  padding:8px 12px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.sponsored-note{
+  color:#666;
+  font-size:8px;
+  margin-top:8px;
+}
+
+/* NORMAL SITELER */
 
 .site-title{
-  margin-top:27px;
+  margin-top:30px;
   font-size:23px;
   margin-bottom:13px;
 }
@@ -320,7 +416,11 @@ header{
 .site-card{
   min-height:145px;
   background:
-    radial-gradient(circle at 50% 0%,rgba(214,169,35,.08),transparent 45%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(214,169,35,.08),
+      transparent 45%
+    ),
     #090a0c;
   border:1px solid #242323;
   border-radius:10px;
@@ -384,17 +484,17 @@ header{
   font-weight:800;
 }
 
-/* =========================
-   TANITIM
-========================= */
-
 .promo{
   margin-top:24px;
   border:1px solid #493914;
   border-radius:12px;
   padding:18px;
   background:
-    radial-gradient(circle at 20% 50%,rgba(215,169,31,.08),transparent 35%),
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(215,169,31,.08),
+      transparent 35%
+    ),
     #0a0b0d;
   display:flex;
   align-items:center;
@@ -435,10 +535,6 @@ header{
   font-weight:800;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer{
   margin-top:45px;
   padding:25px 10px;
@@ -447,10 +543,6 @@ footer{
   color:#555;
   font-size:10px;
 }
-
-/* =========================
-   ALT MENÜ
-========================= */
 
 .bottom-nav{
   position:fixed;
@@ -487,10 +579,6 @@ footer{
   text-shadow:0 0 9px rgba(225,180,43,.35);
 }
 
-/* =========================
-   SONUÇ YOK
-========================= */
-
 .no-results{
   display:none;
   grid-column:1/-1;
@@ -498,10 +586,6 @@ footer{
   color:#666;
   padding:35px;
 }
-
-/* =========================
-   MOBİL
-========================= */
 
 @media(max-width:700px){
 
@@ -553,6 +637,36 @@ footer{
 
   .category{
     padding:12px 5px;
+  }
+
+  .sponsored-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
+  }
+
+  .sponsored-card{
+    min-height:155px;
+    padding:11px;
+  }
+
+  .sponsored-icon{
+    width:39px;
+    height:39px;
+    min-width:39px;
+    font-size:20px;
+  }
+
+  .sponsored-name{
+    font-size:13px;
+  }
+
+  .sponsored-desc{
+    font-size:9px;
+  }
+
+  .sponsored-button{
+    font-size:9px;
+    padding:7px 9px;
   }
 
   .sites{
@@ -615,7 +729,6 @@ footer{
 
 <body>
 
-<!-- ÜST ŞERİT -->
 <div class="top-strip">
   <span>✦ <b>TOMHUB</b> BURADA</span>
   <span>◆</span>
@@ -628,8 +741,6 @@ footer{
   <span>HOŞ GELDİNİZ</span>
 </div>
 
-
-<!-- HEADER -->
 <header>
 
   <a href="#" class="logo">
@@ -644,7 +755,8 @@ footer{
 
     <a
       href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Ekle"
-      class="add-btn">
+      class="add-btn"
+    >
       Site Ekle
     </a>
 
@@ -652,35 +764,30 @@ footer{
 
 </header>
 
-
 <main class="container">
 
-
-<!-- SOSYAL -->
 <div class="socials">
 
-  <a class="social telegram"
-     href="https://t.me/"
-     target="_blank">
-    ✈
-  </a>
+  <a
+    class="social telegram"
+    href="https://t.me/"
+    target="_blank"
+  >✈</a>
 
-  <a class="social instagram"
-     href="https://www.instagram.com/"
-     target="_blank">
-    ◎
-  </a>
+  <a
+    class="social instagram"
+    href="https://www.instagram.com/"
+    target="_blank"
+  >◎</a>
 
-  <a class="social youtube"
-     href="https://www.youtube.com/"
-     target="_blank">
-    ▶
-  </a>
+  <a
+    class="social youtube"
+    href="https://www.youtube.com/"
+    target="_blank"
+  >▶</a>
 
 </div>
 
-
-<!-- HERO -->
 <section class="hero">
 
   <div class="hero-content">
@@ -704,7 +811,8 @@ footer{
         id="searchInput"
         type="text"
         placeholder="Site veya kategori ara..."
-        onkeyup="searchSites()">
+        onkeyup="searchSites()"
+      >
 
       <button onclick="searchSites()">
         Ara
@@ -716,8 +824,6 @@ footer{
 
 </section>
 
-
-<!-- KATEGORİLER -->
 <div class="section-head">
 
   <h2>Kategoriler</h2>
@@ -728,87 +834,211 @@ footer{
 
 </div>
 
-
 <div class="categories">
 
   <button
     class="category active"
-    onclick="filterCategory('all',this)">
-
+    onclick="filterCategory('all',this)"
+  >
     <span class="icon">⭐</span>
     Tümü
-
   </button>
-
 
   <button
     class="category"
-    onclick="filterCategory('oyun',this)">
-
+    onclick="filterCategory('oyun',this)"
+  >
     <span class="icon">🎮</span>
     Oyun
-
   </button>
-
 
   <button
     class="category"
-    onclick="filterCategory('teknoloji',this)">
-
+    onclick="filterCategory('teknoloji',this)"
+  >
     <span class="icon">💻</span>
     Teknoloji
-
   </button>
-
 
   <button
     class="category"
-    onclick="filterCategory('alisveris',this)">
-
+    onclick="filterCategory('alisveris',this)"
+  >
     <span class="icon">🛒</span>
     Alışveriş
-
   </button>
-
 
   <button
     class="category"
-    onclick="filterCategory('egitim',this)">
-
+    onclick="filterCategory('egitim',this)"
+  >
     <span class="icon">📚</span>
     Eğitim
-
   </button>
-
 
   <button
     class="category"
-    onclick="filterCategory('eglence',this)">
-
+    onclick="filterCategory('eglence',this)"
+  >
     <span class="icon">🎬</span>
     Eğlence
-
   </button>
 
 </div>
 
 
-<!-- SİTELER -->
+<!-- =====================================================
+     SPONSORLU SİTELER
+     ===================================================== -->
+
+<section class="sponsored-section" id="sponsorlu">
+
+  <div class="sponsored-title">
+
+    <h2>
+      👑 Sponsorlu Siteler
+    </h2>
+
+    <span>
+      REKLAM
+    </span>
+
+  </div>
+
+  <div class="sponsored-grid">
+
+
+    <!-- SPONSORLU SİTE 1 -->
+
+    <article
+      class="sponsored-card"
+      data-category="teknoloji"
+      data-name="sponsorlu site"
+    >
+
+      <span class="sponsored-badge">
+        SPONSORLU
+      </span>
+
+      <div class="sponsored-top">
+
+        <div class="sponsored-icon">
+          ⭐
+        </div>
+
+        <div>
+
+          <div class="sponsored-name">
+            Sponsorlu Site
+          </div>
+
+          <div class="sponsored-desc">
+            Reklam alanınızı burada yayınlayın.
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--
+        BURAYA DAHA SONRA REKLAM VERENİN
+        SANA VERDİĞİ AFFILIATE / TAKİP LİNKİNİ
+        YAZACAKSIN.
+
+        Örnek:
+
+        href="https://ornek-site.com/affiliate..."
+
+        ŞİMDİLİK DEĞİŞTİRME.
+      -->
+
+      <a
+        class="sponsored-button"
+        href="#"
+        onclick="return sponsorPlaceholder(event)"
+      >
+        Siteye Git →
+      </a>
+
+      <div class="sponsored-note">
+        Sponsorlu bağlantı
+      </div>
+
+    </article>
+
+
+    <!-- SPONSORLU SİTE 2 -->
+
+    <article
+      class="sponsored-card"
+      data-category="eglence"
+      data-name="yeni sponsorlu site"
+    >
+
+      <span class="sponsored-badge">
+        SPONSORLU
+      </span>
+
+      <div class="sponsored-top">
+
+        <div class="sponsored-icon">
+          🚀
+        </div>
+
+        <div>
+
+          <div class="sponsored-name">
+            Yeni Sponsor
+          </div>
+
+          <div class="sponsored-desc">
+            Reklam veren site burada görünecek.
+          </div>
+
+        </div>
+
+      </div>
+
+      <a
+        class="sponsored-button"
+        href="#"
+        onclick="return sponsorPlaceholder(event)"
+      >
+        Siteye Git →
+      </a>
+
+      <div class="sponsored-note">
+        Sponsorlu bağlantı
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     NORMAL SİTELER
+     ===================================================== -->
+
 <section id="siteler">
 
   <h2 class="site-title">
     Öne Çıkan Siteler
   </h2>
 
-
   <div class="sites" id="sitesGrid">
 
 
     <!-- GOOGLE -->
+
     <article
       class="site-card"
       data-category="teknoloji"
-      data-name="google arama teknoloji">
+      data-name="google arama teknoloji"
+    >
 
       <div class="site-top">
 
@@ -817,6 +1047,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Google
           </div>
@@ -824,6 +1055,7 @@ footer{
           <div class="site-desc">
             İnternette arama yap.
           </div>
+
         </div>
 
       </div>
@@ -831,7 +1063,8 @@ footer{
       <a
         class="site-link"
         href="https://www.google.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -839,10 +1072,12 @@ footer{
 
 
     <!-- YOUTUBE -->
+
     <article
       class="site-card"
       data-category="eglence"
-      data-name="youtube video eğlence">
+      data-name="youtube video eğlence"
+    >
 
       <div class="site-top">
 
@@ -851,6 +1086,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             YouTube
           </div>
@@ -858,6 +1094,7 @@ footer{
           <div class="site-desc">
             Video ve içerik keşfet.
           </div>
+
         </div>
 
       </div>
@@ -865,7 +1102,8 @@ footer{
       <a
         class="site-link"
         href="https://www.youtube.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -873,10 +1111,12 @@ footer{
 
 
     <!-- GITHUB -->
+
     <article
       class="site-card"
       data-category="teknoloji"
-      data-name="github kod yazılım">
+      data-name="github kod yazılım"
+    >
 
       <div class="site-top">
 
@@ -885,6 +1125,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             GitHub
           </div>
@@ -892,6 +1133,7 @@ footer{
           <div class="site-desc">
             Kod ve projeleri keşfet.
           </div>
+
         </div>
 
       </div>
@@ -899,7 +1141,8 @@ footer{
       <a
         class="site-link"
         href="https://github.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -907,10 +1150,12 @@ footer{
 
 
     <!-- WIKIPEDIA -->
+
     <article
       class="site-card"
       data-category="egitim"
-      data-name="wikipedia bilgi eğitim">
+      data-name="wikipedia bilgi eğitim"
+    >
 
       <div class="site-top">
 
@@ -919,6 +1164,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Wikipedia
           </div>
@@ -926,6 +1172,7 @@ footer{
           <div class="site-desc">
             Bilgi ve kaynakları keşfet.
           </div>
+
         </div>
 
       </div>
@@ -933,7 +1180,8 @@ footer{
       <a
         class="site-link"
         href="https://www.wikipedia.org"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -941,10 +1189,12 @@ footer{
 
 
     <!-- REDDIT -->
+
     <article
       class="site-card"
       data-category="eglence"
-      data-name="reddit topluluk">
+      data-name="reddit topluluk"
+    >
 
       <div class="site-top">
 
@@ -953,6 +1203,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Reddit
           </div>
@@ -960,6 +1211,7 @@ footer{
           <div class="site-desc">
             Toplulukları keşfet.
           </div>
+
         </div>
 
       </div>
@@ -967,7 +1219,8 @@ footer{
       <a
         class="site-link"
         href="https://www.reddit.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -975,10 +1228,12 @@ footer{
 
 
     <!-- STACK OVERFLOW -->
+
     <article
       class="site-card"
       data-category="teknoloji"
-      data-name="stack overflow yazılım">
+      data-name="stack overflow yazılım"
+    >
 
       <div class="site-top">
 
@@ -987,6 +1242,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Stack Overflow
           </div>
@@ -994,6 +1250,7 @@ footer{
           <div class="site-desc">
             Yazılım sorularına cevap bul.
           </div>
+
         </div>
 
       </div>
@@ -1001,7 +1258,8 @@ footer{
       <a
         class="site-link"
         href="https://stackoverflow.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -1009,10 +1267,12 @@ footer{
 
 
     <!-- SPOTIFY -->
+
     <article
       class="site-card"
       data-category="eglence"
-      data-name="spotify müzik">
+      data-name="spotify müzik"
+    >
 
       <div class="site-top">
 
@@ -1021,6 +1281,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Spotify
           </div>
@@ -1028,6 +1289,7 @@ footer{
           <div class="site-desc">
             Müzik ve podcast keşfet.
           </div>
+
         </div>
 
       </div>
@@ -1035,7 +1297,8 @@ footer{
       <a
         class="site-link"
         href="https://www.spotify.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -1043,10 +1306,12 @@ footer{
 
 
     <!-- CANVA -->
+
     <article
       class="site-card"
       data-category="egitim"
-      data-name="canva tasarım">
+      data-name="canva tasarım"
+    >
 
       <div class="site-top">
 
@@ -1055,6 +1320,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Canva
           </div>
@@ -1062,6 +1328,7 @@ footer{
           <div class="site-desc">
             Tasarım oluştur.
           </div>
+
         </div>
 
       </div>
@@ -1069,7 +1336,8 @@ footer{
       <a
         class="site-link"
         href="https://www.canva.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -1077,10 +1345,12 @@ footer{
 
 
     <!-- STEAM -->
+
     <article
       class="site-card"
       data-category="oyun"
-      data-name="steam oyun">
+      data-name="steam oyun"
+    >
 
       <div class="site-top">
 
@@ -1089,6 +1359,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Steam
           </div>
@@ -1096,6 +1367,7 @@ footer{
           <div class="site-desc">
             Oyunları keşfet.
           </div>
+
         </div>
 
       </div>
@@ -1103,7 +1375,8 @@ footer{
       <a
         class="site-link"
         href="https://store.steampowered.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
@@ -1111,10 +1384,12 @@ footer{
 
 
     <!-- AMAZON -->
+
     <article
       class="site-card"
       data-category="alisveris"
-      data-name="amazon alışveriş">
+      data-name="amazon alışveriş"
+    >
 
       <div class="site-top">
 
@@ -1123,6 +1398,7 @@ footer{
         </div>
 
         <div>
+
           <div class="site-name">
             Amazon
           </div>
@@ -1130,6 +1406,7 @@ footer{
           <div class="site-desc">
             Ürünleri ve alışverişi keşfet.
           </div>
+
         </div>
 
       </div>
@@ -1137,14 +1414,18 @@ footer{
       <a
         class="site-link"
         href="https://www.amazon.com"
-        target="_blank">
+        target="_blank"
+      >
         Siteyi ziyaret et →
       </a>
 
     </article>
 
 
-    <div class="no-results" id="noResults">
+    <div
+      class="no-results"
+      id="noResults"
+    >
       Site bulunamadı.
     </div>
 
@@ -1153,7 +1434,8 @@ footer{
 </section>
 
 
-<!-- TANITIM -->
+<!-- ALT REKLAM / SİTE EKLE -->
+
 <section class="promo">
 
   <div class="promo-icon">
@@ -1172,14 +1454,14 @@ footer{
 
     <a
       class="promo-btn"
-      href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Tanıtımı">
+      href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Tanıtımı"
+    >
       Hemen Tanıt →
     </a>
 
   </div>
 
 </section>
-
 
 </main>
 
@@ -1189,32 +1471,44 @@ footer{
 </footer>
 
 
-<!-- ALT MENÜ -->
 <nav class="bottom-nav">
 
-  <a href="#" class="nav active">
+  <a
+    href="#"
+    class="nav active"
+  >
     <span class="nav-icon">⌂</span>
     Ana Sayfa
   </a>
 
-  <a href="#siteler" class="nav">
-    <span class="nav-icon">🎮</span>
-    Kategoriler
+  <a
+    href="#sponsorlu"
+    class="nav"
+  >
+    <span class="nav-icon">👑</span>
+    Sponsor
   </a>
 
-  <a href="#siteler" class="nav">
+  <a
+    href="#siteler"
+    class="nav"
+  >
     <span class="nav-icon">⭐</span>
     Siteler
   </a>
 
   <a
     href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Ekle"
-    class="nav">
+    class="nav"
+  >
     <span class="nav-icon">＋</span>
     Site Ekle
   </a>
 
-  <a href="#siteler" class="nav">
+  <a
+    href="#siteler"
+    class="nav"
+  >
     <span class="nav-icon">☰</span>
     Menü
   </a>
@@ -1224,71 +1518,108 @@ footer{
 
 <script>
 
-let currentCategory = "all";
+let currentCategory="all";
 
 
 function filterCategory(category,button){
 
-  currentCategory = category;
+  currentCategory=category;
 
   document
     .querySelectorAll(".category")
     .forEach(function(item){
+
       item.classList.remove("active");
+
     });
 
   button.classList.add("active");
 
   searchSites();
+
 }
 
 
 function searchSites(){
 
-  const text =
+  const text=
     document
       .getElementById("searchInput")
       .value
       .toLowerCase()
       .trim();
 
-  const cards =
+
+  const cards=
     document.querySelectorAll(".site-card");
 
-  let count = 0;
+
+  let count=0;
+
 
   cards.forEach(function(card){
 
-    const category =
+    const category=
       card.dataset.category;
 
-    const name =
+    const name=
       card.dataset.name || "";
 
-    const categoryOK =
-      currentCategory === "all" ||
-      category === currentCategory;
 
-    const searchOK =
-      text === "" ||
+    const categoryOK=
+      currentCategory==="all" ||
+      category===currentCategory;
+
+
+    const searchOK=
+      text==="" ||
       name.includes(text);
+
 
     if(categoryOK && searchOK){
 
-      card.style.display = "block";
+      card.style.display="block";
+
       count++;
 
     }else{
 
-      card.style.display = "none";
+      card.style.display="none";
 
     }
 
   });
 
 
-  document.getElementById("noResults").style.display =
-    count === 0 ? "block" : "none";
+  document
+    .getElementById("noResults")
+    .style.display=
+      count===0 ? "block" : "none";
+
+}
+
+
+/*
+  Sponsorlu kart henüz gerçek affiliate
+  bağlantısı verilmediği için boş bırakıldı.
+
+  Daha sonra:
+
+  href="BURAYA_AFFILIATE_LINKI"
+
+  şeklinde değiştireceğiz.
+*/
+
+function sponsorPlaceholder(event){
+
+  event.preventDefault();
+
+  alert(
+    "Bu sponsorlu sitenin bağlantısı henüz eklenmedi."
+  );
+
+  return false;
+
 }
 
 </script>
