@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tomhub2026.github.io/tomhub2026/sitemap.xml
