@@ -1,195 +1,338 @@
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tomhub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tomhub</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<style>
-*{box-sizing:border-box}
+  <style>
+    * { box-sizing: border-box; }
 
-body{
-  font-family:Arial,sans-serif;
-  background:#f2f2f2;
-  margin:0;
-  padding:20px;
-}
+    :root {
+      --bg:#07111f;
+      --panel:#0d1b2a;
+      --line:#1d3550;
+      --text:#edf6ff;
+      --muted:#8fa8bd;
+      --blue:#1597ff;
+      --danger:#d94b5b;
+    }
 
-.container{
-  max-width:600px;
-  margin:auto;
-}
+    body {
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,sans-serif;
+      color:var(--text);
+      background:radial-gradient(circle at top,#10263d 0,#07111f 45%,#050b13 100%);
+    }
 
-.box{
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-  margin-bottom:15px;
-}
+    button,input,textarea {
+      font:inherit;
+    }
 
-h1,h2{margin-top:0}
+    button {
+      border:0;
+      border-radius:10px;
+      padding:10px 15px;
+      cursor:pointer;
+      background:var(--blue);
+      color:white;
+      font-weight:700;
+    }
 
-textarea,input{
-  width:100%;
-  padding:12px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  font-size:15px;
-  margin-bottom:10px;
-}
+    button:hover {
+      filter:brightness(1.08);
+    }
 
-textarea{
-  height:100px;
-  resize:vertical;
-}
+    button:disabled {
+      opacity:.5;
+      cursor:not-allowed;
+    }
 
-button{
-  padding:9px 14px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  background:#222;
-  color:white;
-  font-size:14px;
-  margin:3px;
-}
+    .container {
+      width:min(1180px,calc(100% - 28px));
+      margin:0 auto;
+      padding:24px 0 50px;
+    }
 
-button:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
+    .box {
+      background:rgba(13,27,42,.94);
+      border:1px solid var(--line);
+      padding:18px;
+      border-radius:18px;
+      box-shadow:0 12px 35px rgba(0,0,0,.22);
+      margin-bottom:15px;
+    }
 
-.secondary{
-  background:#eee;
-  color:#222;
-}
+    h2 {
+      margin-top:0;
+    }
 
-.danger{
-  background:#c62828;
-}
+    input,
+    textarea {
+      width:100%;
+      background:#091725;
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      outline:none;
+    }
 
-.post{
-  background:#f5f5f5;
-  padding:15px;
-  border-radius:10px;
-  margin-top:15px;
-}
+    input:focus,
+    textarea:focus {
+      border-color:var(--blue);
+      box-shadow:0 0 0 2px rgba(21,151,255,.12);
+    }
 
-.content{
-  white-space:pre-wrap;
-  line-height:1.5;
-  word-wrap:break-word;
-}
+    textarea {
+      height:115px;
+      resize:vertical;
+    }
 
-.date{
-  color:#777;
-  font-size:12px;
-  margin-top:10px;
-}
+    .composer-title {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:12px;
+    }
 
-.actions{
-  margin-top:10px;
-}
+    .composer-bottom {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
 
-.comments{
-  margin-top:10px;
-  padding-top:10px;
-  border-top:1px solid #ddd;
-}
+    .post {
+      background:#0a1725;
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:16px;
+      margin-top:14px;
+    }
 
-.comment{
-  background:white;
-  padding:8px;
-  border-radius:8px;
-  margin-top:6px;
-  font-size:14px;
-}
+    .profile {
+      display:flex;
+      gap:11px;
+      align-items:center;
+      margin-bottom:13px;
+    }
 
-.profile{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin-bottom:10px;
-}
+    .avatar {
+      width:44px;
+      height:44px;
+      flex:none;
+      border-radius:50%;
+      background:linear-gradient(135deg,#1597ff,#1552d1);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+    }
 
-.avatar{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:#222;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
+    .username {
+      font-weight:800;
+    }
 
-.username{
-  font-weight:bold;
-}
+    .small,
+    .date {
+      color:var(--muted);
+      font-size:12px;
+    }
 
-.small{
-  color:#777;
-  font-size:12px;
-}
+    .content {
+      white-space:pre-wrap;
+      line-height:1.6;
+      word-wrap:break-word;
+      font-size:15px;
+    }
 
-#message,#profileMessage{
-  margin-top:10px;
-  min-height:20px;
-  font-size:14px;
-}
+    .date {
+      margin-top:10px;
+    }
 
-.empty{
-  text-align:center;
-  color:#777;
-  padding:20px;
-}
-</style>
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:14px;
+      padding-top:12px;
+      border-top:1px solid #142a40;
+    }
+
+    .actions button {
+      background:#10283e;
+      color:#dcecf9;
+      padding:8px 11px;
+      font-size:13px;
+    }
+
+    .actions .danger {
+      background:#3a1720;
+      color:#ffb5bf;
+    }
+
+    .actions .secondary {
+      background:#14324c;
+    }
+
+    .comments {
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid #142a40;
+    }
+
+    .comment {
+      background:#102337;
+      padding:9px;
+      border-radius:9px;
+      margin-top:7px;
+      font-size:14px;
+    }
+
+    #message,
+    #profileMessage {
+      margin-top:9px;
+      min-height:18px;
+      color:#8fcaff;
+      font-size:13px;
+    }
+
+    .empty {
+      text-align:center;
+      color:var(--muted);
+      padding:30px 10px;
+    }
+
+    @media(max-width:650px) {
+      .container {
+        width:min(100% - 16px,600px);
+        padding-top:10px;
+      }
+
+      .box {
+        padding:14px;
+        border-radius:15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="box">
-<h2>👤 Profilim</h2>
+  <div class="box">
+    <div style="font-size:30px;font-weight:800;margin-bottom:4px;">
+      🔵 TomHub
+    </div>
 
-<input id="username" maxlength="30" placeholder="Kullanıcı adın">
+    <div style="color:#8fa8bd;margin-bottom:20px;">
+      Sosyal dünyanın yeni adresi
+    </div>
 
-<input id="bio" maxlength="150" placeholder="Hakkında">
-
-<button id="saveProfile">Profili Kaydet</button>
-
-<div id="profileMessage"></div>
-</div>
-
-
-<div class="box">
-<h2>📝 Gönderi Yaz</h2>
-
-<textarea
-id="postText"
-maxlength="1000"
-placeholder="Gönderini yaz..."
-></textarea>
-
-<div>
-<span id="counter">0 / 1000</span>
-<button id="sendButton">Gönder</button>
-</div>
-
-<div id="message"></div>
-</div>
+    <div style="
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    ">
+      <button>🏠 Ana Sayfa</button>
+      <button style="background:#10283e;">🔎 Keşfet</button>
+      <button style="background:#10283e;">🔔 Bildirimler</button>
+      <button style="background:#10283e;">👤 Profil</button>
+    </div>
+  </div>
 
 
-<div class="box">
-<h2>📱 Gönderiler</h2>
-<div id="posts"></div>
-</div>
+  <!-- PROFİL -->
+
+  <div class="box">
+
+    <h2>👤 Profilim</h2>
+
+    <input
+      id="username"
+      maxlength="30"
+      placeholder="Kullanıcı adın"
+    >
+
+    <br><br>
+
+    <input
+      id="bio"
+      maxlength="150"
+      placeholder="Hakkında"
+    >
+
+    <br><br>
+
+    <button id="saveProfile">
+      Profili Kaydet
+    </button>
+
+    <div id="profileMessage"></div>
+
+  </div>
+
+
+  <!-- GÖNDERİ OLUŞTUR -->
+
+  <div class="box">
+
+    <div class="composer-title">
+      ✍️ Yeni gönderi oluştur
+    </div>
+
+    <textarea
+      id="postText"
+      maxlength="1000"
+      placeholder="Aklından neler geçiyor?"
+    ></textarea>
+
+    <div class="composer-bottom">
+
+      <span id="counter">
+        0 / 1000
+      </span>
+
+      <button id="sendButton">
+        🚀 Gönder
+      </button>
+
+    </div>
+
+    <div id="message"></div>
+
+  </div>
+
+
+  <!-- GÖNDERİLER -->
+
+  <div class="box">
+
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    ">
+      <h2>📱 Gönderiler</h2>
+
+      <span style="color:#8fa8bd;">
+        Son gönderiler
+      </span>
+    </div>
+
+    <div id="posts"></div>
+
+  </div>
 
 </div>
 
@@ -197,24 +340,24 @@ placeholder="Gönderini yaz..."
 <script>
 
 const SUPABASE_URL =
-"https://pkwyvdrqglqcqwukyssp.supabase.co";
+  "https://pkwyvdrqglqcqwukyssp.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
+  "sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
 
 const supabaseClient =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-/* KULLANICI ID */
+/* KULLANICI */
 
 let userId =
-localStorage.getItem("tomhub_user_id");
+  localStorage.getItem("tomhub_user_id");
 
-if(!userId){
+if (!userId) {
 
   userId =
     "user_" +
@@ -234,36 +377,36 @@ if(!userId){
 /* ELEMENTLER */
 
 const postText =
-document.getElementById("postText");
+  document.getElementById("postText");
 
 const sendButton =
-document.getElementById("sendButton");
+  document.getElementById("sendButton");
 
 const posts =
-document.getElementById("posts");
+  document.getElementById("posts");
 
 const message =
-document.getElementById("message");
+  document.getElementById("message");
 
 const counter =
-document.getElementById("counter");
+  document.getElementById("counter");
 
 const username =
-document.getElementById("username");
+  document.getElementById("username");
 
 const bio =
-document.getElementById("bio");
+  document.getElementById("bio");
 
 const saveProfile =
-document.getElementById("saveProfile");
+  document.getElementById("saveProfile");
 
 const profileMessage =
-document.getElementById("profileMessage");
+  document.getElementById("profileMessage");
 
 
-/* HTML GÜVENLİĞİ */
+/* GÜVENLİ HTML */
 
-function escapeHtml(text){
+function escapeHtml(text) {
 
   const div =
     document.createElement("div");
@@ -277,21 +420,23 @@ function escapeHtml(text){
 
 /* PROFİL YÜKLE */
 
-async function loadProfile(){
+async function loadProfile() {
 
-  const {data,error} =
+  const { data, error } =
     await supabaseClient
       .from("profiles")
       .select("*")
-      .eq("user_id",userId)
+      .eq("user_id", userId)
       .maybeSingle();
 
-  if(error){
+  if (error) {
+
     console.error(error);
+
     return;
   }
 
-  if(data){
+  if (data) {
 
     username.value =
       data.username || "";
@@ -305,127 +450,107 @@ async function loadProfile(){
 /* PROFİL KAYDET */
 
 saveProfile.addEventListener(
-"click",
-async()=>{
+  "click",
+  async () => {
 
-  const name =
-    username.value.trim() ||
-    "Kullanıcı";
+    const name =
+      username.value.trim() ||
+      "Kullanıcı";
 
-  const about =
-    bio.value.trim();
+    const about =
+      bio.value.trim();
 
-  saveProfile.disabled = true;
+    saveProfile.disabled =
+      true;
 
-  const {data:existing,error:checkError} =
-    await supabaseClient
-      .from("profiles")
-      .select("id")
-      .eq("user_id",userId)
-      .maybeSingle();
-
-  if(checkError){
-
-    console.error(checkError);
-
-    profileMessage.textContent =
-      "Profil kontrol edilemedi.";
-
-    saveProfile.disabled = false;
-    return;
-  }
-
-  let error;
-
-  if(existing){
-
-    ({error} =
+    const { data: existing } =
       await supabaseClient
         .from("profiles")
-        .update({
-          username:name,
-          bio:about
-        })
-        .eq("user_id",userId));
+        .select("id")
+        .eq("user_id", userId)
+        .maybeSingle();
 
-  }else{
+    let error;
 
-    ({error} =
-      await supabaseClient
-        .from("profiles")
-        .insert({
-          user_id:userId,
-          username:name,
-          bio:about
-        }));
+    if (existing) {
+
+      ({ error } =
+        await supabaseClient
+          .from("profiles")
+          .update({
+            username:name,
+            bio:about
+          })
+          .eq(
+            "user_id",
+            userId
+          ));
+
+    } else {
+
+      ({ error } =
+        await supabaseClient
+          .from("profiles")
+          .insert({
+            user_id:userId,
+            username:name,
+            bio:about
+          }));
+    }
+
+    if (error) {
+
+      console.error(error);
+
+      profileMessage.textContent =
+        "Profil kaydedilemedi.";
+
+    } else {
+
+      profileMessage.textContent =
+        "Profil kaydedildi.";
+
+      await loadPosts();
+    }
+
+    saveProfile.disabled =
+      false;
   }
-
-  if(error){
-
-    console.error(error);
-
-    profileMessage.textContent =
-      "Profil kaydedilemedi.";
-
-  }else{
-
-    profileMessage.textContent =
-      "Profil kaydedildi.";
-
-    await loadPosts();
-  }
-
-  saveProfile.disabled = false;
-});
+);
 
 
-/* SAYICI */
+/* KARAKTER SAYACI */
 
 postText.addEventListener(
-"input",
-()=>{
+  "input",
+  () => {
 
-  counter.textContent =
-    postText.value.length +
-    " / 1000";
-});
-
-
-/* TAKİP DURUMU */
-
-async function isFollowing(targetId){
-
-  const {data,error} =
-    await supabaseClient
-      .from("follows")
-      .select("id")
-      .eq("follower_id",userId)
-      .eq("following_id",targetId)
-      .maybeSingle();
-
-  if(error){
-    console.error(error);
-    return false;
+    counter.textContent =
+      postText.value.length +
+      " / 1000";
   }
-
-  return !!data;
-}
+);
 
 
 /* GÖNDERİLER */
 
-async function loadPosts(){
+async function loadPosts() {
 
   message.textContent =
     "Gönderiler yükleniyor...";
 
-  const {data,error} =
+  const { data, error } =
     await supabaseClient
       .from("posts")
       .select("*")
-      .order("created_at",{ascending:false});
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
-  if(error){
+  if (error) {
 
     console.error(error);
 
@@ -436,9 +561,13 @@ async function loadPosts(){
   }
 
   posts.innerHTML = "";
+
   message.textContent = "";
 
-  if(!data || data.length === 0){
+  if (
+    !data ||
+    data.length === 0
+  ) {
 
     posts.innerHTML =
       '<div class="empty">Henüz gönderi yok.</div>';
@@ -447,7 +576,7 @@ async function loadPosts(){
   }
 
 
-  for(const post of data){
+  for (const post of data) {
 
     const div =
       document.createElement("div");
@@ -460,17 +589,20 @@ async function loadPosts(){
 
     let profile = null;
 
-    if(post.user_id){
+    if (post.user_id) {
 
       const result =
         await supabaseClient
           .from("profiles")
           .select("*")
-          .eq("user_id",post.user_id)
+          .eq(
+            "user_id",
+            post.user_id
+          )
           .maybeSingle();
 
       profile =
-        result.data || null;
+        result.data;
     }
 
     const displayName =
@@ -478,495 +610,550 @@ async function loadPosts(){
       "Kullanıcı";
 
 
-    /* TAKİP DURUMU */
-
-    let following = false;
-
-    if(
-      post.user_id &&
-      post.user_id !== userId
-    ){
-      following =
-        await isFollowing(post.user_id);
-    }
-
-
     div.innerHTML = `
 
-<div class="profile">
+      <div class="profile">
 
-  <div class="avatar">
-    ${escapeHtml(
-      displayName
-        .charAt(0)
-        .toUpperCase()
-    )}
-  </div>
+        <div class="avatar">
+          ${escapeHtml(
+            displayName
+              .charAt(0)
+              .toUpperCase()
+          )}
+        </div>
 
-  <div>
+        <div>
 
-    <div class="username">
-      ${escapeHtml(displayName)}
-    </div>
+          <div class="username">
+            ${escapeHtml(
+              displayName
+            )}
+          </div>
 
-    <div class="small">
-      ${escapeHtml(
-        profile?.bio || ""
-      )}
-    </div>
+          <div class="small">
+            ${escapeHtml(
+              profile?.bio || ""
+            )}
+          </div>
 
-  </div>
+        </div>
 
-</div>
-
-
-<div class="content">
-${escapeHtml(post.content || "")}
-</div>
+      </div>
 
 
-<div class="date">
-${
-post.created_at
-?
-new Date(post.created_at)
-.toLocaleString("tr-TR")
-:
-""
-}
-</div>
+      <div class="content">
+        ${escapeHtml(
+          post.content || ""
+        )}
+      </div>
 
 
-<div class="actions">
+      <div class="date">
 
-<button class="likeButton">
-❤️ ${post.likes || 0}
-</button>
+        ${
+          post.created_at
+            ? new Date(
+                post.created_at
+              ).toLocaleString(
+                "tr-TR"
+              )
+            : ""
+        }
 
-<button class="commentButton">
-💬 Yorum
-</button>
-
-${
-post.user_id === userId
-?
-`
-<button class="deleteButton danger">
-🗑️ Sil
-</button>
-`
-:
-`
-<button class="followButton secondary">
-${
-following
-?
-"✓ Takiptesin"
-:
-"👥 Takip Et"
-}
-</button>
-`
-}
-
-</div>
+      </div>
 
 
-<div class="comments"></div>
+      <div class="actions">
 
-`;
+        <button class="likeButton">
+          ❤️ ${post.likes || 0}
+        </button>
+
+        <button class="commentButton">
+          💬 Yorum
+        </button>
+
+        ${
+          post.user_id === userId
+
+          ? `
+            <button
+              class="deleteButton danger"
+            >
+              🗑️ Sil
+            </button>
+          `
+
+          : `
+            <button
+              class="followButton secondary"
+            >
+              👥 Takip Et
+            </button>
+          `
+        }
+
+      </div>
+
+
+      <div class="comments"></div>
+
+    `;
 
 
     posts.appendChild(div);
 
 
-    /* LIKE */
+    /* BEĞENİ */
 
     const likeButton =
-      div.querySelector(".likeButton");
+      div.querySelector(
+        ".likeButton"
+      );
 
     likeButton.addEventListener(
-    "click",
-    async()=>{
+      "click",
+      async () => {
 
-      likeButton.disabled = true;
+        likeButton.disabled =
+          true;
 
-      const currentLikes =
-        Number(post.likes) || 0;
+        const newLikes =
+          (post.likes || 0) + 1;
 
-      const newLikes =
-        currentLikes + 1;
+        const { error } =
+          await supabaseClient
+            .from("posts")
+            .update({
+              likes:newLikes
+            })
+            .eq(
+              "id",
+              post.id
+            );
 
-      const {error} =
-        await supabaseClient
-          .from("posts")
-          .update({
-            likes:newLikes
-          })
-          .eq("id",post.id);
+        if (error) {
 
-      if(error){
+          console.error(error);
 
-        console.error(error);
+          alert(
+            "Beğeni gönderilemedi."
+          );
 
-        alert(
-          "Beğeni gönderilemedi."
-        );
+          likeButton.disabled =
+            false;
 
-        likeButton.disabled = false;
-        return;
+          return;
+        }
+
+        await loadPosts();
       }
-
-      await loadPosts();
-    });
+    );
 
 
     /* SİL */
 
     const deleteButton =
-      div.querySelector(".deleteButton");
+      div.querySelector(
+        ".deleteButton"
+      );
 
-    if(deleteButton){
+    if (deleteButton) {
 
       deleteButton.addEventListener(
-      "click",
-      async()=>{
+        "click",
+        async () => {
 
-        if(
-          !confirm(
-            "Bu gönderiyi silmek istiyor musun?"
-          )
-        ){
-          return;
+          const ok =
+            confirm(
+              "Bu gönderiyi silmek istiyor musun?"
+            );
+
+          if (!ok)
+            return;
+
+          deleteButton.disabled =
+            true;
+
+          const { error } =
+            await supabaseClient
+              .from("posts")
+              .delete()
+              .eq(
+                "id",
+                post.id
+              )
+              .eq(
+                "user_id",
+                userId
+              );
+
+          if (error) {
+
+            console.error(error);
+
+            alert(
+              "Gönderi silinemedi."
+            );
+
+            deleteButton.disabled =
+              false;
+
+            return;
+          }
+
+          await loadPosts();
         }
-
-        deleteButton.disabled = true;
-
-        const {error} =
-          await supabaseClient
-            .from("posts")
-            .delete()
-            .eq("id",post.id)
-            .eq("user_id",userId);
-
-        if(error){
-
-          console.error(error);
-
-          alert(
-            "Gönderi silinemedi."
-          );
-
-          deleteButton.disabled = false;
-          return;
-        }
-
-        await loadPosts();
-      });
+      );
     }
 
 
     /* TAKİP */
 
     const followButton =
-      div.querySelector(".followButton");
+      div.querySelector(
+        ".followButton"
+      );
 
-    if(
+    if (
       followButton &&
-      post.user_id &&
-      post.user_id !== userId
-    ){
+      post.user_id
+    ) {
 
       followButton.addEventListener(
-      "click",
-      async()=>{
+        "click",
+        async () => {
 
-        followButton.disabled = true;
-
-        const {data:existingFollow,error:findError} =
-          await supabaseClient
-            .from("follows")
-            .select("id")
-            .eq("follower_id",userId)
-            .eq("following_id",post.user_id)
-            .maybeSingle();
-
-        if(findError){
-
-          console.error(findError);
-
-          alert(
-            "Takip durumu kontrol edilemedi."
-          );
-
-          followButton.disabled = false;
-          return;
-        }
-
-
-        if(existingFollow){
-
-          const {error} =
-            await supabaseClient
-              .from("follows")
-              .delete()
-              .eq("id",existingFollow.id);
-
-          if(error){
-
-            console.error(error);
-
-            alert(
-              "Takipten çıkılamadı."
-            );
-
-          }else{
-
-            followButton.textContent =
-              "👥 Takip Et";
+          if (
+            post.user_id ===
+            userId
+          ) {
+            return;
           }
 
-        }else{
+          followButton.disabled =
+            true;
 
-          const {error} =
+          const {
+            data:existingFollow
+          } =
             await supabaseClient
               .from("follows")
-              .insert({
-                follower_id:userId,
-                following_id:post.user_id
-              });
+              .select("id")
+              .eq(
+                "follower_id",
+                userId
+              )
+              .eq(
+                "following_id",
+                post.user_id
+              )
+              .maybeSingle();
 
-          if(error){
+          if (existingFollow) {
 
-            console.error(error);
+            const { error } =
+              await supabaseClient
+                .from("follows")
+                .delete()
+                .eq(
+                  "id",
+                  existingFollow.id
+                );
 
-            alert(
-              "Takip edilemedi."
-            );
+            if (error) {
 
-          }else{
+              console.error(error);
 
-            followButton.textContent =
-              "✓ Takiptesin";
+            } else {
+
+              followButton.textContent =
+                "👥 Takip Et";
+            }
+
+          } else {
+
+            const { error } =
+              await supabaseClient
+                .from("follows")
+                .insert({
+                  follower_id:userId,
+                  following_id:
+                    post.user_id
+                });
+
+            if (error) {
+
+              console.error(error);
+
+            } else {
+
+              followButton.textContent =
+                "✓ Takiptesin";
+            }
           }
-        }
 
-        followButton.disabled = false;
-      });
+          followButton.disabled =
+            false;
+        }
+      );
     }
 
 
     /* YORUM */
 
     const commentButton =
-      div.querySelector(".commentButton");
+      div.querySelector(
+        ".commentButton"
+      );
 
     const comments =
-      div.querySelector(".comments");
+      div.querySelector(
+        ".comments"
+      );
 
 
     commentButton.addEventListener(
-    "click",
-    async()=>{
+      "click",
+      async () => {
 
-      if(comments.innerHTML !== ""){
+        if (
+          comments.innerHTML !== ""
+        ) {
 
-        comments.innerHTML = "";
-        return;
-      }
-
-
-      comments.innerHTML = `
-
-<input
-class="commentInput"
-maxlength="500"
-placeholder="Yorumunu yaz..."
->
-
-<button class="sendComment">
-Yorum Yap
-</button>
-
-<div class="commentList">
-Yükleniyor...
-</div>
-
-`;
-
-
-      const input =
-        comments.querySelector(
-          ".commentInput"
-        );
-
-      const sendComment =
-        comments.querySelector(
-          ".sendComment"
-        );
-
-      const commentList =
-        comments.querySelector(
-          ".commentList"
-        );
-
-
-      /* YORUMLARI YÜKLE */
-
-      async function loadComments(){
-
-        const {data,error} =
-          await supabaseClient
-            .from("comments")
-            .select("*")
-            .eq("post_id",post.id)
-            .order("created_at",{
-              ascending:true
-            });
-
-
-        if(error){
-
-          console.error(error);
-
-          commentList.textContent =
-            "Yorumlar yüklenemedi.";
+          comments.innerHTML =
+            "";
 
           return;
         }
 
 
-        if(!data || data.length === 0){
+        comments.innerHTML = `
 
-          commentList.innerHTML =
-            '<div class="small">Henüz yorum yok.</div>';
+          <input
+            class="commentInput"
+            maxlength="500"
+            placeholder="Yorumunu yaz..."
+          >
 
-          return;
-        }
+          <button class="sendComment">
+            Yorum Yap
+          </button>
 
+          <div class="commentList">
+            Yükleniyor...
+          </div>
 
-        commentList.innerHTML = "";
-
-
-        for(const comment of data){
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "comment";
+        `;
 
 
-          item.innerHTML = `
-${escapeHtml(comment.content)}
-${
-comment.user_id === userId
-?
-`
-<button class="danger deleteComment">
-Sil
-</button>
-`
-:
-""
-}
-`;
+        const input =
+          comments.querySelector(
+            ".commentInput"
+          );
+
+        const sendComment =
+          comments.querySelector(
+            ".sendComment"
+          );
+
+        const commentList =
+          comments.querySelector(
+            ".commentList"
+          );
 
 
-          const deleteComment =
-            item.querySelector(
-              ".deleteComment"
-            );
+        async function loadComments() {
 
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .from("comments")
+              .select("*")
+              .eq(
+                "post_id",
+                post.id
+              )
+              .order(
+                "created_at",
+                {
+                  ascending:true
+                }
+              );
 
-          if(deleteComment){
+          if (error) {
 
-            deleteComment.addEventListener(
-            "click",
-            async()=>{
+            console.error(error);
 
-              deleteComment.disabled = true;
+            commentList.textContent =
+              "Yorumlar yüklenemedi.";
 
-              const {error} =
-                await supabaseClient
-                  .from("comments")
-                  .delete()
-                  .eq("id",comment.id)
-                  .eq("user_id",userId);
+            return;
+          }
 
+          if (
+            !data ||
+            data.length === 0
+          ) {
 
-              if(error){
+            commentList.innerHTML =
+              '<div class="small">Henüz yorum yok.</div>';
 
-                console.error(error);
-
-                alert(
-                  "Yorum silinemedi."
-                );
-
-                deleteComment.disabled = false;
-                return;
-              }
-
-              await loadComments();
-            });
+            return;
           }
 
 
-          commentList.appendChild(item);
-        }
-      }
+          commentList.innerHTML =
+            "";
 
 
-      /* YORUM GÖNDER */
+          data.forEach(
+            comment => {
 
-      sendComment.addEventListener(
-      "click",
-      async()=>{
+              const item =
+                document.createElement(
+                  "div"
+                );
 
-        const text =
-          input.value.trim();
+              item.className =
+                "comment";
 
-        if(!text){
-          return;
-        }
+              item.innerHTML = `
 
-        sendComment.disabled = true;
+                ${escapeHtml(
+                  comment.content
+                )}
+
+                ${
+                  comment.user_id ===
+                  userId
+
+                  ? `
+                    <button
+                      class="danger deleteComment"
+                    >
+                      Sil
+                    </button>
+                  `
+
+                  : ""
+                }
+
+              `;
 
 
-        const {error} =
-          await supabaseClient
-            .from("comments")
-            .insert({
-              post_id:post.id,
-              user_id:userId,
-              content:text
-            });
+              const deleteComment =
+                item.querySelector(
+                  ".deleteComment"
+                );
 
 
-        if(error){
+              if (
+                deleteComment
+              ) {
 
-          console.error(error);
+                deleteComment.addEventListener(
+                  "click",
+                  async () => {
 
-          alert(
-            "Yorum gönderilemedi."
+                    const {
+                      error
+                    } =
+                      await supabaseClient
+                        .from(
+                          "comments"
+                        )
+                        .delete()
+                        .eq(
+                          "id",
+                          comment.id
+                        )
+                        .eq(
+                          "user_id",
+                          userId
+                        );
+
+                    if (error) {
+
+                      console.error(
+                        error
+                      );
+
+                      alert(
+                        "Yorum silinemedi."
+                      );
+
+                      return;
+                    }
+
+                    await loadComments();
+                  }
+                );
+              }
+
+
+              commentList.appendChild(
+                item
+              );
+
+            }
           );
-
-          sendComment.disabled = false;
-          return;
         }
 
 
-        input.value = "";
+        sendComment.addEventListener(
+          "click",
+          async () => {
 
-        sendComment.disabled = false;
+            const text =
+              input.value.trim();
+
+            if (!text)
+              return;
+
+            sendComment.disabled =
+              true;
+
+            const { error } =
+              await supabaseClient
+                .from("comments")
+                .insert({
+                  post_id:post.id,
+                  user_id:userId,
+                  content:text
+                });
+
+            if (error) {
+
+              console.error(error);
+
+              alert(
+                "Yorum gönderilemedi."
+              );
+
+              sendComment.disabled =
+                false;
+
+              return;
+            }
+
+            input.value =
+              "";
+
+            sendComment.disabled =
+              false;
+
+            await loadComments();
+          }
+        );
+
 
         await loadComments();
-      });
 
-
-      await loadComments();
-
-    });
+      }
+    );
 
   }
 }
@@ -974,13 +1161,12 @@ Sil
 
 /* GÖNDERİ EKLE */
 
-async function sendPost(){
+async function sendPost() {
 
   const content =
     postText.value.trim();
 
-
-  if(!content){
+  if (!content) {
 
     message.textContent =
       "Önce bir şey yaz.";
@@ -988,14 +1174,14 @@ async function sendPost(){
     return;
   }
 
-
-  sendButton.disabled = true;
+  sendButton.disabled =
+    true;
 
   message.textContent =
     "Gönderiliyor...";
 
 
-  const {error} =
+  const { error } =
     await supabaseClient
       .from("posts")
       .insert({
@@ -1005,20 +1191,17 @@ async function sendPost(){
       });
 
 
-  if(error){
+  if (error) {
 
     console.error(error);
 
     message.textContent =
       "Gönderi gönderilemedi.";
 
-    alert(
-      "Gönderi gönderilemedi. Supabase tablo izinlerini kontrol et."
-    );
+  } else {
 
-  }else{
-
-    postText.value = "";
+    postText.value =
+      "";
 
     counter.textContent =
       "0 / 1000";
@@ -1030,13 +1213,14 @@ async function sendPost(){
   }
 
 
-  sendButton.disabled = false;
+  sendButton.disabled =
+    false;
 }
 
 
 sendButton.addEventListener(
-"click",
-sendPost
+  "click",
+  sendPost
 );
 
 
@@ -1049,4 +1233,3 @@ loadPosts();
 
 </body>
 </html>
-```
