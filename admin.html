@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TomHub Admin</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:
+    radial-gradient(circle at top,#241b00 0,#0b0b0d 38%,#050506 100%);
+  color:#fff;
+  min-height:100vh;
+}
+
+header{
+  padding:18px;
+  background:rgba(10,10,12,.94);
+  border-bottom:1px solid #3d310d;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  color:#ffd84d;
+}
+
+.logo span{
+  color:#fff;
+}
+
+.container{
+  width:min(1100px,94%);
+  margin:auto;
+}
+
+.login{
+  max-width:430px;
+  margin:70px auto;
+  background:rgba(20,20,23,.96);
+  border:1px solid #554510;
+  border-radius:24px;
+  padding:25px;
+  box-shadow:0 0 35px rgba(255,205,50,.08);
+}
+
+h1,h2,h3{
+  margin-top:0;
+}
+
+.gold{
+  color:#ffd84d;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:13px;
+  margin:7px 0 12px;
+  border-radius:12px;
+  border:1px solid #403713;
+  background:#111114;
+  color:#fff;
+  outline:none;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+button{
+  border:0;
+  border-radius:12px;
+  padding:12px 16px;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.primary{
+  background:linear-gradient(135deg,#ffd84d,#b98500);
+  color:#111;
+}
+
+.secondary{
+  background:#202024;
+  color:#fff;
+  border:1px solid #45400f;
+}
+
+.danger{
+  background:#501b1b;
+  color:#fff;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.dashboard{
+  padding:25px 0 60px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.stat{
+  background:linear-gradient(145deg,#171719,#0d0d0f);
+  border:1px solid #413711;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.stat .number{
+  font-size:30px;
+  font-weight:900;
+  color:#ffd84d;
+  margin-top:7px;
+}
+
+.panel{
+  background:rgba(18,18,21,.95);
+  border:1px solid #3e350f;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin-bottom:20px;
+}
+
+.tabs button{
+  white-space:nowrap;
+}
+
+.site{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  padding:15px 0;
+  border-bottom:1px solid #29291f;
+}
+
+.site:last-child{
+  border-bottom:0;
+}
+
+.site-info{
+  min-width:0;
+}
+
+.site-name{
+  font-size:18px;
+  font-weight:900;
+  color:#ffd84d;
+}
+
+.site-url{
+  color:#aaa;
+  font-size:13px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:8px;
+  font-size:11px;
+  margin:3px 3px 0 0;
+  background:#292713;
+  color:#ffd84d;
+}
+
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.message{
+  padding:12px;
+  border-radius:10px;
+  background:#161618;
+  margin-bottom:15px;
+  color:#ffd84d;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+@media(max-width:750px){
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .site{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .actions{
+    justify-content:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">👑 Tom<span>Hub</span> <small style="font-size:12px;color:#aaa">ADMIN</small></div>
+  </div>
+</header>
+
+<div id="loginScreen" class="container">
+  <div class="login">
+    <h1>🔐 TomHub Admin</h1>
+    <p style="color:#aaa">
+      Yönetim paneline giriş yap.
+    </p>
+
+    <div id="loginMessage"></div>
+
+    <label>E-posta</label>
+    <input id="email" type="email" placeholder="E-posta adresin">
+
+    <label>Şifre</label>
+    <input id="password" type="password" placeholder="Şifren">
+
+    <button class="primary" style="width:100%" onclick="login()">
+      Yönetim Paneline Gir
+    </button>
+  </div>
+</div>
+
+<div id="adminScreen" class="hidden">
+  <main class="container dashboard">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px">
+      <div>
+        <h1>🎮 Yönetim Merkezi</h1>
+        <div style="color:#aaa">TomHub'ın tüm yönetimi burada.</div>
+      </div>
+
+      <button class="secondary" onclick="logout()">Çıkış</button>
+    </div>
+
+    <div id="message"></div>
+
+    <div class="grid">
+      <div class="stat">
+        <div>🌐 Siteler</div>
+        <div class="number" id="siteCount">0</div>
+      </div>
+
+      <div class="stat">
+        <div>📁 Kategoriler</div>
+        <div class="number" id="categoryCount">0</div>
+      </div>
+
+      <div class="stat">
+        <div>🖱️ Tıklamalar</div>
+        <div class="number" id="clickCount">0</div>
+      </div>
+
+      <div class="stat">
+        <div>👁️ Görüntülenmeler</div>
+        <div class="number" id="viewCount">0</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="primary" onclick="showPanel('sitesPanel')">🌐 Siteler</button>
+      <button class="secondary" onclick="showPanel('addPanel')">➕ Site Ekle</button>
+      <button class="secondary" onclick="showPanel('categoriesPanel')">📁 Kategoriler</button>
+      <button class="secondary" onclick="showPanel('postsPanel')">📝 Gönderiler</button>
+    </div>
+
+    <!-- SİTELER -->
+    <section id="sitesPanel" class="panel">
+      <h2>🌐 Reklamlı Siteler</h2>
+      <div id="sitesList">Yükleniyor...</div>
+    </section>
+
+    <!-- SITE EKLE -->
+    <section id="addPanel" class="panel hidden">
+      <h2>➕ Yeni Reklam Sitesi</h2>
+
+      <div class="form-grid">
+
+        <div>
+          <label>Site adı</label>
+          <input id="siteName" placeholder="Örn: Özel Site">
+        </div>
+
+        <div>
+          <label>Slug</label>
+          <input id="siteSlug" placeholder="ozel-site">
+        </div>
+
+        <div class="full">
+          <label>Açıklama</label>
+          <textarea id="siteDescription" placeholder="Site hakkında açıklama"></textarea>
+        </div>
+
+        <div>
+          <label>Normal site adresi</label>
+          <input id="websiteUrl" placeholder="https://...">
+        </div>
+
+        <div>
+          <label>Affiliate / Referral linki</label>
+          <input id="affiliateUrl" placeholder="https://...">
+        </div>
+
+        <div>
+          <label>Logo URL</label>
+          <input id="logoUrl" placeholder="https://...">
+        </div>
+
+        <div>
+          <label>Kategori</label>
+          <select id="categoryId"></select>
+        </div>
+
+      </div>
+
+      <label>
+        <input id="featured" type="checkbox" style="width:auto">
+        ⭐ Öne çıkar
+      </label>
+
+      <label>
+        <input id="sponsored" type="checkbox" style="width:auto">
+        📢 Sponsorlu
+      </label>
+
+      <br><br>
+
+      <button class="primary" onclick="addSite()">
+        🚀 Siteyi Yayınla
+      </button>
+    </section>
+
+    <!-- KATEGORİLER -->
+    <section id="categoriesPanel" class="panel hidden">
+      <h2>📁 Kategoriler</h2>
+
+      <input id="newCategory" placeholder="Yeni kategori adı">
+
+      <button class="primary" onclick="addCategory()">
+        Kategori Ekle
+      </button>
+
+      <div id="categoriesList" style="margin-top:20px"></div>
+    </section>
+
+    <!-- GÖNDERİLER -->
+    <section id="postsPanel" class="panel hidden">
+      <h2>📝 Gönderiler</h2>
+
+      <p style="color:#aaa">
+        Mevcut <b>public.posts</b> sistemin korunuyor.
+        Buradaki bölüm mevcut gönderileri yönetmek için kullanılacak.
+      </p>
+
+      <div id="postsList">Yükleniyor...</div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+
+const SUPABASE_URL =
+"https://pkwyvdrqglqcqwukyssp.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
+
+const supabaseClient =
+supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentUser = null;
+
+/* -------------------------
+   GİRİŞ
+------------------------- */
+
+async function login(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const box =
+    document.getElementById("loginMessage");
+
+  box.innerHTML="";
+
+  if(!email || !password){
+    box.innerHTML='<div class="message">E-posta ve şifre gerekli.</div>';
+    return;
+  }
+
+  const {data,error} =
+    await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
+
+  if(error){
+    box.innerHTML =
+      '<div class="message">Giriş başarısız: '+
+      escapeHtml(error.message)+
+      '</div>';
+    return;
+  }
+
+  currentUser=data.user;
+
+  await checkAdmin();
+}
+
+/* -------------------------
+   ADMIN KONTROLÜ
+------------------------- */
+
+async function checkAdmin(){
+
+  if(!currentUser){
+    showLogin();
+    return;
+  }
+
+  const {data,error} =
+    await supabaseClient
+      .from("admins")
+      .select("user_id")
+      .eq("user_id",currentUser.id)
+      .maybeSingle();
+
+  if(error){
+    showLoginMessage(
+      "Admin kontrolü yapılamadı: "+error.message
+    );
+    await supabaseClient.auth.signOut();
+    return;
+  }
+
+  if(!data){
+    showLoginMessage(
+      "Bu hesap TomHub admini değil."
+    );
+    await supabaseClient.auth.signOut();
+    return;
+  }
+
+  document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("adminScreen")
+    .classList.remove("hidden");
+
+  await loadAll();
+}
+
+/* -------------------------
+   ÇIKIŞ
+------------------------- */
+
+async function logout(){
+
+  await supabaseClient.auth.signOut();
+
+  currentUser=null;
+
+  document
+    .getElementById("adminScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
+}
+
+/* -------------------------
+   PANELLER
+------------------------- */
+
+function showPanel(id){
+
+  [
+    "sitesPanel",
+    "addPanel",
+    "categoriesPanel",
+    "postsPanel"
+  ].forEach(x=>{
+    document.getElementById(x)
+      .classList.add("hidden");
+  });
+
+  document.getElementById(id)
+    .classList.remove("hidden");
+}
+
+/* -------------------------
+   TÜM VERİLER
+------------------------- */
+
+async function loadAll(){
+
+  await loadStats();
+  await loadCategories();
+  await loadSites();
+  await loadPosts();
+}
+
+/* -------------------------
+   İSTATİSTİKLER
+------------------------- */
+
+async function loadStats(){
+
+  const sites =
+    await supabaseClient
+      .from("sites")
+      .select("id",{
+        count:"exact",
+        head:true
+      });
+
+  const categories =
+    await supabaseClient
+      .from("categories")
+      .select("id",{
+        count:"exact",
+        head:true
+      });
+
+  const clicks =
+    await supabaseClient
+      .from("site_clicks")
+      .select("id",{
+        count:"exact",
+        head:true
+      });
+
+  const views =
+    await supabaseClient
+      .from("site_views")
+      .select("id",{
+        count:"exact",
+        head:true
+      });
+
+  document.getElementById("siteCount").textContent =
+    sites.count ?? 0;
+
+  document.getElementById("categoryCount").textContent =
+    categories.count ?? 0;
+
+  document.getElementById("clickCount").textContent =
+    clicks.count ?? 0;
+
+  document.getElementById("viewCount").textContent =
+    views.count ?? 0;
+}
+
+/* -------------------------
+   KATEGORİLER
+------------------------- */
+
+async function loadCategories(){
+
+  const {data,error} =
+    await supabaseClient
+      .from("categories")
+      .select("*")
+      .order("sort_order");
+
+  if(error){
+    showMessage(error.message);
+    return;
+  }
+
+  const select =
+    document.getElementById("categoryId");
+
+  select.innerHTML =
+    '<option value="">Kategori seç</option>';
+
+  data.forEach(cat=>{
+    select.innerHTML +=
+      `<option value="${cat.id}">
+        ${escapeHtml(cat.icon || "📁")}
+        ${escapeHtml(cat.name)}
+      </option>`;
+  });
+
+  const list =
+    document.getElementById("categoriesList");
+
+  list.innerHTML="";
+
+  data.forEach(cat=>{
+    list.innerHTML += `
+      <div class="site">
+        <div>
+          <div class="site-name">
+            ${escapeHtml(cat.icon || "📁")}
+            ${escapeHtml(cat.name)}
+          </div>
+          <span class="badge">
+            ${cat.active ? "Aktif":"Pasif"}
+          </span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+async function addCategory(){
+
+  const name =
+    document.getElementById("newCategory")
+      .value.trim();
+
+  if(!name){
+    showMessage("Kategori adı yaz.");
+    return;
+  }
+
+  const slug =
+    slugify(name);
+
+  const {error} =
+    await supabaseClient
+      .from("categories")
+      .insert({
+        name,
+        slug,
+        active:true
+      });
+
+  if(error){
+    showMessage(error.message);
+    return;
+  }
+
+  document.getElementById("newCategory").value="";
+
+  showMessage("Kategori eklendi.");
+
+  await loadCategories();
+}
+
+/* -------------------------
+   SİTELER
+------------------------- */
+
+async function loadSites(){
+
+  const {data,error} =
+    await supabaseClient
+      .from("sites")
+      .select(`
+        *,
+        categories (
+          name,
+          icon
+        )
+      `)
+      .order("created_at",{
+        ascending:false
+      });
+
+  if(error){
+    showMessage(error.message);
+    return;
+  }
+
+  const list =
+    document.getElementById("sitesList");
+
+  if(!data.length){
+    list.innerHTML =
+      '<p style="color:#aaa">Henüz site eklenmedi.</p>';
+    return;
+  }
+
+  list.innerHTML="";
+
+  data.forEach(site=>{
+
+    list.innerHTML += `
+      <div class="site">
+
+        <div class="site-info">
+
+          <div class="site-name">
+            ${site.logo_url
+              ? `<img src="${escapeAttribute(site.logo_url)}"
+                  style="width:32px;height:32px;object-fit:contain;vertical-align:middle;border-radius:8px;margin-right:7px">`
+              : "🌐 "
+            }
+
+            ${escapeHtml(site.name)}
+          </div>
+
+          <div class="site-url">
+            ${escapeHtml(site.website_url || "")}
+          </div>
+
+          <span class="badge">
+            ${escapeHtml(site.categories?.icon || "📁")}
+            ${escapeHtml(site.categories?.name || "Kategori yok")}
+          </span>
+
+          ${site.featured
+            ? '<span class="badge">⭐ Öne çıkan</span>'
+            : ""}
+
+          ${site.sponsored
+            ? '<span class="badge">📢 Sponsorlu</span>'
+            : ""}
+
+          ${site.active
+            ? '<span class="badge">🟢 Aktif</span>'
+            : '<span class="badge">🔴 Pasif</span>'
+          }
+
+          <div style="color:#aaa;font-size:12px;margin-top:7px">
+            🖱️ ${site.clicks || 0}
+            &nbsp;&nbsp;
+            👁️ ${site.views || 0}
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button class="secondary"
+            onclick="toggleSite(${site.id},${!site.active})">
+            ${site.active ? "Pasifleştir":"Aktifleştir"}
+          </button>
+
+          <button class="danger"
+            onclick="deleteSite(${site.id})">
+            Sil
+          </button>
+
+        </div>
+
+      </div>
+    `;
+  });
+}
+
+/* -------------------------
+   SITE EKLE
+------------------------- */
+
+async function addSite(){
+
+  const name =
+    document.getElementById("siteName")
+      .value.trim();
+
+  const slug =
+    document.getElementById("siteSlug")
+      .value.trim() ||
+    slugify(name);
+
+  const description =
+    document.getElementById("siteDescription")
+      .value.trim();
+
+  const website_url =
+    document.getElementById("websiteUrl")
+      .value.trim();
+
+  const affiliate_url =
+    document.getElementById("affiliateUrl")
+      .value.trim();
+
+  const logo_url =
+    document.getElementById("logoUrl")
+      .value.trim();
+
+  const category_id =
+    document.getElementById("categoryId")
+      .value || null;
+
+  const featured =
+    document.getElementById("featured").checked;
+
+  const sponsored =
+    document.getElementById("sponsored").checked;
+
+  if(!name){
+    showMessage("Site adı gerekli.");
+    return;
+  }
+
+  if(!affiliate_url){
+    showMessage("Affiliate / Referral linki gerekli.");
+    return;
+  }
+
+  const {error} =
+    await supabaseClient
+      .from("sites")
+      .insert({
+        name,
+        slug,
+        description,
+        website_url,
+        affiliate_url,
+        logo_url,
+        category_id,
+        featured,
+        sponsored,
+        active:true
+      });
+
+  if(error){
+    showMessage(error.message);
+    return;
+  }
+
+  showMessage("🎉 Site başarıyla eklendi.");
+
+  document.getElementById("siteName").value="";
+  document.getElementById("siteSlug").value="";
+  document.getElementById("siteDescription").value="";
+  document.getElementById("websiteUrl").value="";
+  document.getElementById("affiliateUrl").value="";
+  document.getElementById("logoUrl").value="";
+  document.getElementById("categoryId").value="";
+  document.getElementById("featured").checked=false;
+  document.getElementById("sponsored").checked=false;
+
+  await loadAll();
+
+  showPanel("sitesPanel");
+}
+
+/* -------------------------
+   SITE AKTİF / PASİF
+------------------------- */
+
+async function toggleSite(id,status){
+
+  const {error} =
+    await supabaseClient
+      .from("sites")
+      .update({
+        active:status,
+        updated_at:new Date().toISOString()
+      })
+      .eq("id",id);
+
+  if(error){
+    showMessage(error.message);
+    return;
+  }
+
+  await loadAll();
+}
+
+/* -------------------------
+   SITE SİL
+------------------------- */
+
+async function deleteSite(id){
+
+  if(!confirm("Bu siteyi silmek istediğine emin misin?")){
+    return;
+  }
+
+  const {error} =
+    await supabaseClient
+      .from("sites")
+      .delete()
+      .eq("id",id);
+
+  if(error){
+    showMessage(error.message);
+    return;
+  }
+
+  showMessage("Site silindi.");
+
+  await loadAll();
+}
+
+/* -------------------------
+   GÖNDERİLER
+------------------------- */
+
+async function loadPosts(){
+
+  const {data,error} =
+    await supabaseClient
+      .from("posts")
+      .select("*")
+      .order("created_at",{
+        ascending:false
+      })
+      .limit(50);
+
+  const list =
+    document.getElementById("postsList");
+
+  if(error){
+    list.innerHTML =
+      '<div class="message">'+
+      escapeHtml(error.message)+
+      '</div>';
+    return;
+  }
+
+  if(!data || !data.length){
+    list.innerHTML =
+      '<p style="color:#aaa">Gönderi bulunamadı.</p>';
+    return;
+  }
+
+  list.innerHTML="";
+
+  data.forEach(post=>{
+
+    list.innerHTML += `
+      <div class="site">
+        <div class="site-info">
+          <div style="font-size:15px">
+            ${escapeHtml(post.content || "")}
+          </div>
+          <div style="color:#777;font-size:12px;margin-top:5px">
+            ${escapeHtml(post.created_at || "")}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* -------------------------
+   YARDIMCI
+------------------------- */
+
+function showMessage(text){
+
+  const box =
+    document.getElementById("message");
+
+  box.innerHTML =
+    '<div class="message">'+
+    escapeHtml(text)+
+    '</div>';
+
+  setTimeout(()=>{
+    box.innerHTML="";
+  },5000);
+}
+
+function showLoginMessage(text){
+
+  document.getElementById("loginMessage")
+    .innerHTML =
+    '<div class="message">'+
+    escapeHtml(text)+
+    '</div>';
+}
+
+function showLogin(){
+
+  document
+    .getElementById("adminScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
+}
+
+function slugify(text){
+
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/ğ/g,"g")
+    .replace(/ü/g,"u")
+    .replace(/ş/g,"s")
+    .replace(/ı/g,"i")
+    .replace(/ö/g,"o")
+    .replace(/ç/g,"c")
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-+|-+$/g,"");
+}
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function escapeAttribute(value){
+  return escapeHtml(value);
+}
+
+/* Oturum kontrolü */
+(async()=>{
+
+  const {data} =
+    await supabaseClient.auth.getSession();
+
+  if(data.session){
+    currentUser=data.session.user;
+    await checkAdmin();
+  }
+
+})();
+
+</script>
+
+</body>
+</html>
