@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TomHub - Web Sitelerini Keşfet</title>
 <meta name="description" content="TomHub ile ilginç ve kullanışlı web sitelerini keşfet.">
 
@@ -65,11 +66,11 @@ header{
 }
 
 .logo span{
-    color:#168cff;
+    color:#fff;
 }
 
 .logo b{
-    color:#fff;
+    color:#168cff;
 }
 
 .top-menu{
@@ -127,14 +128,22 @@ header{
     font-size:17px;
 }
 
+/* TOMHUB GÖRSELİ */
+
 .hero-visual{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:4px;
-    margin-bottom:7px;
-    font-size:46px;
-    line-height:1;
+    margin:0 auto 7px;
+    width:92px;
+    height:72px;
+}
+
+.hero-visual svg{
+    width:92px;
+    height:72px;
+    display:block;
+    filter:drop-shadow(0 7px 12px rgba(0,0,0,.3));
 }
 
 .hero h1{
@@ -507,8 +516,14 @@ footer{
     }
 
     .hero-visual{
-        font-size:37px;
+        width:72px;
+        height:57px;
         margin-bottom:5px;
+    }
+
+    .hero-visual svg{
+        width:72px;
+        height:57px;
     }
 
     .hero h1{
@@ -653,7 +668,13 @@ footer{
     }
 
     .hero-visual{
-        font-size:34px;
+        width:66px;
+        height:52px;
+    }
+
+    .hero-visual svg{
+        width:66px;
+        height:52px;
     }
 
     .promo button{
@@ -664,7 +685,6 @@ footer{
         font-size:9px;
     }
 }
-
 </style>
 </head>
 
@@ -686,13 +706,69 @@ footer{
 
 </header>
 
-
 <main class="container">
+
+    <!-- ANA ALAN -->
 
     <section class="hero" id="anasayfa">
 
+        <!-- SADECE BURAYA GÖRSEL EKLENDİ -->
         <div class="hero-visual">
-            🐱 💰
+
+            <svg viewBox="0 0 180 140" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- para yığını -->
+                <ellipse cx="90" cy="120" rx="58" ry="12" fill="#b88418"/>
+                <ellipse cx="90" cy="112" rx="58" ry="12" fill="#e5b52f"/>
+                <ellipse cx="90" cy="104" rx="58" ry="12" fill="#ffd84a"/>
+
+                <!-- kedi gövdesi -->
+                <ellipse cx="91" cy="79" rx="39" ry="35" fill="#8f9aaa"/>
+
+                <!-- kulaklar -->
+                <path d="M59 52 L51 19 L76 39 Z" fill="#8f9aaa"/>
+                <path d="M123 39 L148 19 L140 53 Z" fill="#8f9aaa"/>
+
+                <!-- kulak içleri -->
+                <path d="M57 27 L63 43 L54 38 Z" fill="#e98b9d"/>
+                <path d="M143 27 L137 43 L146 38 Z" fill="#e98b9d"/>
+
+                <!-- yüz -->
+                <circle cx="77" cy="62" r="5" fill="#111827"/>
+                <circle cx="105" cy="62" r="5" fill="#111827"/>
+
+                <!-- göz parlaması -->
+                <circle cx="79" cy="60" r="1.5" fill="#fff"/>
+                <circle cx="107" cy="60" r="1.5" fill="#fff"/>
+
+                <!-- burun -->
+                <path d="M87 70 L95 70 L91 75 Z" fill="#e58a9b"/>
+
+                <!-- ağız -->
+                <path d="M91 75 Q84 83 78 78" stroke="#263244" stroke-width="2" fill="none"/>
+                <path d="M91 75 Q98 83 104 78" stroke="#263244" stroke-width="2" fill="none"/>
+
+                <!-- bıyıklar -->
+                <path d="M76 73 L45 68" stroke="#d9e0e8" stroke-width="2"/>
+                <path d="M76 78 L44 80" stroke="#d9e0e8" stroke-width="2"/>
+                <path d="M106 73 L137 68" stroke="#d9e0e8" stroke-width="2"/>
+                <path d="M106 78 L138 80" stroke="#d9e0e8" stroke-width="2"/>
+
+                <!-- para -->
+                <circle cx="129" cy="94" r="18" fill="#f6c945"/>
+                <text x="129" y="101"
+                      text-anchor="middle"
+                      font-size="22"
+                      font-family="Arial"
+                      font-weight="bold"
+                      fill="#85620d">$</text>
+
+                <!-- küçük yıldızlar -->
+                <text x="30" y="38" font-size="20" fill="#ffd84a">✦</text>
+                <text x="145" y="45" font-size="15" fill="#65a8ff">✦</text>
+
+            </svg>
+
         </div>
 
         <h1>
@@ -722,6 +798,8 @@ footer{
     </section>
 
 
+    <!-- TANITIM -->
+
     <section class="promo" id="tanit">
 
         <div class="promo-left">
@@ -750,6 +828,8 @@ footer{
 
     </section>
 
+
+    <!-- KATEGORİLER -->
 
     <section id="kategoriler">
 
@@ -814,6 +894,8 @@ footer{
 
     </section>
 
+
+    <!-- SİTELER -->
 
     <section id="siteler">
 
@@ -1182,6 +1264,8 @@ footer{
     </section>
 
 
+    <!-- SİTENİ EKLE -->
+
     <section class="add-site">
 
         <h2>
@@ -1210,6 +1294,8 @@ footer{
 
 </footer>
 
+
+<!-- MOBİL MENÜ -->
 
 <nav class="mobile-nav">
 
@@ -1253,6 +1339,8 @@ const noResult =
     document.getElementById("noResult");
 
 
+/* ARAMA */
+
 function searchSites(){
 
     const search =
@@ -1294,6 +1382,8 @@ function searchSites(){
 }
 
 
+/* ENTER İLE ARAMA */
+
 searchInput.addEventListener(
     "keydown",
     function(event){
@@ -1305,6 +1395,8 @@ searchInput.addEventListener(
     }
 );
 
+
+/* KATEGORİ */
 
 function filterCategory(category,button){
 
@@ -1345,6 +1437,8 @@ function filterCategory(category,button){
 }
 
 
+/* SİTE TANIT */
+
 function contactSite(){
 
     window.location.href =
@@ -1352,6 +1446,8 @@ function contactSite(){
 
 }
 
+
+/* YUMUŞAK MENÜ GEÇİŞİ */
 
 document
     .querySelectorAll('a[href^="#"]')
