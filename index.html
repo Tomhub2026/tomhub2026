@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TomHub - Güvenilir Siteler</title>
+<meta name="description" content="TomHub - Faydalı ve kaliteli internet sitelerini keşfet.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#050607;color:#fff;font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:78px;overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ÜST ŞERİT */
+.top-strip{
+  height:28px;background:#08090b;border-bottom:1px solid #3b2c08;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  white-space:nowrap;color:#999;font-size:8px;font-weight:800;letter-spacing:1px
+}
+.top-strip span{margin:0 16px}
+.top-strip b{color:#e5b82d}
+
+/* HEADER */
+header{
+  height:68px;background:#08090b;border-bottom:1px solid #34290c;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;position:sticky;top:0;z-index:1000
+}
+.logo{
+  font-size:29px;font-weight:1000;letter-spacing:-2px;
+  text-shadow:0 0 15px rgba(255,190,20,.18)
 }
 .logo span{color:#ffc928}
 .header-buttons{display:flex;gap:8px;align-items:center}
@@ -65,116 +101,23 @@
   color:#111;font-weight:1000;border-radius:0 12px 12px 0;cursor:pointer
 }
 
-/* CANLI TOM */
-.tom{
-  position:absolute;right:20px;bottom:-5px;width:355px;height:330px;
-  z-index:40;pointer-events:none;
-  filter:drop-shadow(0 0 18px rgba(255,196,30,.25))
+/* CANLI TOM + PARA + ALTIN + ZAR */
+.tom-live{
+  position:absolute;right:-8px;bottom:-10px;width:430px;height:355px;
+  z-index:50;pointer-events:none;filter:drop-shadow(0 0 22px rgba(255,195,25,.3));
 }
-.tom::before{
-  content:"";position:absolute;width:280px;height:280px;right:20px;top:30px;
-  background:radial-gradient(circle,rgba(255,205,45,.42),rgba(255,174,0,.16) 32%,transparent 70%);
-  filter:blur(22px);animation:tomGlow 3s infinite ease-in-out
-}
-@keyframes tomGlow{0%,100%{transform:scale(.95);opacity:.7}50%{transform:scale(1.08);opacity:1}}
-.tom-ear{
-  position:absolute;width:90px;height:105px;top:18px;
-  background:linear-gradient(145deg,#aeb4bc,#656b74);
-  border:6px solid #292e35;border-radius:65% 65% 20% 20%;
-  box-shadow:inset 0 0 15px rgba(255,255,255,.12),0 0 12px rgba(0,0,0,.5)
-}
-.tom-ear.left{left:62px;transform:rotate(-25deg)}
-.tom-ear.right{right:62px;transform:rotate(25deg)}
-.tom-ear:after{
-  content:"";position:absolute;inset:17px;background:radial-gradient(circle,#f39aa5,#c86673);
-  border-radius:55% 55% 30% 30%
-}
-.tom-head{
-  position:absolute;width:225px;height:185px;left:65px;top:52px;
-  background:radial-gradient(circle at 48% 25%,#c5cad0,#949ba3 35%,#626871 72%,#454a52);
-  border:7px solid #292e35;border-radius:52% 52% 46% 46%;
-  box-shadow:inset 0 -18px 25px rgba(0,0,0,.22),0 8px 25px rgba(0,0,0,.5)
-}
-.tom-head:before{
-  content:"";position:absolute;width:55px;height:34px;left:82px;bottom:23px;
-  background:radial-gradient(circle at 50% 40%,#fff,#f0c7c9);
-  border-radius:50% 50% 45% 45%;box-shadow:0 8px 0 -2px #272b30
-}
-.tom-head:after{
-  content:"";position:absolute;width:25px;height:18px;left:100px;top:92px;
-  background:#e88b94;border-radius:50%;box-shadow:0 4px 0 #752f38
-}
-.tom-glasses{
-  position:absolute;left:28px;top:68px;width:170px;height:58px;
-  border:6px solid #e9b52a;border-radius:17px;
-  background:linear-gradient(135deg,#080909,#202226);
-  box-shadow:0 0 13px rgba(255,192,27,.5),inset 0 0 15px rgba(255,255,255,.04);z-index:5
-}
-.tom-glasses:after{
-  content:"";position:absolute;left:73px;top:-6px;width:12px;height:55px;background:#e9b52a
-}
-.tom-glasses:before{
-  content:"";position:absolute;width:45px;height:5px;background:rgba(255,255,255,.3);
-  transform:rotate(-25deg);left:15px;top:9px;border-radius:10px
-}
-.tom-coin{
-  position:absolute;width:43px;height:43px;right:60px;top:77px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#fff19b,#f4c42c 35%,#bd8310);
-  border:3px solid #8b620c;color:#714c00;display:flex;align-items:center;justify-content:center;
-  font-size:21px;font-weight:1000;z-index:8;box-shadow:0 0 14px rgba(255,202,42,.55);
-  animation:coinPulse 2s infinite
-}
-@keyframes coinPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.tom-body{
-  position:absolute;width:170px;height:150px;left:92px;bottom:-12px;
-  background:linear-gradient(145deg,#30353b,#171a1e 60%,#090b0d);
-  border:6px solid #292e34;border-radius:55px 55px 25px 25px;
-  box-shadow:inset 0 10px 20px rgba(255,255,255,.04),0 8px 20px rgba(0,0,0,.6)
-}
-.tom-body:before{
-  content:"✦ ✦ ✦ ✦ ✦";position:absolute;top:27px;left:42px;color:#f3c32e;
-  font-size:16px;letter-spacing:2px;text-shadow:0 0 8px rgba(255,193,25,.5)
-}
-.tom-card{
-  position:absolute;width:100px;height:64px;right:-4px;bottom:28px;
-  border:4px solid #e7b526;border-radius:13px;background:linear-gradient(135deg,#151515,#29220a);
-  color:#ffd33a;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:1000;
-  transform:rotate(-16deg);z-index:20;box-shadow:0 0 18px rgba(237,182,29,.35)
-}
-.tom-card:after{
-  content:"TOM";position:absolute;bottom:5px;right:8px;font-size:7px;color:#dca81c;letter-spacing:2px
-}
-.crown{
-  position:absolute;left:72px;top:-18px;font-size:64px;z-index:25;transform:rotate(-17deg);
-  filter:drop-shadow(0 0 8px rgba(255,200,35,.7));animation:crownFloat 2.5s infinite ease-in-out
-}
-@keyframes crownFloat{
-  0%,100%{transform:rotate(-17deg) translateY(0)}
-  50%{transform:rotate(-13deg) translateY(-7px)}
-}
-.coin{
-  position:absolute;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 35% 30%,#fff29a,#e7ae1b 45%,#9e6909);
-  border:2px solid #8e6109;color:#805500;font-size:17px;font-weight:1000;
-  box-shadow:0 0 14px rgba(246,190,28,.6);z-index:30;
-  animation:floatingCoin 2.4s infinite ease-in-out
-}
-.coin.one{right:5px;top:35px}
-.coin.two{right:-10px;top:125px;animation-delay:.6s}
-.coin.three{right:72px;bottom:3px;animation-delay:1.1s}
-@keyframes floatingCoin{
-  0%,100%{transform:translateY(0) rotate(0)}
-  50%{transform:translateY(-12px) rotate(25deg)}
-}
-.tom .spark{
-  position:absolute;color:#ffd331;font-size:20px;z-index:40;animation:sparkle 1.8s infinite
-}
-@keyframes sparkle{
-  0%,100%{opacity:.2;transform:scale(.7)}
-  50%{opacity:1;transform:scale(1.3)}
-}
-
+.tom-svg{width:100%;height:100%;overflow:visible}
+.tom-live .money-float,.tom-live .coin-float,.tom-live .dice-float{transform-box:fill-box;transform-origin:center}
+@keyframes moneyFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(7deg)}}
+@keyframes coinFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(22deg)}}
+@keyframes diceFloat{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-9px) rotate(8deg)}}
+@keyframes crownFloat2{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+.tom-live .money-float{animation:moneyFloat 2.7s ease-in-out infinite}
+.tom-live .coin-float{animation:coinFloat 2.2s ease-in-out infinite}
+.tom-live .dice-float{animation:diceFloat 2.8s ease-in-out infinite}
+.tom-live .crown-float{animation:crownFloat2 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 /* BÖLÜM BAŞLIKLARI */
+
 .section-head{
   display:flex;justify-content:space-between;align-items:center;margin:20px 0 11px
 }
@@ -280,9 +223,9 @@
   .search{max-width:70%}
   .search input{height:44px;font-size:12px}
   .search button{width:72px}
-  .tom{
-    width:205px;height:205px;right:-17px;bottom:-2px;
-    transform:scale(.78);transform-origin:bottom right
+  .tom-live{
+    width:245px;height:220px;right:-20px;bottom:-3px;
+    transform:scale(.82);transform-origin:bottom right
   }
   .categories{grid-template-columns:repeat(3,1fr);gap:7px}
   .category{padding:11px 4px;font-size:10px}
@@ -345,22 +288,101 @@
       </div>
     </div>
 
-    <div class="tom">
-      <div class="crown">👑</div>
-      <div class="tom-ear left"></div>
-      <div class="tom-ear right"></div>
-      <div class="tom-head">
-        <div class="tom-glasses"></div>
-        <div class="tom-coin">₺</div>
-      </div>
-      <div class="tom-body"></div>
-      <div class="tom-card">$</div>
-      <div class="coin one">$</div>
-      <div class="coin two">₺</div>
-      <div class="coin three">$</div>
-      <div class="spark" style="right:110px;top:20px">✦</div>
-      <div class="spark" style="right:5px;top:85px;animation-delay:.5s">✦</div>
-      <div class="spark" style="right:150px;bottom:30px;animation-delay:1s">✦</div>
+    <div class="tom-live">
+      <svg class="tom-svg" viewBox="0 0 520 430" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tgold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fff6ad"/><stop offset=".28" stop-color="#ffd83d"/>
+            <stop offset=".65" stop-color="#e3a916"/><stop offset="1" stop-color="#805306"/>
+          </linearGradient>
+          <radialGradient id="tfur"><stop offset="0" stop-color="#eef1f3"/><stop offset=".42" stop-color="#b5bbc2"/><stop offset=".78" stop-color="#727982"/><stop offset="1" stop-color="#3d434a"/></radialGradient>
+          <linearGradient id="tglass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#333941"/><stop offset=".5" stop-color="#050607"/><stop offset="1" stop-color="#242930"/></linearGradient>
+          <linearGradient id="tmoney" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff5a0"/><stop offset=".5" stop-color="#d9b52b"/><stop offset="1" stop-color="#8a5d09"/></linearGradient>
+          <filter id="tshadow"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000" flood-opacity=".7"/></filter>
+          <filter id="tglow"><feGaussianBlur stdDeviation="8"/></filter>
+        </defs>
+
+        <ellipse cx="345" cy="245" rx="155" ry="145" fill="#ffc928" opacity=".16" filter="url(#tglow)">
+          <animate attributeName="opacity" values=".10;.24;.10" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+
+        <g class="coin-float" style="animation-delay:.2s">
+          <circle cx="450" cy="65" r="27" fill="url(#tgold)" stroke="#8b610b" stroke-width="4" filter="url(#tshadow)"/>
+          <text x="450" y="74" text-anchor="middle" font-size="27" font-weight="bold" fill="#76500a">$</text>
+        </g>
+        <g class="coin-float" style="animation-delay:.8s">
+          <circle cx="475" cy="155" r="23" fill="url(#tgold)" stroke="#8b610b" stroke-width="4" filter="url(#tshadow)"/>
+          <text x="475" y="163" text-anchor="middle" font-size="22" font-weight="bold" fill="#76500a">₺</text>
+        </g>
+
+        <g class="dice-float">
+          <rect x="28" y="72" width="62" height="62" rx="13" fill="url(#tgold)" stroke="#8b610b" stroke-width="5" transform="rotate(-14 59 103)" filter="url(#tshadow)"/>
+          <circle cx="47" cy="91" r="6" fill="#674706"/><circle cx="72" cy="116" r="6" fill="#674706"/>
+          <circle cx="72" cy="91" r="6" fill="#674706"/><circle cx="47" cy="116" r="6" fill="#674706"/>
+        </g>
+        <g class="dice-float" style="animation-delay:1s">
+          <rect x="23" y="305" width="57" height="57" rx="12" fill="url(#tgold)" stroke="#8b610b" stroke-width="5" transform="rotate(14 51 333)" filter="url(#tshadow)"/>
+          <circle cx="41" cy="323" r="5" fill="#674706"/><circle cx="61" cy="343" r="5" fill="#674706"/><circle cx="61" cy="323" r="5" fill="#674706"/>
+        </g>
+
+        <path d="M170 125 C132 77 135 32 180 43 C212 51 216 90 202 126Z" fill="url(#tfur)" stroke="#292e35" stroke-width="8"/>
+        <path d="M350 125 C388 77 385 32 340 43 C308 51 304 90 318 126Z" fill="url(#tfur)" stroke="#292e35" stroke-width="8"/>
+        <path d="M169 104 C150 76 158 61 177 67 C192 72 195 91 188 108Z" fill="#e88491"/>
+        <path d="M351 104 C370 76 362 61 343 67 C328 72 325 91 332 108Z" fill="#e88491"/>
+
+        <ellipse cx="260" cy="170" rx="112" ry="105" fill="url(#tfur)" stroke="#292e35" stroke-width="9" filter="url(#tshadow)"/>
+        <ellipse cx="225" cy="118" rx="42" ry="28" fill="#fff" opacity=".12"/>
+
+        <g>
+          <rect x="170" y="145" width="82" height="55" rx="17" fill="url(#tglass)" stroke="url(#tgold)" stroke-width="7"/>
+          <rect x="268" y="145" width="82" height="55" rx="17" fill="url(#tglass)" stroke="url(#tgold)" stroke-width="7"/>
+          <rect x="248" y="158" width="24" height="10" rx="5" fill="#e9b52a"/>
+          <path d="M181 157 L213 151" stroke="#fff" stroke-width="5" opacity=".32" stroke-linecap="round"/>
+          <path d="M279 157 L311 151" stroke="#fff" stroke-width="5" opacity=".32" stroke-linecap="round"/>
+        </g>
+
+        <ellipse cx="260" cy="211" rx="22" ry="15" fill="#e48791" stroke="#79333d" stroke-width="4"/>
+        <path d="M242 225 Q260 244 278 225" fill="none" stroke="#272c31" stroke-width="6" stroke-linecap="round"/>
+
+        <g class="crown-float" filter="url(#tshadow)">
+          <path d="M176 70 L165 20 L203 48 L232 7 L260 48 L288 7 L317 48 L355 20 L344 70Z" fill="url(#tgold)" stroke="#8c610b" stroke-width="6"/>
+          <circle cx="232" cy="25" r="6" fill="#e94141"/><circle cx="260" cy="47" r="6" fill="#39c7ff"/><circle cx="288" cy="25" r="6" fill="#50d878"/>
+        </g>
+
+        <path d="M178 278 Q260 235 342 278 L365 410 L155 410Z" fill="url(#tfur)" stroke="#292e35" stroke-width="10" filter="url(#tshadow)"/>
+        <text x="260" y="315" text-anchor="middle" font-size="28" fill="url(#tgold)">✦ ✦ ✦</text>
+
+        <g class="money-float" transform="rotate(-10 120 345)" filter="url(#tshadow)">
+          <rect x="65" y="320" width="105" height="58" rx="8" fill="url(#tmoney)" stroke="#80600c" stroke-width="4"/>
+          <rect x="70" y="313" width="105" height="58" rx="8" fill="url(#tmoney)" stroke="#80600c" stroke-width="4"/>
+          <rect x="75" y="306" width="105" height="58" rx="8" fill="url(#tmoney)" stroke="#80600c" stroke-width="4"/>
+          <text x="128" y="348" text-anchor="middle" font-size="35" font-weight="bold" fill="#79560b">$</text>
+        </g>
+
+        <g transform="rotate(-5 395 370)" filter="url(#tshadow)">
+          <path d="M350 350 L438 350 L425 395 L362 395Z" fill="url(#tgold)" stroke="#80590b" stroke-width="5"/>
+          <text x="395" y="378" text-anchor="middle" font-size="13" font-weight="bold" fill="#80590b">GOLD</text>
+        </g>
+
+        <g class="money-float" style="animation-delay:.6s" transform="rotate(-14 405 300)" filter="url(#tshadow)">
+          <rect x="345" y="260" width="125" height="80" rx="13" fill="#111" stroke="url(#tgold)" stroke-width="6"/>
+          <rect x="360" y="282" width="25" height="17" rx="3" fill="url(#tgold)"/>
+          <text x="407" y="320" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffd32e">$</text>
+          <text x="450" y="330" text-anchor="end" font-size="8" fill="#dca81c">TOMHUB</text>
+        </g>
+
+        <g class="coin-float" style="animation-delay:.5s" filter="url(#tshadow)">
+          <circle cx="420" cy="225" r="28" fill="url(#tgold)" stroke="#855b09" stroke-width="4"/>
+          <text x="420" y="235" text-anchor="middle" font-size="28" font-weight="bold" fill="#79540a">$</text>
+        </g>
+
+        <g fill="#ffd633">
+          <text x="105" y="190" font-size="27">✦</text>
+          <text x="425" y="100" font-size="22">✦</text>
+          <text x="455" y="275" font-size="29">✦</text>
+          <text x="120" y="280" font-size="20">✦</text>
+        </g>
+      </svg>
     </div>
   </section>
 
