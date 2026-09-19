@@ -1,1042 +1,627 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TomHub - Web Sitelerini Keşfet</title>
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-:root{
-  --bg:#07111f;
-  --card:#0d1b2d;
-  --card2:#10233a;
-  --border:#1c3550;
-  --text:#f4f8ff;
-  --muted:#8ea4bd;
-  --blue:#1683ff;
-  --blue2:#0d65d8;
-  --green:#20c77a;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  padding-bottom:0;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button,
-input,
-textarea,
-select{
-  font-family:inherit;
-}
-
-/* HEADER */
-
-.header{
-  height:64px;
-  background:#081525;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 25px;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.logo{
-  font-size:24px;
-  font-weight:900;
-  color:#fff;
-}
-
-.logo span{
-  color:#1683ff;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:24px;
-  font-size:14px;
-  color:#a8bad0;
-}
-
-.nav a:hover{
-  color:#fff;
-}
-
-.header-btn{
-  background:var(--blue);
-  padding:10px 16px;
-  border-radius:9px;
-  color:#fff;
-  font-weight:700;
-}
-
-/* MAIN */
-
-.container{
-  width:min(1180px,calc(100% - 30px));
-  margin:auto;
-}
-
-/* HERO */
-
-.hero{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns:1fr 300px;
-  gap:14px;
-}
-
-.hero-main{
-  min-height:260px;
-  border-radius:16px;
-  background:
-    radial-gradient(circle at 80% 20%,rgba(30,130,255,.35),transparent 35%),
-    linear-gradient(135deg,#0d65d8,#116fe4 45%,#092e67);
-  padding:30px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.hero-main small{
-  color:#c9e2ff;
-  font-size:12px;
-  margin-bottom:8px;
-  font-weight:700;
-}
-
-.hero-main h1{
-  font-size:38px;
-  line-height:1.08;
-  margin-bottom:10px;
-}
-
-.hero-main p{
-  color:#d5e7ff;
-  font-size:14px;
-  max-width:650px;
-  line-height:1.5;
-  margin-bottom:18px;
-}
-
-.search{
-  display:flex;
-  background:#fff;
-  border-radius:10px;
-  overflow:hidden;
-  max-width:620px;
-}
-
-.search input{
-  flex:1;
-  border:0;
-  outline:0;
-  padding:13px;
-  font-size:14px;
-  color:#111;
-}
-
-.search button{
-  border:0;
-  background:#071a34;
-  color:#fff;
-  padding:0 20px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-/* SPONSOR */
-
-.sponsor{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.sponsor-label{
-  font-size:11px;
-  color:#6f8ca9;
-  margin-bottom:12px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.sponsor-icon{
-  width:52px;
-  height:52px;
-  border-radius:13px;
-  background:#123a68;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  margin-bottom:12px;
-}
-
-.sponsor h3{
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.sponsor p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:15px;
-}
-
-.sponsor a{
-  background:var(--blue);
-  padding:10px;
-  text-align:center;
-  border-radius:8px;
-  font-size:12px;
-  font-weight:700;
-}
-
-/* SECTIONS */
-
-.section{
-  margin-top:20px;
-}
-
-.section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:10px;
-}
-
-.section-title h2{
-  font-size:19px;
-}
-
-.section-title a{
-  color:#6faeff;
-  font-size:12px;
-}
-
-/* CATEGORIES */
-
-.categories{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:9px;
-}
-
-.category{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:10px;
-  min-height:72px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  font-size:11px;
-  color:#b7c8dc;
-}
-
-.category-icon{
-  font-size:22px;
-}
-
-.category:hover{
-  border-color:#267ed0;
-}
-
-/* SITE CARDS */
-
-.site-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.site-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:12px;
-  min-height:145px;
-  display:flex;
-  flex-direction:column;
-}
-
-.site-top{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin-bottom:10px;
-}
-
-.site-logo{
-  width:40px;
-  height:40px;
-  border-radius:9px;
-  background:#153251;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:19px;
-}
-
-.site-name{
-  font-size:13px;
-  font-weight:800;
-}
-
-.site-url{
-  color:#66829e;
-  font-size:9px;
-  margin-top:3px;
-}
-
-.site-card p{
-  color:#91a6bd;
-  font-size:10px;
-  line-height:1.45;
-  flex:1;
-}
-
-.visit{
-  margin-top:9px;
-  background:#12345a;
-  color:#76b5ff;
-  border-radius:7px;
-  padding:8px;
-  text-align:center;
-  font-size:10px;
-  font-weight:700;
-}
-
-/* ADD SITE */
-
-.add-box{
-  background:linear-gradient(135deg,#0b2037,#0c2948);
-  border:1px solid #214563;
-  border-radius:14px;
-  padding:20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.add-box h2{
-  font-size:19px;
-  margin-bottom:6px;
-}
-
-.add-box p{
-  color:#8ea7c0;
-  font-size:12px;
-}
-
-.add-btn{
-  background:var(--blue);
-  padding:11px 18px;
-  border-radius:8px;
-  font-size:12px;
-  font-weight:700;
-  white-space:nowrap;
-}
-
-/* FOOTER */
-
-.footer{
-  margin-top:30px;
-  border-top:1px solid var(--border);
-  padding:22px 0 30px;
-  color:#607992;
-  font-size:11px;
-  text-align:center;
-}
-
-/* MOBILE BOTTOM NAV */
-
-.mobile-nav{
-  display:none;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  body{
-    padding-bottom:66px;
-  }
-
-  .header{
-    height:50px;
-    padding:0 12px;
-  }
-
-  .logo{
-    font-size:19px;
-  }
-
-  .nav{
-    display:none;
-  }
-
-  .header-btn{
-    padding:7px 10px;
-    font-size:10px;
-  }
-
-  .container{
-    width:calc(100% - 16px);
-  }
-
-  .hero{
-    margin-top:8px;
-    display:block;
-  }
-
-  .hero-main{
-    min-height:0;
-    padding:15px;
-    border-radius:11px;
-  }
-
-  .hero-main small{
-    font-size:9px;
-    margin-bottom:5px;
-  }
-
-  .hero-main h1{
-    font-size:23px;
-    line-height:1.08;
-    margin-bottom:6px;
-  }
-
-  .hero-main p{
-    font-size:10px;
-    line-height:1.35;
-    margin-bottom:10px;
-  }
-
-  .search{
-    height:35px;
-    border-radius:7px;
-  }
-
-  .search input{
-    padding:8px 10px;
-    font-size:11px;
-  }
-
-  .search button{
-    padding:0 12px;
-    font-size:10px;
-  }
-
-  .sponsor{
-    margin-top:8px;
-    min-height:0;
-    padding:11px;
-    border-radius:10px;
-    display:grid;
-    grid-template-columns:39px 1fr;
-    column-gap:9px;
-    align-items:center;
-  }
-
-  .sponsor-label{
-    display:none;
-  }
-
-  .sponsor-icon{
-    width:39px;
-    height:39px;
-    border-radius:8px;
-    font-size:18px;
-    margin:0;
-    grid-row:span 2;
-  }
-
-  .sponsor h3{
-    font-size:12px;
-    margin:0 0 3px;
-  }
-
-  .sponsor p{
-    font-size:9px;
-    line-height:1.3;
-    margin:0;
-  }
-
-  .sponsor a{
-    grid-column:2;
-    margin-top:7px;
-    padding:7px;
-    font-size:9px;
-  }
-
-  .section{
-    margin-top:13px;
-  }
-
-  .section-title{
-    margin-bottom:7px;
-  }
-
-  .section-title h2{
-    font-size:14px;
-  }
-
-  .section-title a{
-    font-size:9px;
-  }
-
-  .categories{
-    grid-template-columns:repeat(5,1fr);
-    gap:5px;
-  }
-
-  .category{
-    min-height:54px;
-    border-radius:7px;
-    gap:3px;
-    font-size:8px;
-  }
-
-  .category-icon{
-    font-size:17px;
-  }
-
-  .site-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:6px;
-  }
-
-  .site-card{
-    min-height:125px;
-    padding:8px;
-    border-radius:8px;
-  }
-
-  .site-top{
-    gap:6px;
-    margin-bottom:7px;
-  }
-
-  .site-logo{
-    width:32px;
-    height:32px;
-    border-radius:7px;
-    font-size:15px;
-  }
-
-  .site-name{
-    font-size:10px;
-  }
-
-  .site-url{
-    font-size:7px;
-  }
-
-  .site-card p{
-    font-size:8px;
-    line-height:1.35;
-  }
-
-  .visit{
-    margin-top:6px;
-    padding:6px;
-    font-size:8px;
-  }
-
-  .add-box{
-    padding:12px;
-    border-radius:9px;
-    gap:8px;
-  }
-
-  .add-box h2{
-    font-size:13px;
-    margin-bottom:3px;
-  }
-
-  .add-box p{
-    font-size:8px;
-  }
-
-  .add-btn{
-    padding:8px 10px;
-    font-size:9px;
-  }
-
-  .footer{
-    margin-top:18px;
-    padding:15px 0 20px;
-    font-size:8px;
-  }
-
-  .mobile-nav{
-    position:fixed;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    left:0;
-    right:0;
-    bottom:0;
-    height:60px;
-    background:#081525;
-    border-top:1px solid #1d344c;
-    z-index:999;
-  }
-
-  .mobile-nav a{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:3px;
-    color:#7189a3;
-    font-size:8px;
-  }
-
-  .mobile-nav span{
-    font-size:18px;
-  }
-
-  .mobile-nav a.active{
-    color:#3e9cff;
-  }
-}
-
-@media(min-width:701px) and (max-width:1000px){
-
-  .hero{
-    grid-template-columns:1fr;
-  }
-
-  .site-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-</style>
+  <meta charset="UTF-8">
+
+  <meta name="google-site-verification" content="YugEUgJ12hqKhJs6pWOY5n_JnU_JOzuF8PRvQRVJSQk" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TomHub - Web Sitelerini Keşfet</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #07111f;
+      color: white;
+      padding-bottom: 70px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #0a1728;
+      border-bottom: 1px solid #172941;
+      height: 58px;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: #1683ff;
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: #b8c5d6;
+    }
+
+    nav a:hover {
+      color: #1683ff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 16px;
+    }
+
+    .hero {
+      margin-top: 18px;
+      padding: 25px 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0d2340, #0b1728);
+      border: 1px solid #193556;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #aab8c9;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .search {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      background: #07111f;
+      border: 1px solid #28415f;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      padding: 13px;
+      font-size: 14px;
+    }
+
+    .search button {
+      border: none;
+      background: #1683ff;
+      color: white;
+      padding: 0 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-size: 20px;
+    }
+
+    .section-title span {
+      color: #7f91a7;
+      font-size: 12px;
+    }
+
+    .sponsor {
+      display: block;
+      padding: 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #12345b, #0d1f35);
+      border: 1px solid #235083;
+      transition: .2s;
+    }
+
+    .sponsor:hover {
+      transform: translateY(-2px);
+    }
+
+    .sponsor h3 {
+      color: #1683ff;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .sponsor p {
+      color: #b8c5d6;
+      font-size: 13px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    .category {
+      background: #0d1b2d;
+      border: 1px solid #1a304a;
+      padding: 12px 8px;
+      text-align: center;
+      border-radius: 10px;
+      color: #c9d4e1;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .category:hover {
+      border-color: #1683ff;
+      color: #1683ff;
+    }
+
+    .site-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .site-card {
+      background: #0d1b2d;
+      border: 1px solid #1a304a;
+      border-radius: 12px;
+      padding: 15px;
+      transition: .2s;
+    }
+
+    .site-card:hover {
+      transform: translateY(-3px);
+      border-color: #1683ff;
+    }
+
+    .site-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #162a42;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .site-card h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .site-card p {
+      color: #8fa1b6;
+      font-size: 12px;
+      line-height: 1.4;
+      min-height: 34px;
+    }
+
+    .visit {
+      display: inline-block;
+      margin-top: 12px;
+      color: #1683ff;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .add-site {
+      background: #0d1b2d;
+      border: 1px solid #1a304a;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .add-site h2 {
+      font-size: 20px;
+      margin-bottom: 7px;
+    }
+
+    .add-site p {
+      color: #99aabd;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .add-button {
+      display: inline-block;
+      background: #1683ff;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding: 20px 16px;
+      border-top: 1px solid #172941;
+      text-align: center;
+      color: #66788e;
+      font-size: 12px;
+    }
+
+    .bottom-nav {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding-bottom: 72px;
+      }
+
+      header {
+        height: 52px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .container {
+        padding: 0 10px;
+      }
+
+      .hero {
+        margin-top: 10px;
+        padding: 20px 12px;
+        border-radius: 12px;
+      }
+
+      .hero h1 {
+        font-size: 22px;
+      }
+
+      .hero p {
+        font-size: 12px;
+        margin-bottom: 13px;
+      }
+
+      .search input {
+        padding: 11px;
+      }
+
+      .search button {
+        padding: 0 14px;
+      }
+
+      .section {
+        margin-top: 15px;
+      }
+
+      .section-title {
+        margin-bottom: 9px;
+      }
+
+      .section-title h2 {
+        font-size: 17px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+      }
+
+      .category {
+        padding: 10px 5px;
+        font-size: 12px;
+      }
+
+      .site-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .site-card {
+        padding: 12px;
+      }
+
+      .site-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+        margin-bottom: 7px;
+      }
+
+      .site-card h3 {
+        font-size: 14px;
+      }
+
+      .site-card p {
+        font-size: 11px;
+        min-height: 30px;
+      }
+
+      .visit {
+        margin-top: 9px;
+        font-size: 11px;
+      }
+
+      .sponsor {
+        padding: 15px;
+      }
+
+      .sponsor h3 {
+        font-size: 16px;
+      }
+
+      .sponsor p {
+        font-size: 12px;
+      }
+
+      .add-site {
+        padding: 17px 12px;
+      }
+
+      footer {
+        margin-top: 20px;
+      }
+
+      .bottom-nav {
+        position: fixed;
+        display: flex;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 62px;
+        background: #091626;
+        border-top: 1px solid #1a304a;
+        z-index: 2000;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .bottom-nav a {
+        color: #8999ac;
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .bottom-nav a span {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+
+      .bottom-nav a.active {
+        color: #1683ff;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">Tom<span>Hub</span></a>
 
-  <a href="#" class="logo">
-    Tom<span>Hub</span>
-  </a>
-
-  <nav class="nav">
-    <a href="#anasayfa">Ana Sayfa</a>
-    <a href="#kategoriler">Kategoriler</a>
-    <a href="#siteler">Siteler</a>
-    <a href="#ekle">Site Ekle</a>
-  </nav>
-
-  <a href="#ekle" class="header-btn">Site Ekle</a>
-
+    <nav>
+      <a href="#siteler">Siteler</a>
+      <a href="#kategoriler">Kategoriler</a>
+      <a href="#tanit">Siteni Tanıt</a>
+    </nav>
+  </div>
 </header>
 
-
-<main class="container" id="anasayfa">
-
-  <!-- HERO -->
+<main class="container">
 
   <section class="hero">
+    <h1>İnternette ne arıyorsan TomHub'da bul.</h1>
+    <p>Farklı web sitelerini keşfet, yeni platformları incele.</p>
 
-    <div class="hero-main">
-
-      <small>WEB SİTELERİNİ KEŞFET</small>
-
-      <h1>İnternette ne arıyorsan<br>TomHub'da bul.</h1>
-
-      <p>
-        Faydalı ve kaliteli internet sitelerini keşfet,
-        kendi siteni TomHub'da tanıt.
-      </p>
-
-      <div class="search">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Site veya kategori ara..."
-          onkeyup="searchSites()"
-        >
-        <button onclick="searchSites()">Ara</button>
-      </div>
-
+    <div class="search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Site ara..."
+        onkeyup="searchSites()"
+      >
+      <button onclick="searchSites()">Ara</button>
     </div>
-
-
-    <div class="sponsor">
-
-      <div class="sponsor-label">Sponsorlu</div>
-
-      <div class="sponsor-icon">🚀</div>
-
-      <div>
-        <h3>Siteni TomHub'da Tanıt</h3>
-
-        <p>
-          Daha fazla kişiye ulaşmak için
-          siteni TomHub'a ekle.
-        </p>
-
-        <a href="#ekle">Hemen Tanıt →</a>
-      </div>
-
-    </div>
-
   </section>
 
-
-  <!-- CATEGORIES -->
+  <section class="section">
+    <a href="#tanit" class="sponsor">
+      <h3>🚀 Siteni TomHub'da Tanıt</h3>
+      <p>Web siteni daha fazla kişiye ulaştırmak için TomHub'a ekle.</p>
+    </a>
+  </section>
 
   <section class="section" id="kategoriler">
-
     <div class="section-title">
       <h2>Kategoriler</h2>
-      <a href="#">Tümünü Gör →</a>
+      <span>Keşfet</span>
     </div>
 
     <div class="categories">
-
-      <a class="category" href="#">
-        <div class="category-icon">🎮</div>
-        Oyun
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">💻</div>
-        Teknoloji
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">🛒</div>
-        Alışveriş
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">📚</div>
-        Eğitim
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">🎬</div>
-        Eğlence
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">🌐</div>
-        Diğer
-      </a>
-
+      <div class="category">🎮 Oyun</div>
+      <div class="category">💻 Teknoloji</div>
+      <div class="category">🛒 Alışveriş</div>
+      <div class="category">📚 Eğitim</div>
+      <div class="category">🎬 Eğlence</div>
+      <div class="category">🌐 Diğer</div>
     </div>
-
   </section>
-
-
-  <!-- SITES -->
 
   <section class="section" id="siteler">
-
     <div class="section-title">
-      <h2>Öne Çıkan Siteler</h2>
-      <a href="#">Tüm siteler →</a>
+      <h2>Popüler Siteler</h2>
+      <span>TomHub</span>
     </div>
 
-    <div class="site-grid" id="siteGrid">
+    <div class="site-grid">
 
-      <a class="site-card" href="https://google.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">G</div>
-
-          <div>
-            <div class="site-name">Google</div>
-            <div class="site-url">google.com</div>
-          </div>
-        </div>
-
-        <p>
-          İnternette arama yapabileceğiniz
-          popüler arama motoru.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+      <a class="site-card" href="https://www.google.com" target="_blank">
+        <div class="site-icon">🔎</div>
+        <h3>Google</h3>
+        <p>Dünyanın popüler arama motorlarından biri.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
 
-
-      <a class="site-card" href="https://youtube.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">▶️</div>
-
-          <div>
-            <div class="site-name">YouTube</div>
-            <div class="site-url">youtube.com</div>
-          </div>
-        </div>
-
-        <p>
-          Video izleyin, içerik keşfedin
-          ve yeni kanallar bulun.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+      <a class="site-card" href="https://www.youtube.com" target="_blank">
+        <div class="site-icon">▶️</div>
+        <h3>YouTube</h3>
+        <p>Video içeriklerini keşfet ve izle.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
-
 
       <a class="site-card" href="https://github.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">🐙</div>
-
-          <div>
-            <div class="site-name">GitHub</div>
-            <div class="site-url">github.com</div>
-          </div>
-        </div>
-
-        <p>
-          Yazılım geliştiriciler için
-          kod paylaşım platformu.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+        <div class="site-icon">🐙</div>
+        <h3>GitHub</h3>
+        <p>Yazılım projelerini keşfet ve geliştir.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
 
-
-      <a class="site-card" href="https://wikipedia.org" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">W</div>
-
-          <div>
-            <div class="site-name">Wikipedia</div>
-            <div class="site-url">wikipedia.org</div>
-          </div>
-        </div>
-
-        <p>
-          Binlerce konuda bilgi
-          ve kaynak keşfedin.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+      <a class="site-card" href="https://www.wikipedia.org" target="_blank">
+        <div class="site-icon">📖</div>
+        <h3>Wikipedia</h3>
+        <p>Bilgi ve içerik dünyasını keşfet.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
 
-
-      <a class="site-card" href="https://reddit.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">R</div>
-
-          <div>
-            <div class="site-name">Reddit</div>
-            <div class="site-url">reddit.com</div>
-          </div>
-        </div>
-
-        <p>
-          Toplulukları keşfedin ve
-          ilgi alanlarını takip edin.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+      <a class="site-card" href="https://www.reddit.com" target="_blank">
+        <div class="site-icon">💬</div>
+        <h3>Reddit</h3>
+        <p>Toplulukları ve farklı konuları keşfet.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
-
 
       <a class="site-card" href="https://stackoverflow.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">S</div>
-
-          <div>
-            <div class="site-name">Stack Overflow</div>
-            <div class="site-url">stackoverflow.com</div>
-          </div>
-        </div>
-
-        <p>
-          Yazılım sorularına cevaplar
-          ve geliştirici topluluğu.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+        <div class="site-icon">❓</div>
+        <h3>Stack Overflow</h3>
+        <p>Yazılım sorularına ve cevaplarına ulaş.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
 
-
-      <a class="site-card" href="https://spotify.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">🎵</div>
-
-          <div>
-            <div class="site-name">Spotify</div>
-            <div class="site-url">spotify.com</div>
-          </div>
-        </div>
-
-        <p>
-          Müzik, podcast ve yeni
-          sanatçılar keşfedin.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+      <a class="site-card" href="https://open.spotify.com" target="_blank">
+        <div class="site-icon">🎵</div>
+        <h3>Spotify</h3>
+        <p>Müzik ve podcast içeriklerini keşfet.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
 
-
-      <a class="site-card" href="https://canva.com" target="_blank">
-
-        <div class="site-top">
-          <div class="site-logo">C</div>
-
-          <div>
-            <div class="site-name">Canva</div>
-            <div class="site-url">canva.com</div>
-          </div>
-        </div>
-
-        <p>
-          Kolayca tasarım oluşturun
-          ve içerik hazırlayın.
-        </p>
-
-        <div class="visit">Siteyi Ziyaret Et →</div>
-
+      <a class="site-card" href="https://www.canva.com" target="_blank">
+        <div class="site-icon">🎨</div>
+        <h3>Canva</h3>
+        <p>Tasarım ve görsel içerikler oluştur.</p>
+        <span class="visit">Siteyi ziyaret et →</span>
       </a>
 
     </div>
-
   </section>
 
+  <section class="section" id="tanit">
+    <div class="add-site">
+      <h2>🌐 Siteni TomHub'a Ekle</h2>
+      <p>
+        Web siteni TomHub üzerinde tanıtmak ve daha fazla ziyaretçiye
+        ulaşmak için bizimle iletişime geç.
+      </p>
 
-  <!-- ADD SITE -->
-
-  <section class="section" id="ekle">
-
-    <div class="add-box">
-
-      <div>
-        <h2>Siteni TomHub'a Ekle</h2>
-
-        <p>
-          Web siteni tanıt, daha fazla ziyaretçiye ulaş.
-        </p>
-      </div>
-
-      <a href="mailto:tomhub2026@gmail.com" class="add-btn">
-        Site Ekle →
+      <a
+        class="add-button"
+        href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Tanıtımı"
+      >
+        Sitemi Tanıt
       </a>
-
     </div>
-
   </section>
-
-
-  <footer class="footer">
-    © 2026 TomHub — Web sitelerini keşfet.
-  </footer>
 
 </main>
 
+<footer>
+  © 2026 TomHub — Web sitelerini keşfet.
+</footer>
 
-<!-- MOBİL ALT MENÜ -->
-
-<nav class="mobile-nav">
-
-  <a href="#anasayfa" class="active">
-    <span>⌂</span>
+<div class="bottom-nav">
+  <a href="#" class="active">
+    <span>🏠</span>
     Ana Sayfa
   </a>
 
-  <a href="#kategoriler">
-    <span>▦</span>
-    Kategoriler
-  </a>
-
   <a href="#siteler">
-    <span>⭐</span>
+    <span>🌐</span>
     Siteler
   </a>
 
-  <a href="#ekle">
-    <span>＋</span>
-    Site Ekle
+  <a href="#kategoriler">
+    <span>📂</span>
+    Kategoriler
   </a>
 
-  <a href="#">
-    <span>☰</span>
-    Menü
+  <a href="#tanit">
+    <span>🚀</span>
+    Tanıt
   </a>
 
-</nav>
-
+  <a href="mailto:tomhub2026@gmail.com">
+    <span>✉️</span>
+    İletişim
+  </a>
+</div>
 
 <script>
+  function searchSites() {
+    const input = document.getElementById("searchInput");
+    const search = input.value.toLowerCase().trim();
 
-function searchSites(){
+    const cards = document.querySelectorAll(".site-card");
 
-  const input =
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
 
-  const cards =
-    document.querySelectorAll(".site-card");
-
-  cards.forEach(card => {
-
-    const text =
-      card.innerText.toLowerCase();
-
-    if(text.includes(input)){
-      card.style.display = "";
-    }else{
-      card.style.display = "none";
-    }
-
-  });
-
-}
-
+      if (text.includes(search)) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
 </script>
 
 </body>
