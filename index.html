@@ -19,24 +19,12 @@ html{
 }
 
 body{
-  background:
-    radial-gradient(circle at 50% 20%,rgba(255,190,0,.035),transparent 28%),
-    #030405;
+  margin:0;
+  background:#050607;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
-  padding-bottom:88px;
+  padding-bottom:80px;
   overflow-x:hidden;
-}
-
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 10% 30%,rgba(255,190,0,.035),transparent 18%),
-    radial-gradient(circle at 90% 65%,rgba(255,190,0,.025),transparent 20%);
-  z-index:-1;
 }
 
 a{
@@ -48,22 +36,23 @@ button{
   font-family:inherit;
 }
 
-/* TOP STRIP */
+/* =========================
+   ÜST ŞERİT
+========================= */
 
 .top-strip{
-  height:30px;
-  background:#050607;
-  border-bottom:1px solid #5e4508;
+  height:29px;
+  background:#08090b;
+  border-bottom:1px solid #2b230d;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   white-space:nowrap;
-  color:#aaa;
+  color:#888;
   font-size:9px;
   font-weight:700;
   letter-spacing:.8px;
-  box-shadow:0 0 15px rgba(255,190,0,.08);
 }
 
 .top-strip span{
@@ -71,312 +60,246 @@ button{
 }
 
 .top-strip b{
-  color:#ffd33d;
+  color:#e2b72c;
 }
 
-.top-strip .diamond{
-  color:#ffd33d;
-}
-
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
-  height:82px;
-  background:
-    radial-gradient(circle at 50% 100%,rgba(255,190,0,.08),transparent 35%),
-    #050607;
-  border-bottom:1px solid #332807;
+  height:70px;
+  background:#08090b;
+  border-bottom:1px solid #29220d;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 24px;
+  padding:0 20px;
   position:sticky;
   top:0;
   z-index:1000;
-  box-shadow:0 4px 25px rgba(0,0,0,.5);
 }
 
 .logo{
-  position:relative;
-  font-size:38px;
+  font-size:30px;
   font-weight:900;
-  letter-spacing:-3px;
-  color:#fff;
-  text-shadow:0 0 15px rgba(255,255,255,.08);
+  letter-spacing:-2px;
+  text-shadow:0 0 15px rgba(239,187,34,.2);
 }
 
 .logo span{
-  color:#ffc928;
-  text-shadow:
-    0 0 8px rgba(255,194,0,.5),
-    0 0 20px rgba(255,170,0,.25);
-}
-
-.logo:before{
-  content:"♛";
-  position:absolute;
-  color:#ffd43b;
-  font-size:22px;
-  left:54px;
-  top:-21px;
-  transform:rotate(-8deg);
-  text-shadow:0 0 12px #ffbd00;
+  color:#f2bd25;
 }
 
 .header-buttons{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
 }
 
 .login-btn{
-  border:1px solid #765b13;
-  background:#08090a;
-  color:#f4c934;
-  padding:12px 21px;
-  border-radius:30px;
-  font-size:14px;
-  font-weight:800;
-  box-shadow:0 0 14px rgba(255,190,0,.08);
+  border:1px solid #423514;
+  background:#08090b;
+  color:#aaa;
+  padding:10px 17px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
 }
 
 .add-btn{
-  background:linear-gradient(135deg,#ffd83f,#e8aa08);
+  background:linear-gradient(135deg,#f8c72d,#dca51a);
   color:#111;
-  padding:14px 23px;
-  border-radius:14px;
-  font-size:14px;
+  padding:11px 18px;
+  border-radius:10px;
+  font-size:12px;
   font-weight:900;
-  box-shadow:
-    0 0 12px rgba(255,195,0,.45),
-    inset 0 1px 0 rgba(255,255,255,.5);
+  box-shadow:0 0 18px rgba(239,188,34,.18);
 }
 
-/* MAIN */
+/* =========================
+   ANA CONTAINER
+========================= */
 
 .container{
   width:100%;
   max-width:1050px;
   margin:auto;
-  padding:15px;
+  padding:14px;
 }
 
-/* SOCIAL */
+/* =========================
+   SOSYAL
+========================= */
 
 .socials{
   display:flex;
   justify-content:center;
-  gap:24px;
-  margin:18px 0 22px;
+  gap:18px;
+  margin:14px 0 18px;
 }
 
 .social{
-  width:58px;
-  height:58px;
+  width:48px;
+  height:48px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:25px;
-  border:2px solid #17191c;
-  box-shadow:
-    0 0 0 2px #3b300b,
-    0 0 18px rgba(255,190,0,.15);
+  font-size:21px;
+  border:2px solid #35290d;
+  box-shadow:0 0 15px rgba(224,175,30,.08);
 }
 
 .social.telegram{
-  background:#159edc;
-  box-shadow:
-    0 0 0 2px #3b300b,
-    0 0 20px rgba(0,180,255,.3);
+  background:#159bd6;
 }
 
 .social.instagram{
-  background:linear-gradient(135deg,#6c32ff,#e7378c,#ff7800);
+  background:linear-gradient(135deg,#7140ff,#e93d87,#ff7b00);
 }
 
 .social.youtube{
-  background:#e51f29;
+  background:#e82029;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  border:1px solid #76580c;
-  border-radius:18px;
+  border:1px solid #604c17;
+  border-radius:16px;
   overflow:hidden;
   background:
-    radial-gradient(
-      circle at 80% 45%,
-      rgba(255,185,0,.22),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 10% 80%,
-      rgba(255,193,0,.08),
-      transparent 25%
-    ),
-    linear-gradient(135deg,#070809,#100d05);
-  min-height:300px;
+    radial-gradient(circle at 80% 65%,rgba(230,178,25,.16),transparent 27%),
+    radial-gradient(circle at 20% 40%,rgba(230,178,25,.08),transparent 30%),
+    linear-gradient(135deg,#080909,#100f0a);
+  min-height:235px;
   display:flex;
   align-items:center;
   position:relative;
-  margin-bottom:28px;
-  box-shadow:
-    0 0 25px rgba(255,185,0,.09),
-    inset 0 0 45px rgba(255,185,0,.025);
+  margin-bottom:22px;
+  box-shadow:0 0 35px rgba(212,164,26,.06);
 }
 
 .hero:before{
   content:"";
   position:absolute;
   inset:10px;
-  border:1px solid #513d0a;
-  border-radius:13px;
+  border:1px solid #493a13;
+  border-radius:12px;
   pointer-events:none;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:340px;
-  height:340px;
-  right:-80px;
-  bottom:-130px;
-  border-radius:50%;
-  background:
-    radial-gradient(circle,#ffd12c 0 2%,transparent 3%),
-    radial-gradient(circle at 30% 30%,#d99700,transparent 4%),
-    radial-gradient(circle at 65% 65%,#ffcf2e,transparent 3%);
-  opacity:.3;
-  filter:blur(1px);
 }
 
 .hero-content{
   position:relative;
-  z-index:3;
-  width:62%;
-  padding:38px 35px;
+  z-index:2;
+  padding:32px;
+  width:100%;
 }
 
 .hero-small{
-  color:#dcae21;
-  font-size:14px;
+  color:#d9aa22;
+  font-size:12px;
   font-weight:900;
   letter-spacing:4px;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .hero h1{
-  font-size:40px;
+  font-size:34px;
   line-height:1.08;
-  margin-bottom:12px;
-  color:#fff;
+  max-width:680px;
+  margin-bottom:10px;
 }
 
 .hero h1 span{
-  display:block;
-  color:#ffd033;
-  text-shadow:0 0 18px rgba(255,190,0,.25);
+  color:#f1bd2a;
 }
 
 .hero p{
-  color:#a7a7a7;
-  font-size:14px;
+  color:#999;
+  font-size:13px;
 }
 
 .search{
   display:flex;
   max-width:700px;
-  margin:22px auto 0;
+  margin:18px 0 0;
 }
 
 .search input{
   flex:1;
-  height:50px;
-  background:#080a0d;
-  border:1px solid #59450c;
+  height:46px;
+  background:#08090b;
+  border:1px solid #4d3c12;
   color:#fff;
-  padding:0 17px;
+  padding:0 15px;
   outline:none;
-  border-radius:28px 0 0 28px;
-  font-size:14px;
-  box-shadow:inset 0 0 18px rgba(0,0,0,.5);
+  border-radius:10px 0 0 10px;
+  font-size:13px;
 }
 
 .search input::placeholder{
-  color:#6d6d6d;
+  color:#666;
 }
 
 .search button{
-  width:95px;
+  width:78px;
   border:0;
-  background:linear-gradient(135deg,#ffd63c,#e5a900);
+  background:#e6b326;
   color:#111;
   font-weight:900;
-  border-radius:0 28px 28px 0;
+  border-radius:0 10px 10px 0;
   cursor:pointer;
-  font-size:14px;
 }
 
-/* TOM CHARACTER */
+/* =========================
+   TOM GÖRSELİ
+========================= */
 
-.tom-character{
+.tom-art{
   position:absolute;
-  z-index:4;
   right:35px;
   bottom:10px;
-  width:290px;
-  height:270px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:205px;
+  height:190px;
+  z-index:2;
   pointer-events:none;
 }
 
-.tom-glow{
+.tom-head{
   position:absolute;
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(255,205,45,.24),
-    rgba(255,170,0,.06) 45%,
-    transparent 70%
-  );
+  width:130px;
+  height:105px;
+  right:28px;
+  top:18px;
+  background:#777b80;
+  border:4px solid #282b31;
+  border-radius:55% 55% 48% 48%;
+  box-shadow:0 0 20px rgba(222,177,35,.08);
 }
-
-.tom{
-  position:relative;
-  width:180px;
-  height:205px;
-  filter:drop-shadow(0 0 12px rgba(255,193,0,.2));
-}
-
-/* ears */
 
 .tom-ear-left,
 .tom-ear-right{
   position:absolute;
-  top:10px;
-  width:57px;
-  height:75px;
-  background:#72757a;
-  border:3px solid #22252a;
-  z-index:1;
+  width:48px;
+  height:55px;
+  background:#777b80;
+  border:4px solid #282b31;
+  top:-24px;
+  border-radius:60% 60% 20% 20%;
 }
 
 .tom-ear-left{
-  left:5px;
+  left:3px;
   transform:rotate(-25deg);
-  border-radius:15px 45px 10px 40px;
 }
 
 .tom-ear-right{
-  right:5px;
+  right:3px;
   transform:rotate(25deg);
-  border-radius:45px 15px 40px 10px;
 }
 
 .tom-ear-left:after,
@@ -384,553 +307,362 @@ header{
   content:"";
   position:absolute;
   inset:10px;
-  background:#e88991;
+  background:#e58b98;
   border-radius:50%;
 }
-
-/* head */
-
-.tom-head{
-  position:absolute;
-  top:27px;
-  left:20px;
-  width:140px;
-  height:125px;
-  background:linear-gradient(145deg,#85898e,#484c51);
-  border:3px solid #22252a;
-  border-radius:50% 50% 46% 46%;
-  z-index:3;
-}
-
-/* face */
-
-.tom-eye{
-  position:absolute;
-  top:42px;
-  width:35px;
-  height:20px;
-  background:#f4f5f5;
-  border-radius:50%;
-  border:2px solid #222;
-}
-
-.tom-eye.left{
-  left:29px;
-}
-
-.tom-eye.right{
-  right:29px;
-}
-
-.tom-eye:after{
-  content:"";
-  position:absolute;
-  width:9px;
-  height:9px;
-  background:#111;
-  border-radius:50%;
-  top:5px;
-  left:13px;
-}
-
-.tom-nose{
-  position:absolute;
-  top:66px;
-  left:61px;
-  width:18px;
-  height:14px;
-  background:#e8a0a4;
-  border-radius:50%;
-  border:2px solid #222;
-}
-
-.tom-mouth{
-  position:absolute;
-  top:77px;
-  left:48px;
-  width:44px;
-  height:26px;
-  border-bottom:3px solid #222;
-  border-radius:50%;
-}
-
-/* sunglasses */
 
 .tom-glasses{
   position:absolute;
-  top:36px;
-  left:17px;
-  width:106px;
+  left:16px;
+  top:43px;
+  width:98px;
+  height:32px;
+  border:4px solid #dcae20;
+  border-radius:8px;
+  background:#111;
+}
+
+.tom-glasses:after{
+  content:"";
+  position:absolute;
+  left:43px;
+  top:-4px;
+  width:7px;
   height:30px;
-  display:flex;
-  gap:5px;
-  z-index:6;
+  background:#dcae20;
 }
 
-.glass{
-  width:49px;
+.tom-coin{
+  position:absolute;
+  right:38px;
+  top:53px;
+  width:28px;
   height:28px;
-  background:linear-gradient(135deg,#161719,#050506);
-  border:3px solid #d9a91e;
-  border-radius:8px 8px 13px 13px;
-  box-shadow:0 0 7px rgba(255,195,0,.3);
+  border-radius:50%;
+  background:#e8b829;
+  color:#7a5500;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:15px;
+  z-index:5;
 }
-
-.glass-bridge{
-  width:12px;
-  height:4px;
-  background:#d9a91e;
-  margin-top:8px;
-}
-
-/* body */
 
 .tom-body{
   position:absolute;
+  width:95px;
+  height:85px;
+  right:45px;
   bottom:0;
-  left:31px;
-  width:118px;
-  height:105px;
-  background:linear-gradient(145deg,#202327,#090a0c);
-  border:3px solid #22252a;
-  border-radius:45px 45px 22px 22px;
-  z-index:2;
-}
-
-.tom-chain{
-  position:absolute;
-  top:11px;
-  left:38px;
-  color:#ffd12e;
-  font-size:30px;
+  background:#202329;
+  border:4px solid #2d3036;
+  border-radius:30px 30px 15px 15px;
 }
 
 .tom-money{
   position:absolute;
-  z-index:8;
-  right:-20px;
-  bottom:18px;
-  width:65px;
-  height:42px;
-  background:linear-gradient(135deg,#151515,#303030);
-  border:2px solid #e0ae20;
-  border-radius:7px;
+  right:8px;
+  bottom:3px;
+  width:57px;
+  height:38px;
+  border:3px solid #d9ac23;
+  border-radius:8px;
   transform:rotate(-15deg);
-  box-shadow:0 0 12px rgba(255,190,0,.25);
+  background:#111;
+  color:#e2b52a;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#ffd33d;
   font-size:20px;
   font-weight:900;
 }
 
-.tom-money:before{
-  content:"TOM";
-  position:absolute;
-  top:4px;
-  font-size:7px;
-  letter-spacing:2px;
-}
-
-.coin{
-  position:absolute;
-  border-radius:50%;
-  background:linear-gradient(135deg,#ffe477,#c98d00);
-  border:2px solid #a76e00;
-  color:#7b5200;
-  font-weight:900;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 10px rgba(255,194,0,.35);
-}
-
-.coin.one{
-  width:27px;
-  height:27px;
-  right:35px;
-  top:40px;
-}
-
-.coin.two{
-  width:21px;
-  height:21px;
-  right:5px;
-  top:90px;
-}
-
-.coin.three{
-  width:25px;
-  height:25px;
-  left:10px;
-  bottom:35px;
-}
-
-/* CATEGORIES */
+/* =========================
+   BÖLÜM BAŞLIKLARI
+========================= */
 
 .section-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:28px 0 13px;
+  margin:23px 0 11px;
 }
 
 .section-head h2{
-  font-size:27px;
-}
-
-.section-head h2:before{
-  content:"✦";
-  color:#ffd33a;
-  margin-right:10px;
-  text-shadow:0 0 12px #ffbc00;
+  font-size:22px;
 }
 
 .section-head a{
-  color:#e6b82a;
-  font-size:13px;
+  color:#e3b52a;
+  font-size:11px;
   font-weight:800;
 }
+
+/* =========================
+   KATEGORİLER
+========================= */
 
 .categories{
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  gap:10px;
+  gap:8px;
 }
 
 .category{
-  background:
-    radial-gradient(circle at 50% 0%,rgba(255,200,30,.04),transparent 55%),
-    #080a0c;
-  border:1px solid #382d0c;
-  border-radius:13px;
-  padding:15px 6px;
+  background:#0b0d10;
+  border:1px solid #30270f;
+  border-radius:10px;
+  padding:12px 6px;
   text-align:center;
   cursor:pointer;
-  color:#999;
-  font-size:12px;
+  color:#888;
+  font-size:10px;
   transition:.2s;
 }
 
 .category .icon{
   display:block;
-  font-size:27px;
-  margin-bottom:7px;
+  font-size:22px;
+  margin-bottom:5px;
 }
 
 .category.active{
-  background:
-    radial-gradient(circle at 50% 30%,rgba(255,205,35,.18),transparent 65%),
-    #151107;
-  border-color:#e0ae21;
-  color:#ffd43a;
-  box-shadow:
-    0 0 17px rgba(255,190,0,.16),
-    inset 0 0 20px rgba(255,190,0,.04);
+  background:#171308;
+  border-color:#d0a324;
+  color:#e8b72b;
+  box-shadow:0 0 15px rgba(210,165,30,.08);
 }
 
-/* SPONSOR */
+/* =========================
+   SPONSOR
+========================= */
 
-.sponsored-section{
-  margin-top:32px;
-}
-
-.sponsored-title{
+.sponsor-title{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:13px;
+  align-items:center;
+  margin:24px 0 10px;
 }
 
-.sponsored-title h2{
-  font-size:27px;
+.sponsor-title h2{
+  font-size:21px;
 }
 
-.sponsored-title h2:before{
-  content:"♛";
-  color:#ffd33a;
-  margin-right:10px;
-}
-
-.sponsored-title span{
-  color:#111;
-  background:linear-gradient(135deg,#ffd83d,#dfa900);
+.sponsor-title span{
+  color:#dcae22;
   font-size:10px;
-  font-weight:900;
-  padding:6px 10px;
-  border-radius:7px;
-  box-shadow:0 0 12px rgba(255,190,0,.25);
+  font-weight:800;
 }
 
-.sponsored-grid{
+.sponsors{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
+  gap:8px;
 }
 
-.sponsored-card{
-  min-height:160px;
+.sponsor-card{
   background:
-    radial-gradient(circle at 50% 0%,rgba(255,195,20,.11),transparent 50%),
-    #08090b;
-  border:1px solid #59450d;
-  border-radius:13px;
-  padding:15px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:inset 0 0 25px rgba(255,180,0,.025);
+    radial-gradient(circle at 80% 10%,rgba(218,170,30,.11),transparent 35%),
+    #090a0c;
+  border:1px solid #443612;
+  border-radius:10px;
+  padding:13px;
+  min-height:115px;
 }
 
-.sponsored-card:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:2px;
-  background:linear-gradient(90deg,transparent,#ffd331,transparent);
-  box-shadow:0 0 10px #ffbd00;
-}
-
-.sponsored-badge{
-  display:inline-block;
-  color:#111;
-  background:linear-gradient(135deg,#ffd63b,#dfa900);
-  font-size:9px;
-  font-weight:900;
-  padding:4px 8px;
-  border-radius:5px;
-  margin-bottom:10px;
-}
-
-.sponsored-top{
+.sponsor-top{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:9px;
 }
 
-.sponsored-icon{
-  width:45px;
-  height:45px;
-  min-width:45px;
-  border-radius:11px;
+.sponsor-icon{
+  width:39px;
+  height:39px;
+  min-width:39px;
+  border-radius:9px;
+  background:#17140a;
+  border:1px solid #594715;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#121108;
-  border:1px solid #5a450c;
-  font-size:23px;
-  box-shadow:0 0 12px rgba(255,190,0,.08);
+  font-size:19px;
 }
 
-.sponsored-name{
-  font-size:15px;
+.sponsor-name{
+  font-size:12px;
   font-weight:900;
 }
 
-.sponsored-desc{
+.sponsor-desc{
   color:#777;
-  font-size:10px;
-  margin-top:4px;
-  line-height:1.35;
+  font-size:9px;
+  margin-top:3px;
 }
 
-.sponsored-button{
+.sponsor-link{
   display:inline-block;
-  margin-top:12px;
-  background:linear-gradient(135deg,#ffd83c,#e2a900);
+  margin-top:9px;
+  background:#dcae22;
   color:#111;
-  padding:8px 13px;
-  border-radius:8px;
-  font-size:10px;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:9px;
   font-weight:900;
-  box-shadow:0 0 10px rgba(255,190,0,.18);
 }
 
-.sponsored-note{
-  color:#555;
-  font-size:8px;
-  margin-top:8px;
-}
-
-/* NORMAL SITES */
+/* =========================
+   SİTELER
+========================= */
 
 .site-title{
-  margin-top:32px;
-  font-size:27px;
-  margin-bottom:14px;
+  margin-top:25px;
+  font-size:22px;
+  margin-bottom:11px;
 }
 
 .sites{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
+  gap:8px;
 }
 
 .site-card{
-  min-height:150px;
+  min-height:125px;
   background:
-    radial-gradient(circle at 50% 0%,rgba(255,195,20,.07),transparent 45%),
-    #08090b;
-  border:1px solid #242629;
-  border-radius:13px;
-  padding:15px;
+    radial-gradient(circle at 50% 0%,rgba(214,169,35,.07),transparent 45%),
+    #090a0c;
+  border:1px solid #252323;
+  border-radius:10px;
+  padding:12px;
   position:relative;
   overflow:hidden;
   transition:.2s;
 }
 
 .site-card:hover{
-  border-color:#9b7716;
+  border-color:#80671c;
   transform:translateY(-2px);
-  box-shadow:0 5px 20px rgba(255,190,0,.07);
 }
 
 .site-card:after{
   content:"";
   position:absolute;
-  bottom:7px;
+  bottom:6px;
   left:50%;
   transform:translateX(-50%);
-  width:50px;
-  height:2px;
+  width:35px;
+  height:1px;
   background:#765d17;
-  box-shadow:0 0 7px rgba(255,190,0,.25);
 }
 
 .site-top{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:9px;
 }
 
 .site-icon{
-  width:47px;
-  height:47px;
-  border-radius:11px;
+  width:41px;
+  height:41px;
+  min-width:41px;
+  border-radius:9px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#121419;
-  border:1px solid #2c3035;
-  font-size:24px;
+  background:#141518;
+  border:1px solid #27272a;
+  font-size:21px;
 }
 
 .site-name{
-  font-size:15px;
+  font-size:13px;
   font-weight:900;
 }
 
 .site-desc{
   color:#777;
-  font-size:10px;
-  margin-top:4px;
+  font-size:9px;
+  margin-top:3px;
   line-height:1.35;
 }
 
 .site-link{
   display:inline-block;
-  margin-top:13px;
-  color:#e6b92d;
-  font-size:11px;
+  margin-top:10px;
+  color:#dcb02b;
+  font-size:9px;
   font-weight:900;
 }
 
-/* PROMO */
+/* =========================
+   TANITIM
+========================= */
 
 .promo{
-  margin-top:27px;
-  border:1px solid #674e0c;
-  border-radius:14px;
-  padding:20px;
+  margin-top:20px;
+  border:1px solid #493914;
+  border-radius:11px;
+  padding:15px;
   background:
-    radial-gradient(circle at 20% 50%,rgba(255,193,20,.13),transparent 35%),
-    #08090b;
+    radial-gradient(circle at 20% 50%,rgba(215,169,31,.08),transparent 35%),
+    #0a0b0d;
   display:flex;
   align-items:center;
-  gap:17px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 0 22px rgba(255,190,0,.06);
-}
-
-.promo:after{
-  content:"🪙";
-  position:absolute;
-  right:30px;
-  bottom:-15px;
-  font-size:75px;
-  opacity:.08;
-  transform:rotate(-20deg);
+  gap:12px;
 }
 
 .promo-icon{
-  width:62px;
-  height:62px;
-  min-width:62px;
-  border-radius:15px;
-  background:#171205;
-  border:1px solid #6b510c;
+  width:50px;
+  height:50px;
+  min-width:50px;
+  border-radius:10px;
+  background:#17140a;
+  border:1px solid #4b3b12;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:31px;
-  box-shadow:0 0 17px rgba(255,190,0,.13);
+  font-size:25px;
 }
 
 .promo h3{
-  font-size:19px;
-  margin-bottom:5px;
-}
-
-.promo h3 span{
-  color:#ffd034;
+  font-size:16px;
+  margin-bottom:4px;
 }
 
 .promo p{
   color:#777;
-  font-size:12px;
-  margin-bottom:10px;
+  font-size:10px;
+  margin-bottom:8px;
 }
 
 .promo-btn{
   display:inline-block;
-  background:linear-gradient(135deg,#ffd83d,#e0a800);
+  background:#dcae22;
   color:#111;
-  padding:10px 16px;
-  border-radius:9px;
-  font-size:12px;
+  padding:7px 12px;
+  border-radius:7px;
+  font-size:10px;
   font-weight:900;
 }
 
-/* FOOTER */
-
-footer{
-  margin-top:45px;
-  padding:25px 10px;
-  text-align:center;
-  border-top:1px solid #17191b;
-  color:#555;
-  font-size:10px;
-}
-
-/* BOTTOM NAV */
+/* =========================
+   ALT MENÜ
+========================= */
 
 .bottom-nav{
   position:fixed;
   left:0;
   right:0;
   bottom:0;
-  height:78px;
-  background:
-    linear-gradient(180deg,#080a0b,#030405);
-  border-top:1px solid #4a3909;
+  height:70px;
+  background:#08090b;
+  border-top:1px solid #27230f;
   display:flex;
   justify-content:space-around;
   align-items:center;
   z-index:2000;
-  box-shadow:0 -8px 25px rgba(0,0,0,.55);
 }
 
 .nav{
@@ -938,56 +670,71 @@ footer{
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:4px;
-  color:#737b88;
-  font-size:10px;
-  min-width:65px;
+  gap:3px;
+  color:#707887;
+  font-size:9px;
+  min-width:55px;
 }
 
 .nav-icon{
-  font-size:25px;
+  font-size:21px;
   line-height:1;
 }
 
 .nav.active{
-  color:#ffd12e;
-  text-shadow:0 0 12px rgba(255,195,0,.45);
+  color:#e1b42b;
+  text-shadow:0 0 9px rgba(225,180,43,.35);
 }
+
+/* =========================
+   SONUÇ
+========================= */
 
 .no-results{
   display:none;
   grid-column:1/-1;
   text-align:center;
   color:#666;
-  padding:35px;
+  padding:30px;
 }
 
-/* MOBILE */
+footer{
+  margin-top:35px;
+  padding:20px 10px;
+  text-align:center;
+  border-top:1px solid #171719;
+  color:#555;
+  font-size:9px;
+}
+
+/* =====================================================
+   MOBİL - KÜÇÜLTÜLMÜŞ VE DAHA GENİŞ GÖRÜNÜM
+===================================================== */
 
 @media(max-width:700px){
 
+  body{
+    padding-bottom:66px;
+  }
+
   .top-strip{
-    height:28px;
-    font-size:7px;
+    height:25px;
+    font-size:6px;
+    letter-spacing:.4px;
   }
 
   .top-strip span{
-    margin:0 9px;
+    margin:0 7px;
   }
 
   header{
-    height:76px;
-    padding:0 14px;
+    height:57px;
+    padding:0 10px;
   }
 
   .logo{
-    font-size:31px;
-  }
-
-  .logo:before{
-    font-size:17px;
-    left:43px;
-    top:-17px;
+    font-size:24px;
+    letter-spacing:-1.5px;
   }
 
   .login-btn{
@@ -995,205 +742,300 @@ footer{
   }
 
   .add-btn{
-    padding:12px 17px;
-    font-size:13px;
-    border-radius:13px;
+    padding:8px 13px;
+    border-radius:9px;
+    font-size:10px;
   }
 
   .container{
-    padding:10px;
+    width:100%;
+    max-width:none;
+    padding:7px 8px;
   }
 
+  /* SOSYAL */
   .socials{
-    gap:22px;
-    margin:18px 0 21px;
+    gap:12px;
+    margin:9px 0 12px;
   }
 
   .social{
-    width:55px;
-    height:55px;
+    width:40px;
+    height:40px;
+    font-size:17px;
   }
 
+  /* HERO */
   .hero{
-    min-height:300px;
-    border-radius:17px;
-  }
-
-  .hero-content{
-    width:100%;
-    padding:28px 17px 25px;
-    z-index:5;
-  }
-
-  .hero-small{
-    font-size:11px;
-    letter-spacing:3px;
-  }
-
-  .hero h1{
-    font-size:29px;
-    line-height:1.12;
-  }
-
-  .hero p{
-    font-size:11px;
-    margin-right:100px;
-  }
-
-  .search{
-    margin-top:18px;
-  }
-
-  .search input{
-    height:47px;
-    font-size:12px;
-  }
-
-  .search button{
-    width:80px;
-  }
-
-  .tom-character{
-    width:150px;
-    height:155px;
-    right:-3px;
-    bottom:25px;
-    transform:scale(.72);
-    transform-origin:center;
-    opacity:.95;
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-  }
-
-  .category{
-    padding:13px 4px;
+    min-height:176px;
+    margin-bottom:15px;
     border-radius:12px;
   }
 
-  .category .icon{
-    font-size:25px;
+  .hero:before{
+    inset:7px;
+    border-radius:9px;
   }
 
-  .section-head h2,
-  .site-title,
-  .sponsored-title h2{
-    font-size:24px;
+  .hero-content{
+    padding:20px 13px;
   }
 
-  .sponsored-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:7px;
+  .hero-small{
+    font-size:8px;
+    letter-spacing:3px;
+    margin-bottom:6px;
   }
-
-  .sponsored-card{
-    min-height:155px;
-    padding:11px;
-  }
-
-  .sponsored-icon{
-    width:39px;
-    height:39px;
-    min-width:39px;
-    font-size:20px;
-  }
-
-  .sponsored-name{
-    font-size:13px;
-  }
-
-  .sponsored-desc{
-    font-size:9px;
-  }
-
-  .sponsored-button{
-    font-size:9px;
-    padding:7px 9px;
-  }
-
-  .sites{
-    grid-template-columns:repeat(2,1fr);
-    gap:7px;
-  }
-
-  .site-card{
-    min-height:145px;
-    padding:11px;
-  }
-
-  .site-icon{
-    width:40px;
-    height:40px;
-    min-width:40px;
-    font-size:20px;
-  }
-
-  .site-name{
-    font-size:13px;
-  }
-
-  .site-desc{
-    font-size:9px;
-  }
-
-  .site-link{
-    font-size:10px;
-  }
-
-  .promo{
-    padding:14px;
-  }
-
-  .promo-icon{
-    width:50px;
-    height:50px;
-    min-width:50px;
-  }
-
-  .promo h3{
-    font-size:15px;
-  }
-
-  .promo p{
-    font-size:10px;
-  }
-
-  .bottom-nav{
-    height:74px;
-  }
-
-  .nav{
-    font-size:9px;
-  }
-
-  .nav-icon{
-    font-size:22px;
-  }
-}
-
-@media(max-width:390px){
 
   .hero h1{
-    font-size:26px;
+    font-size:22px;
+    line-height:1.08;
+    max-width:72%;
+    margin-bottom:6px;
   }
 
   .hero p{
-    margin-right:85px;
+    font-size:9px;
+    max-width:70%;
   }
 
-  .tom-character{
-    right:-18px;
-    transform:scale(.63);
+  /* TOM */
+  .tom-art{
+    width:125px;
+    height:120px;
+    right:3px;
+    bottom:3px;
+    transform:scale(.82);
+    transform-origin:bottom right;
   }
 
-  .logo{
-    font-size:28px;
+  /* ARAMA */
+  .search{
+    width:100%;
+    margin-top:11px;
+    position:relative;
+    z-index:5;
   }
 
-  .add-btn{
-    padding:11px 13px;
+  .search input{
+    height:38px;
+    font-size:9px;
+    padding:0 10px;
+    border-radius:9px 0 0 9px;
+  }
+
+  .search button{
+    width:58px;
+    height:38px;
+    font-size:9px;
+    border-radius:0 9px 9px 0;
+  }
+
+  /* KATEGORİ BAŞLIĞI */
+  .section-head{
+    margin:15px 2px 8px;
+  }
+
+  .section-head h2{
+    font-size:18px;
+  }
+
+  .section-head a{
+    font-size:9px;
+  }
+
+  /* KATEGORİLER */
+  .categories{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:5px;
+  }
+
+  .category{
+    min-height:69px;
+    padding:7px 3px;
+    border-radius:9px;
+    font-size:8px;
+  }
+
+  .category .icon{
+    font-size:18px;
+    margin-bottom:3px;
+  }
+
+  /* SPONSOR */
+  .sponsor-title{
+    margin:16px 1px 8px;
+  }
+
+  .sponsor-title h2{
+    font-size:18px;
+  }
+
+  .sponsor-title span{
+    font-size:8px;
+  }
+
+  .sponsors{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:5px;
+  }
+
+  .sponsor-card{
+    min-height:93px;
+    padding:8px;
+    border-radius:8px;
+  }
+
+  .sponsor-top{
+    gap:6px;
+  }
+
+  .sponsor-icon{
+    width:32px;
+    height:32px;
+    min-width:32px;
+    font-size:15px;
+  }
+
+  .sponsor-name{
+    font-size:10px;
+  }
+
+  .sponsor-desc{
+    font-size:7px;
+  }
+
+  .sponsor-link{
+    margin-top:6px;
+    padding:5px 7px;
+    font-size:7px;
+  }
+
+  /* SİTELER */
+  .site-title{
+    margin-top:17px;
+    margin-bottom:7px;
+    font-size:18px;
+  }
+
+  .sites{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:5px;
+  }
+
+  .site-card{
+    min-height:103px;
+    padding:8px;
+    border-radius:8px;
+  }
+
+  .site-top{
+    gap:6px;
+  }
+
+  .site-icon{
+    width:32px;
+    height:32px;
+    min-width:32px;
+    border-radius:7px;
+    font-size:15px;
+  }
+
+  .site-name{
+    font-size:10px;
+  }
+
+  .site-desc{
+    font-size:7px;
+    margin-top:2px;
+  }
+
+  .site-link{
+    margin-top:7px;
+    font-size:7px;
+  }
+
+  /* TANITIM */
+  .promo{
+    margin-top:14px;
+    padding:9px;
+    gap:8px;
+    border-radius:8px;
+  }
+
+  .promo-icon{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    border-radius:7px;
+    font-size:18px;
+  }
+
+  .promo h3{
+    font-size:11px;
+  }
+
+  .promo p{
+    font-size:7px;
+    margin-bottom:5px;
+  }
+
+  .promo-btn{
+    padding:5px 8px;
+    font-size:8px;
+  }
+
+  /* ALT MENÜ */
+  .bottom-nav{
+    height:63px;
+  }
+
+  .nav{
+    min-width:45px;
+    gap:2px;
+    font-size:7px;
+  }
+
+  .nav-icon{
+    font-size:18px;
+  }
+
+  footer{
+    margin-top:23px;
+    padding:14px 8px;
+    font-size:7px;
+  }
+}
+
+/* DAHA DAR TELEFONLAR */
+@media(max-width:380px){
+
+  .hero h1{
+    font-size:20px;
+  }
+
+  .tom-art{
+    transform:scale(.72);
+  }
+
+  .category{
+    min-height:65px;
+  }
+
+  .site-card{
+    min-height:98px;
+  }
+
+  .site-name{
+    font-size:9px;
+  }
+
+  .site-desc{
+    font-size:6.5px;
+  }
+
+  .site-link{
+    font-size:6.5px;
   }
 }
 </style>
@@ -1201,22 +1043,25 @@ footer{
 
 <body>
 
-<!-- ÜST BİLGİ ŞERİDİ -->
+<!-- =========================
+     ÜST ŞERİT
+========================= -->
 
 <div class="top-strip">
   <span>✦ <b>TOMHUB</b> BURADA</span>
-  <span class="diamond">◆</span>
+  <span>◆</span>
   <span>FAYDALI SİTELER</span>
-  <span class="diamond">◆</span>
+  <span>◆</span>
   <span>GÜVENİLİR VE HIZLI ERİŞİM</span>
-  <span class="diamond">◆</span>
+  <span>◆</span>
   <span>7/24 AÇIK</span>
-  <span class="diamond">◆</span>
+  <span>◆</span>
   <span>HOŞ GELDİNİZ</span>
 </div>
 
-
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -1232,8 +1077,7 @@ footer{
 
     <a
       href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Ekle"
-      class="add-btn"
-    >
+      class="add-btn">
       Site Ekle
     </a>
 
@@ -1241,36 +1085,40 @@ footer{
 
 </header>
 
-
 <main class="container">
 
-
-<!-- SOSYAL -->
+<!-- =========================
+     SOSYAL
+========================= -->
 
 <div class="socials">
 
   <a
     class="social telegram"
     href="https://t.me/"
-    target="_blank"
-  >✈</a>
+    target="_blank">
+    ✈
+  </a>
 
   <a
     class="social instagram"
     href="https://www.instagram.com/"
-    target="_blank"
-  >◎</a>
+    target="_blank">
+    ◎
+  </a>
 
   <a
     class="social youtube"
     href="https://www.youtube.com/"
-    target="_blank"
-  >▶</a>
+    target="_blank">
+    ▶
+  </a>
 
 </div>
 
-
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -1295,8 +1143,7 @@ footer{
         id="searchInput"
         type="text"
         placeholder="Site veya kategori ara..."
-        onkeyup="searchSites()"
-      >
+        onkeyup="searchSites()">
 
       <button onclick="searchSites()">
         Ara
@@ -1306,58 +1153,41 @@ footer{
 
   </div>
 
+  <!-- TOM + PARA -->
+  <div class="tom-art">
 
-  <!-- TOM KARAKTERİ -->
+    <div class="tom-ear-left"></div>
+    <div class="tom-ear-right"></div>
 
-  <div class="tom-character">
+    <div class="tom-head">
 
-    <div class="tom-glow"></div>
+      <div class="tom-glasses"></div>
 
-    <div class="tom">
-
-      <div class="tom-ear-left"></div>
-      <div class="tom-ear-right"></div>
-
-      <div class="tom-head">
-
-        <div class="tom-eye left"></div>
-        <div class="tom-eye right"></div>
-
-        <div class="tom-glasses">
-          <div class="glass"></div>
-          <div class="glass-bridge"></div>
-          <div class="glass"></div>
-        </div>
-
-        <div class="tom-nose"></div>
-        <div class="tom-mouth"></div>
-
-      </div>
-
-      <div class="tom-body">
-        <div class="tom-chain">♛</div>
-      </div>
-
-      <div class="tom-money">
-        $
+      <div class="tom-coin">
+        ₺
       </div>
 
     </div>
 
-    <div class="coin one">₺</div>
-    <div class="coin two">$</div>
-    <div class="coin three">€</div>
+    <div class="tom-body"></div>
+
+    <div class="tom-money">
+      $
+    </div>
 
   </div>
 
 </section>
 
-
-<!-- KATEGORİLER -->
+<!-- =========================
+     KATEGORİLER
+========================= -->
 
 <div class="section-head">
 
-  <h2>Kategoriler</h2>
+  <h2>
+    ✦ Kategoriler
+  </h2>
 
   <a href="#siteler">
     Tümünü Gör →
@@ -1365,578 +1195,535 @@ footer{
 
 </div>
 
-
 <div class="categories">
 
   <button
     class="category active"
-    onclick="filterCategory('all',this)"
-  >
+    onclick="filterCategory('all',this)">
     <span class="icon">⭐</span>
     Tümü
   </button>
 
   <button
     class="category"
-    onclick="filterCategory('oyun',this)"
-  >
+    onclick="filterCategory('oyun',this)">
     <span class="icon">🎮</span>
     Oyun
   </button>
 
   <button
     class="category"
-    onclick="filterCategory('teknoloji',this)"
-  >
+    onclick="filterCategory('teknoloji',this)">
     <span class="icon">💻</span>
     Teknoloji
   </button>
 
   <button
     class="category"
-    onclick="filterCategory('alisveris',this)"
-  >
+    onclick="filterCategory('alisveris',this)">
     <span class="icon">🛒</span>
     Alışveriş
   </button>
 
   <button
     class="category"
-    onclick="filterCategory('egitim',this)"
-  >
+    onclick="filterCategory('egitim',this)">
     <span class="icon">📚</span>
     Eğitim
   </button>
 
   <button
     class="category"
-    onclick="filterCategory('eglence',this)"
-  >
+    onclick="filterCategory('eglence',this)">
     <span class="icon">🎬</span>
     Eğlence
   </button>
 
 </div>
 
+<!-- =========================
+     SPONSORLAR
+========================= -->
 
-<!-- SPONSORLU SİTELER -->
+<div class="sponsor-title">
 
-<section class="sponsored-section" id="sponsorlu">
+  <h2>
+    👑 Sponsorlu Siteler
+  </h2>
 
-  <div class="sponsored-title">
+  <span>
+    ÖZEL
+  </span>
 
-    <h2>
-      Sponsorlu Siteler
-    </h2>
+</div>
 
-    <span>
-      REKLAM
-    </span>
+<div class="sponsors">
 
-  </div>
+  <article class="sponsor-card">
 
-  <div class="sponsored-grid">
+    <div class="sponsor-top">
 
-
-    <article
-      class="sponsored-card"
-      data-category="teknoloji"
-      data-name="sponsorlu site"
-    >
-
-      <span class="sponsored-badge">
-        SPONSORLU
-      </span>
-
-      <div class="sponsored-top">
-
-        <div class="sponsored-icon">
-          ⭐
-        </div>
-
-        <div>
-
-          <div class="sponsored-name">
-            Sponsorlu Site
-          </div>
-
-          <div class="sponsored-desc">
-            Reklam alanınızı burada yayınlayın.
-          </div>
-
-        </div>
-
+      <div class="sponsor-icon">
+        🚀
       </div>
 
-      <a
-        class="sponsored-button"
-        href="#"
-        onclick="return sponsorPlaceholder(event)"
-      >
-        Siteye Git →
-      </a>
-
-      <div class="sponsored-note">
-        Sponsorlu bağlantı
-      </div>
-
-    </article>
-
-
-    <article
-      class="sponsored-card"
-      data-category="eglence"
-      data-name="yeni sponsorlu site"
-    >
-
-      <span class="sponsored-badge">
-        SPONSORLU
-      </span>
-
-      <div class="sponsored-top">
-
-        <div class="sponsored-icon">
-          🚀
+      <div>
+        <div class="sponsor-name">
+          Sponsorlu Site
         </div>
 
-        <div>
+        <div class="sponsor-desc">
+          Sitenizi burada tanıtın.
+        </div>
+      </div>
 
-          <div class="sponsored-name">
-            Yeni Sponsor
-          </div>
+    </div>
 
-          <div class="sponsored-desc">
-            Reklam veren site burada görünecek.
-          </div>
+    <a
+      class="sponsor-link"
+      href="mailto:tomhub2026@gmail.com?subject=TomHub%20Sponsorlu%20Site">
+      Siteye Git →
+    </a>
 
+  </article>
+
+
+  <article class="sponsor-card">
+
+    <div class="sponsor-top">
+
+      <div class="sponsor-icon">
+        ⭐
+      </div>
+
+      <div>
+        <div class="sponsor-name">
+          Yeni Sponsor
         </div>
 
+        <div class="sponsor-desc">
+          Sponsorlu bağlantı
+        </div>
       </div>
 
-      <a
-        class="sponsored-button"
-        href="#"
-        onclick="return sponsorPlaceholder(event)"
-      >
-        Siteye Git →
-      </a>
+    </div>
 
-      <div class="sponsored-note">
-        Sponsorlu bağlantı
-      </div>
+    <a
+      class="sponsor-link"
+      href="mailto:tomhub2026@gmail.com?subject=TomHub%20Sponsorlu%20Site">
+      Siteye Git →
+    </a>
 
-    </article>
+  </article>
 
-  </div>
+</div>
 
-</section>
-
-
-<!-- NORMAL SİTELER -->
+<!-- =========================
+     SİTELER
+========================= -->
 
 <section id="siteler">
 
-  <h2 class="site-title">
-    Öne Çıkan Siteler
-  </h2>
+<h2 class="site-title">
+  Öne Çıkan Siteler
+</h2>
 
-  <div class="sites" id="sitesGrid">
+<div class="sites" id="sitesGrid">
 
+  <!-- GOOGLE -->
 
-    <article
-      class="site-card"
-      data-category="teknoloji"
-      data-name="google arama teknoloji"
-    >
+  <article
+    class="site-card"
+    data-category="teknoloji"
+    data-name="google arama teknoloji">
 
-      <div class="site-top">
+    <div class="site-top">
 
-        <div class="site-icon">
-          G
+      <div class="site-icon">
+        G
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Google
         </div>
 
-        <div>
-
-          <div class="site-name">
-            Google
-          </div>
-
-          <div class="site-desc">
-            İnternette arama yap.
-          </div>
-
+        <div class="site-desc">
+          İnternette arama yap.
         </div>
 
       </div>
 
-      <a
-        class="site-link"
-        href="https://www.google.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="eglence"
-      data-name="youtube video eğlence"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          ▶
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            YouTube
-          </div>
-
-          <div class="site-desc">
-            Video ve içerik keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://www.youtube.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="teknoloji"
-      data-name="github kod yazılım"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          🐙
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            GitHub
-          </div>
-
-          <div class="site-desc">
-            Kod ve projeleri keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://github.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="egitim"
-      data-name="wikipedia bilgi eğitim"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          📖
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Wikipedia
-          </div>
-
-          <div class="site-desc">
-            Bilgi ve kaynakları keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://www.wikipedia.org"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="eglence"
-      data-name="reddit topluluk"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          💬
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Reddit
-          </div>
-
-          <div class="site-desc">
-            Toplulukları keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://www.reddit.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="teknoloji"
-      data-name="stack overflow yazılım"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          💻
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Stack Overflow
-          </div>
-
-          <div class="site-desc">
-            Yazılım sorularına cevap bul.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://stackoverflow.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="eglence"
-      data-name="spotify müzik"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          🎵
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Spotify
-          </div>
-
-          <div class="site-desc">
-            Müzik ve podcast keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://www.spotify.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="egitim"
-      data-name="canva tasarım"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          🎨
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Canva
-          </div>
-
-          <div class="site-desc">
-            Tasarım oluştur.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://www.canva.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="oyun"
-      data-name="steam oyun"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          🎮
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Steam
-          </div>
-
-          <div class="site-desc">
-            Oyunları keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://store.steampowered.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <article
-      class="site-card"
-      data-category="alisveris"
-      data-name="amazon alışveriş"
-    >
-
-      <div class="site-top">
-
-        <div class="site-icon">
-          🛒
-        </div>
-
-        <div>
-
-          <div class="site-name">
-            Amazon
-          </div>
-
-          <div class="site-desc">
-            Ürünleri ve alışverişi keşfet.
-          </div>
-
-        </div>
-
-      </div>
-
-      <a
-        class="site-link"
-        href="https://www.amazon.com"
-        target="_blank"
-      >
-        Siteyi ziyaret et →
-      </a>
-
-    </article>
-
-
-    <div
-      class="no-results"
-      id="noResults"
-    >
-      Site bulunamadı.
     </div>
 
+    <a
+      class="site-link"
+      href="https://www.google.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- YOUTUBE -->
+
+  <article
+    class="site-card"
+    data-category="eglence"
+    data-name="youtube video eğlence">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        ▶
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          YouTube
+        </div>
+
+        <div class="site-desc">
+          Video ve içerik keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://www.youtube.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- GITHUB -->
+
+  <article
+    class="site-card"
+    data-category="teknoloji"
+    data-name="github kod yazılım">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        🐙
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          GitHub
+        </div>
+
+        <div class="site-desc">
+          Kod ve projeleri keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://github.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- WIKIPEDIA -->
+
+  <article
+    class="site-card"
+    data-category="egitim"
+    data-name="wikipedia bilgi eğitim">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        📖
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Wikipedia
+        </div>
+
+        <div class="site-desc">
+          Bilgi ve kaynakları keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://www.wikipedia.org"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- REDDIT -->
+
+  <article
+    class="site-card"
+    data-category="eglence"
+    data-name="reddit topluluk">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        💬
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Reddit
+        </div>
+
+        <div class="site-desc">
+          Toplulukları keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://www.reddit.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- STACK OVERFLOW -->
+
+  <article
+    class="site-card"
+    data-category="teknoloji"
+    data-name="stack overflow yazılım">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        💻
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Stack Overflow
+        </div>
+
+        <div class="site-desc">
+          Yazılım sorularına cevap bul.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://stackoverflow.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- SPOTIFY -->
+
+  <article
+    class="site-card"
+    data-category="eglence"
+    data-name="spotify müzik">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        🎵
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Spotify
+        </div>
+
+        <div class="site-desc">
+          Müzik ve podcast keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://www.spotify.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- CANVA -->
+
+  <article
+    class="site-card"
+    data-category="egitim"
+    data-name="canva tasarım">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        🎨
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Canva
+        </div>
+
+        <div class="site-desc">
+          Tasarım oluştur.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://www.canva.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- STEAM -->
+
+  <article
+    class="site-card"
+    data-category="oyun"
+    data-name="steam oyun">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        🎮
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Steam
+        </div>
+
+        <div class="site-desc">
+          Oyunları keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://store.steampowered.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <!-- AMAZON -->
+
+  <article
+    class="site-card"
+    data-category="alisveris"
+    data-name="amazon alışveriş">
+
+    <div class="site-top">
+
+      <div class="site-icon">
+        🛒
+      </div>
+
+      <div>
+
+        <div class="site-name">
+          Amazon
+        </div>
+
+        <div class="site-desc">
+          Ürünleri keşfet.
+        </div>
+
+      </div>
+
+    </div>
+
+    <a
+      class="site-link"
+      href="https://www.amazon.com"
+      target="_blank">
+      Siteyi ziyaret et →
+    </a>
+
+  </article>
+
+
+  <div
+    class="no-results"
+    id="noResults">
+    Site bulunamadı.
   </div>
+
+</div>
 
 </section>
 
-
-<!-- ALT PROMO -->
+<!-- =========================
+     SİTENİ TANIT
+========================= -->
 
 <section class="promo">
 
   <div class="promo-icon">
-    👑
+    🚀
   </div>
 
   <div>
 
     <h3>
-      Siteni <span>TomHub'da</span> Tanıt
+      Siteni TomHub'da Tanıt
     </h3>
 
     <p>
@@ -1945,8 +1732,7 @@ footer{
 
     <a
       class="promo-btn"
-      href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Tanıtımı"
-    >
+      href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Tanıtımı">
       Hemen Tanıt →
     </a>
 
@@ -1956,54 +1742,84 @@ footer{
 
 </main>
 
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
   © 2026 TomHub – Tüm hakları saklıdır.
 </footer>
 
-
-<!-- ALT MENÜ -->
+<!-- =========================
+     ALT MENÜ
+========================= -->
 
 <nav class="bottom-nav">
 
   <a
     href="#"
-    class="nav active"
-  >
-    <span class="nav-icon">⌂</span>
+    class="nav active">
+
+    <span class="nav-icon">
+      ⌂
+    </span>
+
     Ana Sayfa
+
   </a>
 
+
   <a
-    href="#sponsorlu"
+    href="#"
     class="nav"
-  >
-    <span class="nav-icon">♛</span>
+    onclick="document.querySelector('.sponsor-title').scrollIntoView({behavior:'smooth'});return false;">
+
+    <span class="nav-icon">
+      👑
+    </span>
+
     Sponsor
+
   </a>
+
 
   <a
     href="#siteler"
-    class="nav"
-  >
-    <span class="nav-icon">⭐</span>
+    class="nav">
+
+    <span class="nav-icon">
+      ★
+    </span>
+
     Siteler
+
   </a>
+
 
   <a
     href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Ekle"
-    class="nav"
-  >
-    <span class="nav-icon">＋</span>
+    class="nav">
+
+    <span class="nav-icon">
+      ＋
+    </span>
+
     Site Ekle
+
   </a>
 
+
   <a
-    href="#siteler"
+    href="#"
     class="nav"
-  >
-    <span class="nav-icon">☰</span>
+    onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+
+    <span class="nav-icon">
+      ☰
+    </span>
+
     Menü
+
   </a>
 
 </nav>
@@ -2011,17 +1827,23 @@ footer{
 
 <script>
 
-let currentCategory="all";
+let currentCategory = "all";
 
+
+/* =========================
+   KATEGORİ FİLTRELEME
+========================= */
 
 function filterCategory(category,button){
 
-  currentCategory=category;
+  currentCategory = category;
 
   document
     .querySelectorAll(".category")
     .forEach(function(item){
+
       item.classList.remove("active");
+
     });
 
   button.classList.add("active");
@@ -2031,66 +1853,63 @@ function filterCategory(category,button){
 }
 
 
+/* =========================
+   ARAMA
+========================= */
+
 function searchSites(){
 
-  const text=
+  const input =
     document
       .getElementById("searchInput")
       .value
       .toLowerCase()
       .trim();
 
-  const cards=
+  const cards =
     document.querySelectorAll(".site-card");
 
-  let count=0;
+  let count = 0;
+
 
   cards.forEach(function(card){
 
-    const category=
+    const category =
       card.dataset.category;
 
-    const name=
+    const name =
       card.dataset.name || "";
 
-    const categoryOK=
-      currentCategory==="all" ||
-      category===currentCategory;
 
-    const searchOK=
-      text==="" ||
-      name.includes(text);
+    const categoryOK =
+      currentCategory === "all" ||
+      category === currentCategory;
+
+
+    const searchOK =
+      input === "" ||
+      name.includes(input);
+
 
     if(categoryOK && searchOK){
 
-      card.style.display="block";
+      card.style.display = "block";
+
       count++;
 
     }else{
 
-      card.style.display="none";
+      card.style.display = "none";
 
     }
 
   });
 
+
   document
     .getElementById("noResults")
-    .style.display=
-      count===0 ? "block" : "none";
-
-}
-
-
-function sponsorPlaceholder(event){
-
-  event.preventDefault();
-
-  alert(
-    "Bu sponsorlu sitenin bağlantısı henüz eklenmedi."
-  );
-
-  return false;
+    .style.display =
+      count === 0 ? "block" : "none";
 
 }
 
