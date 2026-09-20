@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>TomHub - Güvenilir Siteler</title>
-<meta name="tomhub-build" content="TOMHUB-BUILD-2026-09-20-AUTH-SITES">
+<meta name="tomhub-build" content="TOMHUB-BUILD-2026-09-20-FIXED-SECTIONS-AUTH-SITES">
 <meta name="description" content="TomHub - Faydalı ve kaliteli internet sitelerini keşfet.">
 
 <style>
@@ -752,12 +752,19 @@ async function loadTomHubSections(){
   try{
     const setRes=await supabaseClient.from('site_settings').select('key,value').eq('key','site_flags').maybeSingle();
     if(!setRes.error&&setRes.data?.value){try{tomhubSectionFlags=JSON.parse(setRes.data.value)||{}}catch(e){tomhubSectionFlags={}}}
+    else { tomhubSectionFlags={}; }
     const {data,error}=await supabaseClient.from('promoted_sites').select('id,name,description,logo_url,site_url,affiliate_url,is_active,sort_order').eq('is_active',true).order('sort_order').order('created_at',{ascending:false});
     if(error)throw error;
     tomhubSectionSites=data||[];
   }catch(e){console.warn('TomHub bölüm verileri:',e.message);return}
   const makeCard=(site,large)=>{const u=tomhubSafeUrl(site.affiliate_url)||tomhubSafeUrl(site.site_url);if(!u)return'';const logo=tomhubSafeUrl(site.logo_url);const img=logo?'<img src="'+tomhubEsc(logo)+'" alt="'+tomhubEsc(site.name)+'" loading="lazy">':'<b>'+tomhubEsc(String(site.name||'T').slice(0,1).toUpperCase())+'</b>';return large?'<article class="tomhub-live-card"><div class="media">'+img+'</div><div class="body"><div class="name">'+tomhubEsc(site.name)+'</div><div class="desc">'+tomhubEsc(site.description||'TomHub’da keşfet.')+'</div><a class="tomhub-play" href="'+tomhubEsc(u)+'" target="_blank" rel="noopener noreferrer" onclick="tomhubClick('+Number(site.id)+')">Oyna</a></div></article>':'<article class="tomhub-small-card"><a href="'+tomhubEsc(u)+'" target="_blank" rel="noopener noreferrer" onclick="tomhubClick('+Number(site.id)+')"><div class="logo">'+img+'</div><div class="name">'+tomhubEsc(site.name)+'</div><div class="tomhub-play">Oyna</div></a></article>'};
-  const live=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='live'),vip=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='vip'),rec=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='recommended');
+  let live=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='live'),vip=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='vip'),rec=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='recommended');
+  const hasExplicitFlags=Object.keys(tomhubSectionFlags||{}).length>0;
+  if(!hasExplicitFlags){
+    live=[];
+    vip=tomhubSectionSites.filter(s=>s.is_featured===true);
+    rec=tomhubSectionSites.filter(s=>s.is_featured!==true);
+  }
   const block=(title,items,large,liveTitle)=>items.length?'<div class="tomhub-live-title">'+(liveTitle?'<span class="live-dot"></span>':'<span style="color:#f0c42f">◆</span>')+'<h2>'+title+'</h2><span class="count">'+items.length+' site</span></div>'+(large?'<div class="tomhub-live-grid">':'<div class="tomhub-mini-grid">')+items.map(x=>makeCard(x,large)).join('')+'</div>':'';
   liveEl.innerHTML=block('YAYINDA OYNANILAN SİTELER',live,true,true);
   vipEl.innerHTML=block('VIP SİTELER',vip,false,false);
@@ -823,9 +830,9 @@ async function initAdmin(){
 
 async function checkAdmin(session){
   try{
-    const {data,isAdminError} = await supabaseClient.rpc("is_admin");
+    const {data,error} = await supabaseClient.rpc("is_admin");
 
-    if(isAdminError){
+    if(error){
       adminIsAllowed=false;
       showAdminLogin();
       setAdminStatus(
@@ -1043,7 +1050,7 @@ function siteCategorySlug(category){
   const text=String(category || '')
     .toLocaleLowerCase('tr-TR')
     .normalize('NFD')
-    .replace(/[\\u0300-\\u036f]/g,'');
+    .replace(/[\u0300-\u036f]/g,'');
   if(text.includes('oyun')) return 'oyun';
   if(text.includes('teknoloji')) return 'teknoloji';
   if(text.includes('alisveris')) return 'alisveris';
