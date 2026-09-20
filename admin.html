@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TomHub Admin</title>
+<title>TomHub Admin v2</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -13,18 +13,15 @@
 body{
 margin:0;
 font-family:Arial,sans-serif;
-background:radial-gradient(circle at top,#241b00 0,#0b0b0d 38%,#050506 100%);
+background:#070708;
 color:#fff;
 min-height:100vh
 }
 
 header{
-padding:18px;
-background:rgba(10,10,12,.95);
-border-bottom:1px solid #3d310d;
-position:sticky;
-top:0;
-z-index:10
+background:#0d0d0f;
+border-bottom:1px solid #4b3b0c;
+padding:18px
 }
 
 .container{
@@ -43,26 +40,24 @@ color:#ffd84d
 .login{
 max-width:430px;
 margin:70px auto;
-background:rgba(20,20,23,.96);
-border:1px solid #554510;
-border-radius:24px;
+background:#151518;
+border:1px solid #4b3b0c;
+border-radius:22px;
 padding:25px;
-box-shadow:0 0 35px rgba(255,205,50,.08)
+box-shadow:0 0 30px #000
 }
 
-h1,h2,h3{margin-top:0}
-
-.gold{color:#ffd84d}
+h1,h2{margin-top:0}
 
 input,textarea,select{
 width:100%;
 padding:13px;
-margin:7px 0 12px;
-border-radius:12px;
+margin:7px 0 14px;
+border-radius:11px;
 border:1px solid #403713;
-background:#111114;
+background:#0e0e10;
 color:#fff;
-outline:none
+font-size:15px
 }
 
 textarea{
@@ -72,121 +67,80 @@ resize:vertical
 
 button{
 border:0;
-border-radius:12px;
+border-radius:11px;
 padding:12px 16px;
-cursor:pointer;
-font-weight:800
+font-weight:800;
+cursor:pointer
 }
 
 .primary{
-background:linear-gradient(135deg,#ffd84d,#b98500);
+background:linear-gradient(135deg,#ffd84d,#b78300);
 color:#111
 }
 
 .secondary{
-background:#202024;
-color:#fff;
-border:1px solid #45400f
-}
-
-.danger{
-background:#501b1b;
+background:#222225;
+border:1px solid #4a421b;
 color:#fff
 }
 
-.hidden{display:none!important}
-
-.dashboard{
-padding:25px 0 60px
+.danger{
+background:#591d1d;
+color:#fff
 }
 
-.grid{
+.hidden{
+display:none!important
+}
+
+.message{
+background:#211d0b;
+border:1px solid #665317;
+color:#ffd84d;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+word-break:break-word
+}
+
+.stats{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:14px;
-margin-bottom:25px
+gap:12px;
+margin:20px 0
 }
 
 .stat{
-background:linear-gradient(145deg,#171719,#0d0d0f);
-border:1px solid #413711;
-border-radius:18px;
+background:#141416;
+border:1px solid #39320f;
+border-radius:17px;
 padding:18px
 }
 
-.number{
-font-size:30px;
+.stat-number{
+font-size:29px;
 font-weight:900;
 color:#ffd84d;
 margin-top:7px
-}
-
-.panel{
-background:rgba(18,18,21,.95);
-border:1px solid #3e350f;
-border-radius:20px;
-padding:20px;
-margin-bottom:20px
 }
 
 .tabs{
 display:flex;
 gap:8px;
 overflow:auto;
+margin-bottom:18px
+}
+
+.tabs button{
+white-space:nowrap
+}
+
+.panel{
+background:#141416;
+border:1px solid #39320f;
+border-radius:18px;
+padding:20px;
 margin-bottom:20px
-}
-
-.tabs button{white-space:nowrap}
-
-.site{
-display:flex;
-justify-content:space-between;
-gap:15px;
-align-items:center;
-padding:15px 0;
-border-bottom:1px solid #29291f
-}
-
-.site:last-child{border-bottom:0}
-
-.site-info{min-width:0}
-
-.site-name{
-font-size:18px;
-font-weight:900;
-color:#ffd84d
-}
-
-.site-url{
-color:#aaa;
-font-size:13px;
-overflow:hidden;
-text-overflow:ellipsis
-}
-
-.badge{
-display:inline-block;
-padding:5px 8px;
-border-radius:8px;
-font-size:11px;
-margin:3px 3px 0 0;
-background:#292713;
-color:#ffd84d
-}
-
-.actions{
-display:flex;
-gap:7px;
-flex-wrap:wrap;
-justify-content:flex-end
-}
-
-.message{
-padding:12px;
-border-radius:10px;
-background:#161618;
-margin-bottom:15px;
-color:#ffd84d
 }
 
 .form-grid{
@@ -195,17 +149,71 @@ grid-template-columns:1fr 1fr;
 gap:12px
 }
 
-.full{grid-column:1/-1}
+.full{
+grid-column:1/-1
+}
 
-@media(max-width:750px){
-.grid{grid-template-columns:1fr 1fr}
-.form-grid{grid-template-columns:1fr}
-.full{grid-column:auto}
-.site{
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+padding:15px 0;
+border-bottom:1px solid #29291f
+}
+
+.item:last-child{
+border-bottom:0
+}
+
+.item-title{
+font-size:17px;
+font-weight:900;
+color:#ffd84d
+}
+
+.item-sub{
+font-size:13px;
+color:#999;
+margin-top:5px;
+word-break:break-all
+}
+
+.badge{
+display:inline-block;
+font-size:11px;
+padding:5px 8px;
+border-radius:8px;
+background:#292713;
+color:#ffd84d;
+margin:5px 4px 0 0
+}
+
+.actions{
+display:flex;
+gap:7px;
+flex-wrap:wrap
+}
+
+@media(max-width:700px){
+
+.stats{
+grid-template-columns:1fr 1fr
+}
+
+.form-grid{
+grid-template-columns:1fr
+}
+
+.full{
+grid-column:auto
+}
+
+.item{
 align-items:flex-start;
 flex-direction:column
 }
-.actions{justify-content:flex-start}
+
 }
 </style>
 </head>
@@ -216,7 +224,9 @@ flex-direction:column
 <div class="container">
 <div class="logo">
 👑 Tom<span>Hub</span>
-<small style="font-size:12px;color:#aaa">ADMIN</small>
+<small style="font-size:12px;color:#888">
+ADMIN v2
+</small>
 </div>
 </div>
 </header>
@@ -226,10 +236,10 @@ flex-direction:column
 
 <div class="login">
 
-<h1>🔐 TomHub Admin</h1>
+<h1>🔐 TomHub Yönetim</h1>
 
-<p style="color:#aaa">
-Yönetim paneline giriş yap.
+<p style="color:#999">
+Admin hesabınla giriş yap.
 </p>
 
 <div id="loginMessage"></div>
@@ -239,7 +249,8 @@ Yönetim paneline giriş yap.
 <input
 id="email"
 type="email"
-placeholder="E-posta adresin"
+autocomplete="username"
+placeholder="E-posta"
 >
 
 <label>Şifre</label>
@@ -247,13 +258,15 @@ placeholder="E-posta adresin"
 <input
 id="password"
 type="password"
-placeholder="Şifren"
+autocomplete="current-password"
+placeholder="Şifre"
 >
 
 <button
+id="loginButton"
 class="primary"
 style="width:100%"
-onclick="login()"
+type="button"
 >
 Yönetim Paneline Gir
 </button>
@@ -264,31 +277,27 @@ Yönetim Paneline Gir
 
 <div id="adminScreen" class="hidden">
 
-<main class="container dashboard">
+<main class="container" style="padding:25px 0 60px">
 
-<div
-style="
+<div style="
 display:flex;
 justify-content:space-between;
 align-items:center;
 gap:10px;
 margin-bottom:20px
-"
->
+">
 
 <div>
-
 <h1>🎮 Yönetim Merkezi</h1>
-
-<div style="color:#aaa">
-TomHub'ın tüm yönetimi burada.
+<div style="color:#999">
+TomHub kontrol paneli
 </div>
-
 </div>
 
 <button
 class="secondary"
-onclick="logout()"
+id="logoutButton"
+type="button"
 >
 Çıkış
 </button>
@@ -296,29 +305,49 @@ onclick="logout()"
 </div>
 
 
-<div id="message"></div>
+<div id="adminMessage"></div>
 
 
-<div class="grid">
+<div class="stats">
 
 <div class="stat">
 🌐 Siteler
-<div class="number" id="siteCount">0</div>
+<div
+class="stat-number"
+id="siteCount"
+>
+0
+</div>
 </div>
 
 <div class="stat">
 📁 Kategoriler
-<div class="number" id="categoryCount">0</div>
+<div
+class="stat-number"
+id="categoryCount"
+>
+0
+</div>
 </div>
 
 <div class="stat">
 🖱️ Tıklamalar
-<div class="number" id="clickCount">0</div>
+<div
+class="stat-number"
+id="clickCount"
+>
+0
+</div>
 </div>
 
 <div class="stat">
 📝 Gönderiler
-<div class="number" id="postCount">0</div>
+<div
+class="stat-number"
+id="postCount"
+>
+0
+</div>
 </div>
 
 </div>
@@ -328,28 +357,32 @@ onclick="logout()"
 
 <button
 class="primary"
-onclick="showPanel('sitesPanel')"
+type="button"
+data-panel="sitesPanel"
 >
 🌐 Siteler
 </button>
 
 <button
 class="secondary"
-onclick="showPanel('addPanel')"
+type="button"
+data-panel="addPanel"
 >
 ➕ Site Ekle
 </button>
 
 <button
 class="secondary"
-onclick="showPanel('categoriesPanel')"
+type="button"
+data-panel="categoriesPanel"
 >
 📁 Kategoriler
 </button>
 
 <button
 class="secondary"
-onclick="showPanel('postsPanel')"
+type="button"
+data-panel="postsPanel"
 >
 📝 Gönderiler
 </button>
@@ -362,7 +395,7 @@ id="sitesPanel"
 class="panel"
 >
 
-<h2>🌐 Reklamlı Siteler</h2>
+<h2>🌐 Siteler</h2>
 
 <div id="sitesList">
 Yükleniyor...
@@ -376,11 +409,9 @@ id="addPanel"
 class="panel hidden"
 >
 
-<h2>➕ Yeni Site</h2>
-
+<h2>➕ Site Ekle</h2>
 
 <div class="form-grid">
-
 
 <div>
 
@@ -388,7 +419,7 @@ class="panel hidden"
 
 <input
 id="siteName"
-placeholder="Örn: Özel Site"
+placeholder="Örn: Google"
 >
 
 </div>
@@ -399,8 +430,8 @@ placeholder="Örn: Özel Site"
 <label>Site adresi</label>
 
 <input
-id="websiteUrl"
-placeholder="https://..."
+id="siteUrl"
+placeholder="https://example.com"
 >
 
 </div>
@@ -412,7 +443,7 @@ placeholder="https://..."
 
 <textarea
 id="siteDescription"
-placeholder="Site hakkında açıklama"
+placeholder="Site açıklaması"
 ></textarea>
 
 </div>
@@ -420,12 +451,11 @@ placeholder="Site hakkında açıklama"
 
 <div>
 
-<label>Affiliate / Referral linki</label>
+<label>Kategori</label>
 
-<input
-id="affiliateUrl"
-placeholder="https://..."
->
+<select id="siteCategory">
+<option value="">Kategori seç</option>
+</select>
 
 </div>
 
@@ -435,7 +465,7 @@ placeholder="https://..."
 <label>Logo URL</label>
 
 <input
-id="logoUrl"
+id="siteLogo"
 placeholder="https://..."
 >
 
@@ -444,15 +474,12 @@ placeholder="https://..."
 
 <div>
 
-<label>Kategori</label>
+<label>Affiliate / Referral URL</label>
 
-<select id="categoryId">
-
-<option value="">
-Kategori seç
-</option>
-
-</select>
+<input
+id="siteAffiliate"
+placeholder="https://..."
+>
 
 </div>
 
@@ -462,13 +489,12 @@ Kategori seç
 <label>Sıra</label>
 
 <input
-id="sortOrder"
+id="siteOrder"
 type="number"
 value="0"
 >
 
 </div>
-
 
 </div>
 
@@ -476,7 +502,7 @@ value="0"
 <label>
 
 <input
-id="featured"
+id="siteFeatured"
 type="checkbox"
 style="width:auto"
 >
@@ -490,12 +516,11 @@ style="width:auto"
 
 
 <button
+id="addSiteButton"
 class="primary"
-onclick="addSite()"
+type="button"
 >
-
-🚀 Siteyi Yayınla
-
+🚀 Siteyi Ekle
 </button>
 
 </section>
@@ -508,26 +533,23 @@ class="panel hidden"
 
 <h2>📁 Kategoriler</h2>
 
-
 <input
-id="newCategory"
-placeholder="Yeni kategori adı"
+id="categoryName"
+placeholder="Kategori adı"
 >
 
-
 <input
-id="newCategoryIcon"
-placeholder="İkon (örn. 🎮)"
+id="categoryIcon"
+placeholder="İkon örn: 🎮"
 >
-
 
 <button
+id="addCategoryButton"
 class="primary"
-onclick="addCategory()"
+type="button"
 >
 Kategori Ekle
 </button>
-
 
 <div
 id="categoriesList"
@@ -553,156 +575,227 @@ Yükleniyor...
 
 
 </main>
-
 </div>
 
 
 <script>
 
+/* ==============================
+   TOMHUB SUPABASE
+============================== */
+
 const SUPABASE_URL =
 "https://pkwyvdrqglqcqwukyssp.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_ayvjaaHD6lvLDiB9Au24g_z3L3W4PW";
+"sb_publishable_ayvjaaHD6lvLDiB9bAu24g_z3L3W4PW";
 
-const supabaseClient =
-supabase.createClient(
+let sb = null;
+let currentUser = null;
+
+
+/* ==============================
+   BAŞLAT
+============================== */
+
+function startApp(){
+
+try{
+
+sb = supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
 
+console.log("TomHub Supabase hazır");
 
-let currentUser = null;
+}catch(error){
+
+showLoginMessage(
+"Supabase başlatılamadı: "
++ error.message
+);
+
+}
+
+}
 
 
-async function login(){
+/* ==============================
+   LOGIN
+============================== */
+
+async function doLogin(){
 
 const email =
-document.getElementById("email").value.trim();
+document
+.getElementById("email")
+.value
+.trim();
 
 const password =
-document.getElementById("password").value;
-
-const box =
-document.getElementById("loginMessage");
-
-box.innerHTML = "";
-
+document
+.getElementById("password")
+.value;
 
 if(!email || !password){
 
-box.innerHTML =
-'<div class="message">E-posta ve şifre gerekli.</div>';
+showLoginMessage(
+"E-posta ve şifreyi doldur."
+);
 
 return;
 
 }
 
 
-const {data,error} =
-await supabaseClient.auth.signInWithPassword({
-email,
-password
+const button =
+document
+.getElementById("loginButton");
+
+button.disabled=true;
+button.textContent="Giriş yapılıyor...";
+
+
+try{
+
+const result =
+await sb.auth.signInWithPassword({
+email:email,
+password:password
 });
 
 
-if(error){
+if(result.error){
 
-box.innerHTML =
-'<div class="message">Giriş başarısız: '
+showLoginMessage(
+"Giriş başarısız: "
 +
-escapeHtml(error.message)
-+
-'</div>';
+result.error.message
+);
+
+button.disabled=false;
+button.textContent="Yönetim Paneline Gir";
 
 return;
 
 }
 
 
-currentUser = data.user;
+currentUser =
+result.data.user;
 
-await checkAdmin();
-
-}
-
-
-async function checkAdmin(){
 
 if(!currentUser){
 
-showLogin();
+showLoginMessage(
+"Kullanıcı bilgisi alınamadı."
+);
+
+button.disabled=false;
+button.textContent="Yönetim Paneline Gir";
 
 return;
 
 }
 
 
-const {data,error} =
-await supabaseClient
+/* ADMIN KONTROLÜ */
+
+const adminResult =
+await sb
 .from("admins")
 .select("user_id")
-.eq("user_id",currentUser.id)
+.eq(
+"user_id",
+currentUser.id
+)
 .maybeSingle();
 
 
-if(error){
+if(adminResult.error){
 
 showLoginMessage(
-"Admin kontrolü yapılamadı: "
+"Admin kontrolü başarısız: "
++
+adminResult.error.message
+);
+
+await sb.auth.signOut();
+
+button.disabled=false;
+button.textContent="Yönetim Paneline Gir";
+
+return;
+
+}
+
+
+if(!adminResult.data){
+
+showLoginMessage(
+"Bu hesap admin olarak tanımlanmamış."
+);
+
+await sb.auth.signOut();
+
+button.disabled=false;
+button.textContent="Yönetim Paneline Gir";
+
+return;
+
+}
+
+
+/* PANEL */
+
+document
+.getElementById("loginScreen")
+.classList
+.add("hidden");
+
+document
+.getElementById("adminScreen")
+.classList
+.remove("hidden");
+
+
+button.disabled=false;
+button.textContent="Yönetim Paneline Gir";
+
+
+await loadEverything();
+
+
+}catch(error){
+
+showLoginMessage(
+"Beklenmeyen hata: "
 +
 error.message
 );
 
-await supabaseClient.auth.signOut();
+button.disabled=false;
+button.textContent="Yönetim Paneline Gir";
 
-return;
+}
 
 }
 
 
-if(!data){
+/* ==============================
+   LOGOUT
+============================== */
 
-showLoginMessage(
-"Bu hesap TomHub admini değil."
-);
+async function doLogout(){
 
-await supabaseClient.auth.signOut();
+if(sb){
 
-return;
-
-}
-
-
-document
-.getElementById("loginScreen")
-.classList
-.add("hidden");
-
-
-document
-.getElementById("adminScreen")
-.classList
-.remove("hidden");
-
-
-await loadAll();
+await sb.auth.signOut();
 
 }
 
-
-async function logout(){
-
-await supabaseClient.auth.signOut();
-
-currentUser = null;
-
-showLogin();
-
-}
-
-
-function showLogin(){
+currentUser=null;
 
 document
 .getElementById("adminScreen")
@@ -714,24 +807,32 @@ document
 .classList
 .remove("hidden");
 
+document
+.getElementById("password")
+.value="";
+
 }
 
 
-function showPanel(id){
+/* ==============================
+   PANEL
+============================== */
+
+function openPanel(id){
 
 [
 "sitesPanel",
 "addPanel",
 "categoriesPanel",
 "postsPanel"
-]
-.forEach(
-x =>
+].forEach(function(panel){
+
 document
-.getElementById(x)
+.getElementById(panel)
 .classList
-.add("hidden")
-);
+.add("hidden");
+
+});
 
 
 document
@@ -742,102 +843,99 @@ document
 }
 
 
-async function loadAll(){
+/* ==============================
+   TÜM VERİLER
+============================== */
 
-await Promise.all([
-loadStats(),
-loadCategories(),
-loadSites(),
-loadPosts()
-]);
+async function loadEverything(){
+
+await loadStats();
+
+await loadCategories();
+
+await loadSites();
+
+await loadPosts();
 
 }
 
 
+/* ==============================
+   STATS
+============================== */
+
 async function loadStats(){
 
-const [
-sites,
-cats,
-clicks,
-posts
-] = await Promise.all([
-
-supabaseClient
+const sites =
+await sb
 .from("promoted_sites")
-.select("id",{count:"exact",head:true}),
+.select("*",{count:"exact",head:true});
 
-supabaseClient
+
+const categories =
+await sb
 .from("site_categories")
-.select("id",{count:"exact",head:true}),
+.select("*",{count:"exact",head:true});
 
-supabaseClient
+
+const clicks =
+await sb
 .from("site_clicks")
-.select("id",{count:"exact",head:true}),
+.select("*",{count:"exact",head:true});
 
-supabaseClient
+
+const posts =
+await sb
 .from("posts")
-.select("id",{count:"exact",head:true})
-
-]);
+.select("*",{count:"exact",head:true});
 
 
 document
 .getElementById("siteCount")
 .textContent =
-sites.count ?? 0;
+sites.count || 0;
 
 
 document
 .getElementById("categoryCount")
 .textContent =
-cats.count ?? 0;
+categories.count || 0;
 
 
 document
 .getElementById("clickCount")
 .textContent =
-clicks.count ?? 0;
+clicks.count || 0;
 
 
 document
 .getElementById("postCount")
 .textContent =
-posts.count ?? 0;
-
-
-if(
-sites.error ||
-cats.error ||
-clicks.error ||
-posts.error
-){
-
-const e =
-sites.error ||
-cats.error ||
-clicks.error ||
-posts.error;
-
-showMessage(e.message);
+posts.count || 0;
 
 }
 
-}
 
+/* ==============================
+   KATEGORİLER
+============================== */
 
 async function loadCategories(){
 
-const {data,error} =
-await supabaseClient
+const result =
+await sb
 .from("site_categories")
 .select("*")
 .order("sort_order");
 
 
-if(error){
+if(result.error){
 
-showMessage(error.message);
+showAdminMessage(
+"Kategoriler yüklenemedi: "
++
+result.error.message
+);
 
 return;
 
@@ -845,54 +943,42 @@ return;
 
 
 const select =
-document.getElementById("categoryId");
-
+document.getElementById("siteCategory");
 
 select.innerHTML =
 '<option value="">Kategori seç</option>';
 
 
-data.forEach(c => {
-
-select.innerHTML +=
-`
-<option value="${escapeAttribute(c.name)}">
-${escapeHtml(c.icon || "📁")}
-${escapeHtml(c.name)}
-</option>
-`;
-
-});
-
-
 const list =
 document.getElementById("categoriesList");
 
+list.innerHTML="";
 
-list.innerHTML = "";
 
+(result.data || []).forEach(function(category){
 
-data.forEach(c => {
+select.innerHTML +=
+`
+<option value="${esc(category.name)}">
+${esc(category.icon || "📁")}
+${esc(category.name)}
+</option>
+`;
+
 
 list.innerHTML +=
 `
-<div class="site">
+<div class="item">
 
 <div>
 
-<div class="site-name">
-
-${escapeHtml(c.icon || "📁")}
-${escapeHtml(c.name)}
-
+<div class="item-title">
+${esc(category.icon || "📁")}
+${esc(category.name)}
 </div>
 
 <span class="badge">
-
-${c.is_active
-? "🟢 Aktif"
-: "🔴 Pasif"}
-
+${category.is_active ? "🟢 Aktif" : "🔴 Pasif"}
 </span>
 
 </div>
@@ -905,18 +991,21 @@ ${c.is_active
 }
 
 
+/* ==============================
+   KATEGORİ EKLE
+============================== */
+
 async function addCategory(){
 
 const name =
 document
-.getElementById("newCategory")
+.getElementById("categoryName")
 .value
 .trim();
 
-
 const icon =
 document
-.getElementById("newCategoryIcon")
+.getElementById("categoryIcon")
 .value
 .trim()
 ||
@@ -925,7 +1014,7 @@ document
 
 if(!name){
 
-showMessage(
+showAdminMessage(
 "Kategori adı yaz."
 );
 
@@ -934,21 +1023,25 @@ return;
 }
 
 
-const {error} =
-await supabaseClient
+const result =
+await sb
 .from("site_categories")
 .insert({
 
-name,
-icon,
+name:name,
+icon:icon,
 is_active:true
 
 });
 
 
-if(error){
+if(result.error){
 
-showMessage(error.message);
+showAdminMessage(
+"Kategori eklenemedi: "
++
+result.error.message
+);
 
 return;
 
@@ -956,17 +1049,16 @@ return;
 
 
 document
-.getElementById("newCategory")
+.getElementById("categoryName")
 .value="";
-
 
 document
-.getElementById("newCategoryIcon")
+.getElementById("categoryIcon")
 .value="";
 
 
-showMessage(
-"Kategori eklendi."
+showAdminMessage(
+"✅ Kategori eklendi."
 );
 
 
@@ -977,78 +1069,95 @@ await loadStats();
 }
 
 
+/* ==============================
+   SİTELER
+============================== */
+
 async function loadSites(){
 
-const {data,error} =
-await supabaseClient
+const result =
+await sb
 .from("promoted_sites")
 .select("*")
 .order("sort_order")
-.order(
-"created_at",
-{ascending:false}
-);
-
-
-if(error){
-
-showMessage(error.message);
-
-document
-.getElementById("sitesList")
-.innerHTML =
-'<div class="message">'
-+
-escapeHtml(error.message)
-+
-'</div>';
-
-return;
-
-}
+.order("created_at",{ascending:false});
 
 
 const list =
 document.getElementById("sitesList");
 
 
-if(!data.length){
+if(result.error){
 
 list.innerHTML =
-'<p style="color:#aaa">Henüz site eklenmedi.</p>';
+`
+<div class="message">
+Siteler yüklenemedi:<br>
+${esc(result.error.message)}
+</div>
+`;
 
 return;
 
 }
 
 
-list.innerHTML = "";
+const sites =
+result.data || [];
 
 
-data.forEach(site => {
+if(sites.length===0){
+
+list.innerHTML =
+'<p style="color:#999">Henüz site eklenmedi.</p>';
+
+return;
+
+}
+
+
+list.innerHTML="";
+
+
+sites.forEach(function(site){
+
+const status =
+site.is_active
+?
+"🟢 Aktif"
+:
+"🔴 Pasif";
+
+
+const featured =
+site.is_featured
+?
+'<span class="badge">⭐ Öne çıkan</span>'
+:
+"";
+
 
 list.innerHTML +=
 `
+<div class="item">
 
-<div class="site">
+<div style="min-width:0">
 
-<div class="site-info">
-
-<div class="site-name">
+<div class="item-title">
 
 ${
 site.logo_url
 ?
 `
 <img
-src="${escapeAttribute(site.logo_url)}"
+src="${esc(site.logo_url)}"
 style="
-width:32px;
-height:32px;
+width:30px;
+height:30px;
 object-fit:contain;
 vertical-align:middle;
-border-radius:8px;
-margin-right:7px
+margin-right:7px;
+border-radius:7px
 "
 >
 `
@@ -1056,101 +1165,61 @@ margin-right:7px
 "🌐 "
 }
 
-${escapeHtml(site.name)}
+${esc(site.name)}
 
 </div>
 
 
-<div class="site-url">
-
-${escapeHtml(site.site_url || "")}
-
+<div class="item-sub">
+${esc(site.site_url)}
 </div>
 
 
 <span class="badge">
-
-📁
-${escapeHtml(site.category || "Kategori yok")}
-
+📁 ${esc(site.category || "Kategori yok")}
 </span>
 
+<span class="badge">
+${status}
+</span>
 
-${
-site.is_featured
-?
-'<span class="badge">⭐ Öne çıkan</span>'
-:
-""
-}
-
-
-${
-site.affiliate_url
-?
-'<span class="badge">🔗 Referral</span>'
-:
-""
-}
-
-
-${
-site.is_active
-?
-'<span class="badge">🟢 Aktif</span>'
-:
-'<span class="badge">🔴 Pasif</span>'
-}
+${featured}
 
 </div>
 
 
 <div class="actions">
 
-
 <button
 class="secondary"
-onclick="
-toggleSite(
-${site.id},
-${!site.is_active}
-)
-"
+type="button"
+onclick="toggleSite(${site.id},${!site.is_active})"
 >
-
-${
-site.is_active
-?
-"Pasifleştir"
-:
-"Aktifleştir"
-}
-
+${site.is_active ? "Pasifleştir" : "Aktifleştir"}
 </button>
 
 
 <button
 class="danger"
-onclick="
-deleteSite(${site.id})
-"
+type="button"
+onclick="removeSite(${site.id})"
 >
-
 Sil
-
 </button>
 
-
 </div>
 
 </div>
-
 `;
 
 });
 
 }
 
+
+/* ==============================
+   SİTE EKLE
+============================== */
 
 async function addSite(){
 
@@ -1160,13 +1229,11 @@ document
 .value
 .trim();
 
-
 const site_url =
 document
-.getElementById("websiteUrl")
+.getElementById("siteUrl")
 .value
 .trim();
-
 
 const description =
 document
@@ -1174,48 +1241,47 @@ document
 .value
 .trim();
 
-
-const affiliate_url =
-document
-.getElementById("affiliateUrl")
-.value
-.trim();
-
-
-const logo_url =
-document
-.getElementById("logoUrl")
-.value
-.trim();
-
-
 const category =
 document
-.getElementById("categoryId")
+.getElementById("siteCategory")
 .value
 ||
 null;
 
-
-const is_featured =
+const logo_url =
 document
-.getElementById("featured")
-.checked;
+.getElementById("siteLogo")
+.value
+.trim()
+||
+null;
 
+const affiliate_url =
+document
+.getElementById("siteAffiliate")
+.value
+.trim()
+||
+null;
 
 const sort_order =
 Number(
 document
-.getElementById("sortOrder")
+.getElementById("siteOrder")
 .value
 )
 ||
 0;
 
+const is_featured =
+document
+.getElementById("siteFeatured")
+.checked;
+
 
 if(!name || !site_url){
 
-showMessage(
+showAdminMessage(
 "Site adı ve site adresi gerekli."
 );
 
@@ -1224,29 +1290,30 @@ return;
 }
 
 
-const {error} =
-await supabaseClient
+const result =
+await sb
 .from("promoted_sites")
 .insert({
 
-name,
-description,
-category,
-logo_url,
-site_url,
-affiliate_url:
-affiliate_url || null,
+name:name,
+description:description || null,
+category:category,
+logo_url:logo_url,
+site_url:site_url,
+affiliate_url:affiliate_url,
 is_active:true,
-is_featured,
-sort_order
+is_featured:is_featured,
+sort_order:sort_order
 
 });
 
 
-if(error){
+if(result.error){
 
-showMessage(
-error.message
+showAdminMessage(
+"Site eklenemedi: "
++
+result.error.message
 );
 
 return;
@@ -1254,73 +1321,75 @@ return;
 }
 
 
-[
-"siteName",
-"websiteUrl",
-"siteDescription",
-"affiliateUrl",
-"logoUrl"
-]
-.forEach(
-id =>
 document
-.getElementById(id)
-.value=""
-);
-
-
-document
-.getElementById("categoryId")
+.getElementById("siteName")
 .value="";
 
+document
+.getElementById("siteUrl")
+.value="";
 
 document
-.getElementById("featured")
+.getElementById("siteDescription")
+.value="";
+
+document
+.getElementById("siteCategory")
+.value="";
+
+document
+.getElementById("siteLogo")
+.value="";
+
+document
+.getElementById("siteAffiliate")
+.value="";
+
+document
+.getElementById("siteOrder")
+.value="0";
+
+document
+.getElementById("siteFeatured")
 .checked=false;
 
 
-document
-.getElementById("sortOrder")
-.value=0;
-
-
-showMessage(
+showAdminMessage(
 "🎉 Site başarıyla eklendi."
 );
 
 
-await loadAll();
+await loadEverything();
 
-showPanel(
-"sitesPanel"
-);
+openPanel("sitesPanel");
 
 }
 
 
-async function toggleSite(
-id,
-status
-){
+/* ==============================
+   AKTİF / PASİF
+============================== */
 
-const {error} =
-await supabaseClient
+async function toggleSite(id,status){
+
+const result =
+await sb
 .from("promoted_sites")
 .update({
 
 is_active:status,
-
-updated_at:
-new Date().toISOString()
+updated_at:new Date().toISOString()
 
 })
 .eq("id",id);
 
 
-if(error){
+if(result.error){
 
-showMessage(
-error.message
+showAdminMessage(
+"Site güncellenemedi: "
++
+result.error.message
 );
 
 return;
@@ -1328,12 +1397,16 @@ return;
 }
 
 
-await loadAll();
+await loadEverything();
 
 }
 
 
-async function deleteSite(id){
+/* ==============================
+   SİTE SİL
+============================== */
+
+async function removeSite(id){
 
 if(
 !confirm(
@@ -1346,17 +1419,19 @@ return;
 }
 
 
-const {error} =
-await supabaseClient
+const result =
+await sb
 .from("promoted_sites")
 .delete()
 .eq("id",id);
 
 
-if(error){
+if(result.error){
 
-showMessage(
-error.message
+showAdminMessage(
+"Site silinemedi: "
++
+result.error.message
 );
 
 return;
@@ -1364,20 +1439,24 @@ return;
 }
 
 
-showMessage(
-"Site silindi."
+showAdminMessage(
+"🗑️ Site silindi."
 );
 
 
-await loadAll();
+await loadEverything();
 
 }
 
 
+/* ==============================
+   GÖNDERİLER
+============================== */
+
 async function loadPosts(){
 
-const {data,error} =
-await supabaseClient
+const result =
+await sb
 .from("posts")
 .select("*")
 .order(
@@ -1391,27 +1470,29 @@ const list =
 document.getElementById("postsList");
 
 
-if(error){
+if(result.error){
 
 list.innerHTML =
-'<div class="message">'
-+
-escapeHtml(error.message)
-+
-'</div>';
+`
+<div class="message">
+Gönderiler yüklenemedi:<br>
+${esc(result.error.message)}
+</div>
+`;
 
 return;
 
 }
 
 
-if(
-!data ||
-!data.length
-){
+const posts =
+result.data || [];
+
+
+if(posts.length===0){
 
 list.innerHTML =
-'<p style="color:#aaa">Gönderi bulunamadı.</p>';
+'<p style="color:#999">Henüz gönderi yok.</p>';
 
 return;
 
@@ -1421,36 +1502,20 @@ return;
 list.innerHTML="";
 
 
-data.forEach(p => {
+posts.forEach(function(post){
 
 list.innerHTML +=
 `
+<div class="item">
 
-<div class="site">
+<div style="min-width:0">
 
-<div class="site-info">
-
-<div style="font-size:15px">
-
-${escapeHtml(
-p.content || ""
-)}
-
+<div style="word-break:break-word">
+${esc(post.content || "")}
 </div>
 
-
-<div
-style="
-color:#777;
-font-size:12px;
-margin-top:5px
-"
->
-
-${escapeHtml(
-p.created_at || ""
-)}
-
+<div class="item-sub">
+${esc(post.created_at || "")}
 </div>
 
 </div>
@@ -1460,19 +1525,15 @@ p.created_at || ""
 
 <button
 class="danger"
-onclick="
-deletePost(${p.id})
-"
+type="button"
+onclick="removePost(${post.id})"
 >
-
 Sil
-
 </button>
 
 </div>
 
 </div>
-
 `;
 
 });
@@ -1480,7 +1541,11 @@ Sil
 }
 
 
-async function deletePost(id){
+/* ==============================
+   GÖNDERİ SİL
+============================== */
+
+async function removePost(id){
 
 if(
 !confirm(
@@ -1493,17 +1558,19 @@ return;
 }
 
 
-const {error} =
-await supabaseClient
+const result =
+await sb
 .from("posts")
 .delete()
 .eq("id",id);
 
 
-if(error){
+if(result.error){
 
-showMessage(
-error.message
+showAdminMessage(
+"Gönderi silinemedi: "
++
+result.error.message
 );
 
 return;
@@ -1511,55 +1578,65 @@ return;
 }
 
 
-showMessage(
-"Gönderi silindi."
+showAdminMessage(
+"🗑️ Gönderi silindi."
 );
 
 
-await loadAll();
+await loadEverything();
 
 }
 
 
-function showMessage(text){
-
-const box =
-document.getElementById("message");
-
-
-box.innerHTML =
-'<div class="message">'
-+
-escapeHtml(text)
-+
-'</div>';
-
-
-setTimeout(
-() => box.innerHTML="",
-5000
-);
-
-}
-
+/* ==============================
+   MESAJ
+============================== */
 
 function showLoginMessage(text){
 
 document
 .getElementById("loginMessage")
 .innerHTML =
-'<div class="message">'
-+
-escapeHtml(text)
-+
-'</div>';
+`
+<div class="message">
+${esc(text)}
+</div>
+`;
 
 }
 
 
-function escapeHtml(v){
+function showAdminMessage(text){
 
-return String(v ?? "")
+const box =
+document
+.getElementById("adminMessage");
+
+
+box.innerHTML =
+`
+<div class="message">
+${esc(text)}
+</div>
+`;
+
+
+setTimeout(function(){
+
+box.innerHTML="";
+
+},5000);
+
+}
+
+
+/* ==============================
+   GÜVENLİ HTML
+============================== */
+
+function esc(value){
+
+return String(value ?? "")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1569,31 +1646,148 @@ return String(v ?? "")
 }
 
 
-function escapeAttribute(v){
+/* ==============================
+   BUTONLAR
+============================== */
 
-return escapeHtml(v);
+document
+.getElementById("loginButton")
+.addEventListener(
+"click",
+doLogin
+);
+
+
+document
+.getElementById("logoutButton")
+.addEventListener(
+"click",
+doLogout
+);
+
+
+document
+.getElementById("addSiteButton")
+.addEventListener(
+"click",
+addSite
+);
+
+
+document
+.getElementById("addCategoryButton")
+.addEventListener(
+"click",
+addCategory
+);
+
+
+document
+.querySelectorAll("[data-panel]")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+openPanel(
+button.dataset.panel
+);
+
+}
+);
+
+});
+
+
+/* ENTER İLE GİRİŞ */
+
+document
+.getElementById("password")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+doLogin();
 
 }
 
-
-(async()=>{
-
-const {data} =
-await supabaseClient
-.auth
-.getSession();
+});
 
 
-if(data.session){
+/* ==============================
+   SESSION
+============================== */
+
+async function restoreSession(){
+
+try{
+
+const result =
+await sb.auth.getSession();
+
+
+if(
+result.data &&
+result.data.session
+){
 
 currentUser =
-data.session.user;
+result.data.session.user;
 
-await checkAdmin();
+
+const adminResult =
+await sb
+.from("admins")
+.select("user_id")
+.eq(
+"user_id",
+currentUser.id
+)
+.maybeSingle();
+
+
+if(
+adminResult.data
+){
+
+document
+.getElementById("loginScreen")
+.classList
+.add("hidden");
+
+document
+.getElementById("adminScreen")
+.classList
+.remove("hidden");
+
+await loadEverything();
 
 }
 
-})();
+}
+
+}catch(error){
+
+console.log(
+"Session kontrolü:",
+error
+);
+
+}
+
+}
+
+
+/* ==============================
+   BAŞLAT
+============================== */
+
+startApp();
+
+restoreSession();
 
 </script>
 
