@@ -271,6 +271,24 @@ header{
   .nav{font-size:8px;min-width:58px}
   .nav-icon{font-size:21px}
 }
+
+/* ===== TOMHUB / MOMO REIS TARZINDAN İLHAM ALAN CANLI-VIP-ÖNERİLEN ALANLARI ===== */
+.tomhub-live-wrap{margin:22px 0 26px}
+.tomhub-live-title{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.tomhub-live-title h2{margin:0;font-size:22px;color:#f0c42f}
+.tomhub-live-title .live-dot{width:9px;height:9px;border-radius:50%;background:#e33;box-shadow:0 0 12px #e33;animation:tomPulse 1.4s infinite}
+@keyframes tomPulse{50%{opacity:.35;transform:scale(.72)}}
+.tomhub-live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tomhub-live-card,.tomhub-small-card{background:linear-gradient(145deg,#101c29,#09131e);border:1px solid #1b3044;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.tomhub-live-card .media{height:170px;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle,#162b40,#09131e)}
+.tomhub-live-card .media img,.tomhub-small-card img{max-width:88%;max-height:110px;object-fit:contain}
+.tomhub-live-card .body{padding:12px}.tomhub-live-card .name,.tomhub-small-card .name{font-size:14px;font-weight:900;color:#fff}.tomhub-live-card .desc{min-height:30px}
+.tomhub-play{display:flex;align-items:center;justify-content:center;margin-top:10px;height:38px;border-radius:10px;background:linear-gradient(#ffd83e,#dcae20);color:#111;font-weight:900}
+.tomhub-mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.tomhub-small-card{padding:9px}.tomhub-small-card .logo{height:78px;width:100%;display:flex;align-items:center;justify-content:center;background:#0b1722;border-radius:11px}.tomhub-small-card .logo img{max-height:58px}.tomhub-small-card .name{margin-top:8px;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tomhub-small-card .tomhub-play{height:31px;margin-top:7px;font-size:10px}
+.tomhub-admin-sites{margin-top:18px}.tomhub-admin-sites table{width:100%;border-collapse:collapse}.tomhub-admin-sites th,.tomhub-admin-sites td{padding:8px;border-bottom:1px solid #2a261c;font-size:10px;text-align:left}.tomhub-admin-sites select{background:#08090b;color:#fff;border:1px solid #3a321f;border-radius:7px;padding:7px}.tomhub-admin-save{margin-top:10px}
+@media(max-width:700px){.tomhub-live-grid{grid-template-columns:repeat(2,1fr);gap:8px}.tomhub-live-card .media{height:120px;padding:10px}.tomhub-live-card .body{padding:9px}.tomhub-live-card .name{font-size:11px}.tomhub-live-card .desc{font-size:8px;min-height:24px}.tomhub-mini-grid{grid-template-columns:repeat(4,1fr);gap:6px}.tomhub-small-card{padding:6px;border-radius:12px}.tomhub-small-card .logo{height:58px}.tomhub-small-card .logo img{max-height:42px}.tomhub-small-card .name{font-size:8px;margin-top:5px}.tomhub-small-card .tomhub-play{height:27px;font-size:8px;margin-top:5px}}
+
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -413,6 +431,15 @@ header{
         </g>
       </svg>
     </div>
+  </section>
+
+
+
+  <!-- TOMHUB CANLI / VIP / ÖNERİLEN SİTELER -->
+  <section id="tomhubSections" class="tomhub-live-wrap">
+    <div id="tomhubLiveBlock"></div>
+    <div id="tomhubVipBlock" style="margin-top:24px"></div>
+    <div id="tomhubRecommendedBlock" style="margin-top:24px"></div>
   </section>
 
   <div class="section-head">
@@ -627,6 +654,20 @@ header{
     </div>
 
     <div id="adminDataStatus" class="admin-status"></div>
+
+    <div class="tomhub-admin-sites">
+      <div class="section-head"><h2 style="font-size:17px">Site Bölümü Yönetimi</h2></div>
+      <p class="admin-muted">Bir siteyi <b>Yayında</b>, <b>VIP</b> veya <b>Önerilen</b> olarak seç. Yayında seçilenler ana sayfadaki “YAYINDA OYNANILAN SİTELER” bölümünde görünür.</p>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Site</th><th>Durum</th><th>Bölüm</th></tr></thead>
+          <tbody id="tomhubAdminSitesTable"><tr><td colspan="3">Yükleniyor...</td></tr></tbody>
+        </table>
+      </div>
+      <button class="admin-btn tomhub-admin-save" onclick="saveTomHubSections()">💾 Bölümleri Kaydet</button>
+      <div id="tomhubSectionStatus" class="admin-status"></div>
+    </div>
+
   </div>
 
 </section>
@@ -649,6 +690,8 @@ header{
 
 <script>
 let currentCategory="all";
+let tomhubSectionFlags={};
+let tomhubSectionSites=[];
 
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
@@ -696,6 +739,50 @@ function filterSiteCards(text){
   });
 }
 
+
+
+
+/* ===== TOMHUB CANLI/VIP/ÖNERİLEN SİSTEMİ ===== */
+function tomhubSafeUrl(v){try{const u=new URL(String(v||'').trim());return /^https?:$/.test(u.protocol)?u.href:''}catch(e){return''}}
+function tomhubEsc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+function tomhubSectionOf(id){const f=tomhubSectionFlags[String(id)]||{};if(f.live)return'live';if(f.vip)return'vip';if(f.recommended)return'recommended';return''}
+async function loadTomHubSections(){
+  const liveEl=document.getElementById('tomhubLiveBlock'),vipEl=document.getElementById('tomhubVipBlock'),recEl=document.getElementById('tomhubRecommendedBlock');
+  if(!liveEl||!window.supabase||!supabaseClient)return;
+  try{
+    const setRes=await supabaseClient.from('site_settings').select('key,value').eq('key','site_flags').maybeSingle();
+    if(!setRes.error&&setRes.data?.value){try{tomhubSectionFlags=JSON.parse(setRes.data.value)||{}}catch(e){tomhubSectionFlags={}}}
+    const {data,error}=await supabaseClient.from('promoted_sites').select('id,name,description,logo_url,site_url,affiliate_url,is_active,sort_order').eq('is_active',true).order('sort_order').order('created_at',{ascending:false});
+    if(error)throw error;
+    tomhubSectionSites=data||[];
+  }catch(e){console.warn('TomHub bölüm verileri:',e.message);return}
+  const makeCard=(site,large)=>{const u=tomhubSafeUrl(site.affiliate_url)||tomhubSafeUrl(site.site_url);if(!u)return'';const logo=tomhubSafeUrl(site.logo_url);const img=logo?'<img src="'+tomhubEsc(logo)+'" alt="'+tomhubEsc(site.name)+'" loading="lazy">':'<b>'+tomhubEsc(String(site.name||'T').slice(0,1).toUpperCase())+'</b>';return large?'<article class="tomhub-live-card"><div class="media">'+img+'</div><div class="body"><div class="name">'+tomhubEsc(site.name)+'</div><div class="desc">'+tomhubEsc(site.description||'TomHub’da keşfet.')+'</div><a class="tomhub-play" href="'+tomhubEsc(u)+'" target="_blank" rel="noopener noreferrer" onclick="tomhubClick('+Number(site.id)+')">Oyna</a></div></article>':'<article class="tomhub-small-card"><a href="'+tomhubEsc(u)+'" target="_blank" rel="noopener noreferrer" onclick="tomhubClick('+Number(site.id)+')"><div class="logo">'+img+'</div><div class="name">'+tomhubEsc(site.name)+'</div><div class="tomhub-play">Oyna</div></a></article>'};
+  const live=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='live'),vip=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='vip'),rec=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='recommended');
+  const block=(title,items,large,liveTitle)=>items.length?'<div class="tomhub-live-title">'+(liveTitle?'<span class="live-dot"></span>':'<span style="color:#f0c42f">◆</span>')+'<h2>'+title+'</h2><span class="count">'+items.length+' site</span></div>'+(large?'<div class="tomhub-live-grid">':'<div class="tomhub-mini-grid">')+items.map(x=>makeCard(x,large)).join('')+'</div>':'';
+  liveEl.innerHTML=block('YAYINDA OYNANILAN SİTELER',live,true,true);
+  vipEl.innerHTML=block('VIP SİTELER',vip,false,false);
+  recEl.innerHTML=block('ÖNERDİĞİMİZ SİTELER',rec,false,false);
+}
+async function tomhubClick(id){try{await supabaseClient.from('site_clicks').insert({promoted_site_id:Number(id)})}catch(e){}}
+async function loadTomHubAdminSections(){
+  const tbody=document.getElementById('tomhubAdminSitesTable');if(!tbody||!adminIsAllowed)return;
+  const {data:flagsRow}=await supabaseClient.from('site_settings').select('value').eq('key','site_flags').maybeSingle();
+  try{tomhubSectionFlags=flagsRow?.value?JSON.parse(flagsRow.value)||{}:{}}catch(e){tomhubSectionFlags={}}
+  const {data,error}=await supabaseClient.from('promoted_sites').select('id,name,is_active,sort_order').order('sort_order').order('created_at',{ascending:false});
+  if(error){tbody.innerHTML='<tr><td colspan="3">Siteler okunamadı: '+escapeHtml(error.message)+'</td></tr>';return}
+  tomhubSectionSites=data||[];
+  if(!tomhubSectionSites.length){tbody.innerHTML='<tr><td colspan="3">Henüz site yok.</td></tr>';return}
+  tbody.innerHTML=tomhubSectionSites.map(s=>{const f=tomhubSectionOf(s.id);return '<tr><td>'+escapeHtml(s.name||'İsimsiz')+'</td><td>'+ (s.is_active?'Aktif':'Pasif') +'</td><td><select data-tomhub-section="'+Number(s.id)+'"><option value="" '+(!f?'selected':'')+'>Genel</option><option value="live" '+(f==='live'?'selected':'')+'>Yayında</option><option value="vip" '+(f==='vip'?'selected':'')+'>VIP</option><option value="recommended" '+(f==='recommended'?'selected':'')+'>Önerilen</option></select></td></tr>'}).join('');
+}
+async function saveTomHubSections(){
+  if(!adminIsAllowed)return;
+  const selects=[...document.querySelectorAll('[data-tomhub-section]')],next={};
+  selects.forEach(sel=>{const id=sel.getAttribute('data-tomhub-section'),v=sel.value;if(v)next[id]={[v]:true}});
+  setAdminStatus('tomHubSectionStatus','Bölümler kaydediliyor...');
+  const {error}=await supabaseClient.from('site_settings').upsert({key:'site_flags',value:JSON.stringify(next),updated_at:new Date().toISOString()},{onConflict:'key'});
+  if(error){setAdminStatus('tomHubSectionStatus','Kaydedilemedi: '+error.message,'err');return}
+  tomhubSectionFlags=next;setAdminStatus('tomHubSectionStatus','Bölümler kaydedildi.','ok');await loadTomHubSections();
+}
 
 /* =========================
    SUPABASE + YÖNETİM
@@ -845,6 +932,8 @@ async function loadAdminData(){
   }else{
     renderPosts(postsResult.data || []);
   }
+
+  await loadTomHubAdminSections();
 
   if(!usersResult.error && !postsResult.error){
     setAdminStatus("adminDataStatus","Veriler güncellendi.","ok");
@@ -1129,6 +1218,8 @@ if(document.readyState==='loading'){
 window.addEventListener('pageshow',function(){
   setTimeout(refreshAdminPanelSitesWithRetry,500);
 });
+
+loadTomHubSections();
 
 supabaseClient.auth.onAuthStateChange(async (_event,session)=>{
   if(session){
