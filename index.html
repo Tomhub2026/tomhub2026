@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>TomHub - Güvenilir Siteler</title>
+<meta name="tomhub-build" content="TOMHUB-BUILD-2026-09-20-AUTH-SITES">
 <meta name="description" content="TomHub - Faydalı ve kaliteli internet sitelerini keşfet.">
 
 <style>
@@ -974,24 +975,65 @@ function siteCategoryIcon(category){
   return '⭐';
 }
 
+
+/* TOMHUB_DIRECT_REST_FALLBACK */
+async function tomhubFetchPromotedSitesFallback(){
+  const endpoint =
+    SUPABASE_URL +
+    "/rest/v1/promoted_sites?select=id,name,description,category,logo_url,site_url,affiliate_url,is_active,is_featured,sort_order,created_at&is_active=eq.true&order=is_featured.desc,sort_order.asc,created_at.desc";
+
+  const response = await fetch(endpoint,{
+    method:"GET",
+    headers:{
+      "apikey":SUPABASE_PUBLISHABLE_KEY,
+      "Authorization":"Bearer "+SUPABASE_PUBLISHABLE_KEY,
+      "Accept":"application/json"
+    },
+    cache:"no-store"
+  });
+
+  if(!response.ok){
+    throw new Error("Supabase REST "+response.status);
+  }
+
+  return await response.json();
+}
+
 async function loadAdminPanelSites(){
   const grid=document.getElementById('sitesGrid');
   if(!grid || !window.supabase || !supabaseClient) return;
 
-  const {data,error}=await supabaseClient
-    .from('promoted_sites')
-    .select('id,name,description,category,logo_url,site_url,affiliate_url,is_active,is_featured,sort_order,created_at')
-    .eq('is_active',true)
-    .order('is_featured',{ascending:false})
-    .order('sort_order',{ascending:true})
-    .order('created_at',{ascending:false});
+  let sites=[];
 
-  if(error){
-    console.warn('TomHub: Admin paneli siteleri alınamadı:',error.message);
-    return;
+  try{
+    const {data,error}=await supabaseClient
+      .from('promoted_sites')
+      .select('id,name,description,category,logo_url,site_url,affiliate_url,is_active,is_featured,sort_order,created_at')
+      .eq('is_active',true)
+      .order('is_featured',{ascending:false})
+      .order('sort_order',{ascending:true})
+      .order('created_at',{ascending:false});
+
+    if(!error && Array.isArray(data)){
+      sites=data;
+    }else if(error){
+      console.warn('TomHub: Supabase client sorgusu başarısız, REST yedeği deneniyor:',error.message);
+    }
+  }catch(error){
+    console.warn('TomHub: Supabase client hatası, REST yedeği deneniyor:',error);
   }
 
-  const sites=data || [];
+  if(!sites.length){
+    try{
+      const fallbackSites=await tomhubFetchPromotedSitesFallback();
+      if(Array.isArray(fallbackSites)){
+        sites=fallbackSites;
+      }
+    }catch(error){
+      console.warn('TomHub: REST yedeği de başarısız:',error);
+    }
+  }
+
   if(!sites.length) return;
 
   const existingUrls=new Set();
