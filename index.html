@@ -3,1241 +3,283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TomHub - Güvenilir Siteler</title>
-<meta name="tomhub-build" content="TOMHUB-BUILD-2026-09-20-FIXED-SECTIONS-AUTH-SITES">
-<meta name="description" content="TomHub - Faydalı ve kaliteli internet sitelerini keşfet.">
-
+<title>TomHub | Sponsorlar</title>
+<meta name="theme-color" content="#07101c">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:#050607;color:#fff;font-family:Arial,Helvetica,sans-serif;
-  padding-bottom:78px;overflow-x:hidden
+:root{
+  --bg:#050b13;--panel:#081321;--panel2:#0b1727;--line:#17283c;
+  --gold:#f5c451;--gold2:#d99b1e;--text:#f4f7fb;--muted:#8ea0b5;
+  --green:#35d07f;--red:#ef6262;--blue:#5ba7ff;
 }
+*{box-sizing:border-box}
+html,body{margin:0;background:radial-gradient(circle at 50% -20%,#15263d 0,#050b13 45%);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh}
+button,input,select{font:inherit}
 a{color:inherit;text-decoration:none}
-button{font-family:inherit}
-
-/* ÜST ŞERİT */
-.top-strip{
-  height:28px;background:#08090b;border-bottom:1px solid #3b2c08;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-  white-space:nowrap;color:#999;font-size:8px;font-weight:800;letter-spacing:1px
+.app{max-width:1180px;margin:auto;min-height:100vh}
+.top{
+  height:64px;display:flex;align-items:center;gap:14px;padding:0 18px;
+  background:rgba(5,11,19,.94);border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)
 }
-.top-strip span{margin:0 16px}
-.top-strip b{color:#e5b82d}
-
-/* HEADER */
-header{
-  height:68px;background:#08090b;border-bottom:1px solid #34290c;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 18px;position:sticky;top:0;z-index:1000
-}
-.logo{
-  font-size:29px;font-weight:1000;letter-spacing:-2px;
-  text-shadow:0 0 15px rgba(255,190,20,.18)
-}
-.logo span{color:#ffc928}
-.header-buttons{display:flex;gap:8px;align-items:center}
-.login-btn{
-  border:1px solid #493812;background:#090a0c;color:#bbb;
-  padding:9px 14px;border-radius:10px;font-size:12px;font-weight:800
-}
-.add-btn{
-  background:linear-gradient(#ffd83e,#e8ad19);color:#111;
-  padding:10px 17px;border-radius:11px;font-size:12px;font-weight:1000;
-  box-shadow:0 0 16px rgba(255,193,29,.25)
-}
-
-/* ANA ALAN */
-.container{width:100%;max-width:1120px;margin:auto;padding:12px 16px}
-
-/* SOSYAL */
-.socials{display:flex;justify-content:center;gap:22px;margin:15px 0 18px}
-.social{
-  width:48px;height:48px;border-radius:50%;display:flex;
-  align-items:center;justify-content:center;font-size:21px;
-  border:3px solid #49380c;box-shadow:0 0 13px rgba(255,193,28,.12)
-}
-.social.telegram{background:#149ed9}
-.social.instagram{background:linear-gradient(135deg,#7140ff,#e53f8a,#ff6f2c)}
-.social.youtube{background:#e51c2a}
-
-/* HERO */
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:21px;letter-spacing:.5px}
+.tom{width:39px;height:39px;border-radius:12px;background:linear-gradient(145deg,#f8ce5a,#b97813);display:grid;place-items:center;color:#101010;font-size:23px;box-shadow:0 0 22px #e0a72c44}
+.top-spacer{flex:1}
+.topbtn{border:1px solid var(--line);background:#0b1727;color:#fff;padding:9px 12px;border-radius:10px;cursor:pointer}
+.topbtn:hover{border-color:#3c5875}
 .hero{
-  border:1px solid #715617;border-radius:20px;overflow:hidden;
-  background:
-    radial-gradient(circle at 72% 65%,rgba(255,194,28,.16),transparent 28%),
-    radial-gradient(circle at 18% 45%,rgba(255,194,28,.07),transparent 35%),
-    linear-gradient(135deg,#080909,#0e0d09);
-  min-height:330px;display:flex;align-items:center;
-  position:relative;margin-bottom:24px;
-  box-shadow:0 0 30px rgba(255,188,24,.035)
+  margin:18px;border:1px solid var(--line);border-radius:18px;min-height:150px;
+  padding:25px;background:
+  radial-gradient(circle at 90% 15%,#b57c1f33 0,transparent 32%),
+  linear-gradient(135deg,#0b1727,#07101c 65%,#111a25);
+  overflow:hidden;position:relative
 }
-.hero:after{
-  content:"";position:absolute;inset:10px;border:1px solid #3f320e;
-  border-radius:15px;pointer-events:none
+.hero h1{margin:0 0 8px;font-size:31px}.hero p{margin:0;color:var(--muted);max-width:700px;line-height:1.5}
+.hero .coins{position:absolute;right:35px;bottom:-16px;font-size:88px;opacity:.8;transform:rotate(-7deg)}
+.notice{margin:0 18px 18px;padding:11px 14px;border-radius:10px;background:#0b1727;border:1px solid var(--line);color:var(--muted);font-size:13px}
+.section{padding:0 18px 26px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:5px 0 12px}
+.section-title{font-size:18px;font-weight:900;letter-spacing:.3px}
+.section-title:before{content:"";display:inline-block;width:4px;height:18px;background:var(--gold);border-radius:4px;vertical-align:-3px;margin-right:8px}
+.count{font-size:12px;color:var(--muted)}
+.live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.card{
+  background:linear-gradient(180deg,#0b1727,#08121f);border:1px solid var(--line);
+  border-radius:13px;overflow:hidden;box-shadow:0 8px 25px #0004
 }
-.hero-content{
-  position:relative;z-index:60;padding:34px 36px;width:100%
+.live-card{min-height:220px;display:flex;flex-direction:column}
+.cover{height:130px;background:
+  radial-gradient(circle at 20% 20%,#f5c45144,transparent 25%),
+  linear-gradient(135deg,#111f31,#0a111b);display:grid;place-items:center;position:relative}
+.cover .mark{font-size:48px;font-weight:900;color:var(--gold);text-shadow:0 0 25px #f5c45155}
+.live-badge{position:absolute;left:10px;top:10px;background:#d63f3f;color:white;border-radius:7px;padding:5px 7px;font-size:10px;font-weight:900}
+.cardbody{padding:11px}.name{font-weight:900}.desc{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.35}
+.cardfoot{display:flex;align-items:center;gap:7px;margin-top:10px}
+.play{flex:1;text-align:center;border:0;border-radius:8px;padding:9px;background:linear-gradient(180deg,#f7cc5b,#d59a20);color:#111;font-weight:900;cursor:pointer}
+.smallbtn{border:1px solid var(--line);background:#0b1727;color:#fff;border-radius:8px;padding:8px 9px;cursor:pointer}
+.smallbtn:hover{border-color:#566e89}
+.mini{min-height:125px;padding:10px;display:flex;flex-direction:column}
+.logoBox{height:65px;border-radius:9px;background:#0f1d2d;border:1px solid #182b40;display:grid;place-items:center;font-size:27px;font-weight:900;color:var(--gold)}
+.mini .name{margin-top:9px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .play{margin-top:8px;padding:7px}
+.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed #263a52;border-radius:12px;background:#08121d}
+.bottom{
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:60;
+  width:min(620px,calc(100% - 24px));display:grid;grid-template-columns:repeat(4,1fr);
+  gap:5px;padding:6px;background:#07101ce8;border:1px solid #263a52;border-radius:15px;backdrop-filter:blur(14px)
 }
-.hero-small{
-  color:#e4b52a;font-size:12px;font-weight:1000;
-  letter-spacing:4px;margin-bottom:10px
+.nav{border:0;background:transparent;color:#9db0c5;padding:8px 3px;border-radius:10px;cursor:pointer;font-size:11px}
+.nav.active,.nav:hover{background:#102136;color:var(--gold)}
+.drawer{position:fixed;inset:0;background:#0008;z-index:100;display:none}
+.drawer.open{display:block}
+.drawerbox{width:min(330px,88vw);height:100%;background:#07101c;border-right:1px solid var(--line);padding:18px;overflow:auto}
+.drawerhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.close{background:#101d2c;border:1px solid var(--line);color:#fff;border-radius:9px;padding:7px 10px;cursor:pointer}
+.menuitem{display:block;width:100%;padding:12px;border:1px solid transparent;background:#091522;color:#dce6f1;text-align:left;border-radius:10px;margin:6px 0;cursor:pointer}
+.menuitem:hover{border-color:#263d58;color:var(--gold)}
+.panel{
+  position:fixed;inset:0;background:#000b;z-index:120;display:none;overflow:auto;padding:18px
 }
-.hero h1{
-  font-size:38px;line-height:1.08;max-width:68%;
-  margin-bottom:10px
+.panel.open{display:block}
+.adminbox{max-width:950px;margin:20px auto;background:#07101c;border:1px solid var(--line);border-radius:16px;padding:18px}
+.adminhead{display:flex;align-items:center;gap:10px;margin-bottom:15px}
+.adminhead h2{margin:0;flex:1}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:1px solid var(--line);background:#0a1624;color:#cbd7e4;padding:8px 11px;border-radius:9px;cursor:pointer}
+.tab.active{border-color:var(--gold2);color:var(--gold)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}
+.field label{font-size:11px;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;background:#0a1624;border:1px solid #1b3047;color:#fff;border-radius:8px;padding:10px;outline:0}
+.field textarea{min-height:80px;resize:vertical}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.goldbtn{background:linear-gradient(180deg,#f7cc5b,#d59a20);border:0;color:#111;font-weight:900;border-radius:9px;padding:10px 13px;cursor:pointer}
+.redbtn{background:#3a1519;border:1px solid #7e3038;color:#ff9b9b;border-radius:9px;padding:9px 11px;cursor:pointer}
+.list{display:grid;gap:8px;margin-top:14px}
+.row{display:flex;align-items:center;gap:9px;background:#091522;border:1px solid var(--line);padding:10px;border-radius:10px}
+.row .grow{flex:1}.muted{color:var(--muted);font-size:11px}
+.badge{font-size:10px;padding:4px 6px;border-radius:6px;background:#10243a;color:#9fc8ef}.badge.live{background:#3b171a;color:#ff9696}.badge.vip{background:#33280d;color:#f4c75b}
+@media(max-width:760px){
+  .hero{min-height:145px}.hero h1{font-size:25px}.hero .coins{font-size:64px;right:12px}
+  .live-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .section{padding-left:12px;padding-right:12px}.hero{margin-left:12px;margin-right:12px}.notice{margin-left:12px;margin-right:12px}
+  .top{padding:0 12px}.topbtn span{display:none}.form{grid-template-columns:1fr}
 }
-.hero h1 span{color:#ffca2e}
-.hero p{color:#aaa;font-size:13px;margin-bottom:17px}
-.search{display:flex;max-width:650px;position:relative;z-index:100}
-.search input{
-  flex:1;height:48px;background:#08090b;border:1px solid #59440e;
-  color:#fff;padding:0 15px;outline:none;border-radius:12px 0 0 12px;
-  font-size:13px
-}
-.search input::placeholder{color:#676767}
-.search button{
-  width:82px;border:0;background:linear-gradient(#ffd83e,#e8ad19);
-  color:#111;font-weight:1000;border-radius:0 12px 12px 0;cursor:pointer
-}
-
-/* CANLI TOM + PARA + ALTIN + ZAR */
-.tom-live{
-  position:absolute;right:-8px;bottom:-10px;width:430px;height:355px;
-  z-index:50;pointer-events:none;filter:drop-shadow(0 0 22px rgba(255,195,25,.3));
-}
-.tom-svg{width:100%;height:100%;overflow:visible}
-.tom-live .money-float,.tom-live .coin-float,.tom-live .dice-float{transform-box:fill-box;transform-origin:center}
-@keyframes moneyFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(7deg)}}
-@keyframes coinFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(22deg)}}
-@keyframes diceFloat{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-9px) rotate(8deg)}}
-@keyframes crownFloat2{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(2deg)}}
-.tom-live .money-float{animation:moneyFloat 2.7s ease-in-out infinite}
-.tom-live .coin-float{animation:coinFloat 2.2s ease-in-out infinite}
-.tom-live .dice-float{animation:diceFloat 2.8s ease-in-out infinite}
-.tom-live .crown-float{animation:crownFloat2 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-/* BÖLÜM BAŞLIKLARI */
-
-.section-head{
-  display:flex;justify-content:space-between;align-items:center;margin:20px 0 11px
-}
-.section-head h2{font-size:24px}
-.section-head h2:before{content:"✦";color:#ffd331;margin-right:10px}
-.section-head a{color:#e4b52b;font-size:12px;font-weight:900}
-
-/* KATEGORİ */
-.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-.category{
-  background:#0b0d10;border:1px solid #3b3010;border-radius:12px;
-  padding:11px 6px;text-align:center;cursor:pointer;color:#888;font-size:11px;
-  transition:.2s
-}
-.category .icon{display:block;font-size:22px;margin-bottom:5px}
-.category.active{
-  background:radial-gradient(circle at 50% 0,rgba(255,197,34,.12),transparent 65%),#0d0e0e;
-  border-color:#d4a928;color:#e9b92b;box-shadow:0 0 14px rgba(210,165,30,.08)
-}
-
-/* SAYFALAR */
-.page{display:none;animation:pageIn .25s ease}
-.page.active{display:block}
-@keyframes pageIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-
-/* SİTELER */
-.site-title{margin-top:24px;font-size:22px;margin-bottom:11px}
-.sites{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.site-card{
-  min-height:132px;background:radial-gradient(circle at 50% 0,rgba(214,169,35,.08),transparent 45%),#090a0c;
-  border:1px solid #28251c;border-radius:11px;padding:13px;position:relative;overflow:hidden;transition:.2s
-}
-.site-card:hover{border-color:#80671c;transform:translateY(-2px)}
-.site-top{display:flex;align-items:center;gap:9px}
-.site-icon{
-  width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:#141518;border:1px solid #292a2d;font-size:21px
-}
-.site-name{font-size:14px;font-weight:900}
-.site-desc{color:#777;font-size:10px;margin-top:4px;line-height:1.35}
-.site-link{display:inline-block;margin-top:11px;color:#dcb02b;font-size:10px;font-weight:900}
-
-/* SPONSOR */
-.sponsor-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.sponsor-card{
-  border:1px solid #604a11;border-radius:12px;padding:14px;
-  background:radial-gradient(circle at 85% 20%,rgba(255,199,39,.12),transparent 35%),#090a0c
-}
-.sponsor-badge{color:#e8b82a;font-size:9px;font-weight:1000;letter-spacing:1px;margin-bottom:8px}
-.sponsor-card h3{font-size:15px;margin-bottom:5px}
-.sponsor-card p{font-size:10px;color:#777;line-height:1.4}
-.sponsor-btn{
-  display:inline-block;margin-top:10px;background:#dcae22;color:#111;
-  padding:8px 12px;border-radius:8px;font-size:10px;font-weight:1000
-}
-
-/* MARKET / MENÜ */
-.info-box{
-  border:1px solid #4e3c0e;border-radius:14px;padding:20px;
-  background:linear-gradient(135deg,#0a0b0d,#11100b);margin-top:18px
-}
-.info-box h2{color:#f1c12f;margin-bottom:8px}
-.info-box p{color:#888;font-size:12px;line-height:1.6}
-.menu-list{display:grid;gap:8px;margin-top:15px}
-.menu-item{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px;border:1px solid #29251b;border-radius:10px;background:#0b0c0e;
-  color:#bbb;font-size:12px
-}
-.menu-item span{color:#e9b82c}
-
-/* YÖNETİM PANELİ */
-.admin-login,.admin-panel{
-  border:1px solid #4b3a0e;border-radius:16px;padding:18px;
-  background:linear-gradient(135deg,#0a0b0d,#11100b);
-  box-shadow:0 0 22px rgba(255,194,28,.04);
-}
-.admin-login h3,.admin-panel h3{font-size:18px;color:#f2c331;margin-bottom:8px}
-.admin-muted{color:#858585;font-size:11px;line-height:1.5}
-.admin-form{display:grid;gap:9px;margin-top:14px}
-.admin-form input{width:100%;height:43px;padding:0 12px;border-radius:9px;border:1px solid #332b18;background:#08090b;color:#fff;outline:none}
-.admin-form input:focus{border-color:#c89e25}
-.admin-btn{border:1px solid #6b5315;background:linear-gradient(#ffd83e,#dcae20);color:#111;padding:10px 13px;border-radius:9px;font-weight:900;cursor:pointer}
-.admin-btn.dark{background:#0b0c0e;color:#aaa;border-color:#2e2b24}
-.admin-status{margin-top:10px;color:#888;font-size:10px;line-height:1.5;min-height:15px}
-.admin-status.ok{color:#75d88c}.admin-status.err{color:#ff7777}
-.admin-actions{display:flex;gap:8px;margin:13px 0;flex-wrap:wrap}
-.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 20px}
-.admin-stat{border:1px solid #302b20;border-radius:11px;padding:12px;background:#090a0c;text-align:center}
-.admin-stat b{display:block;color:#f1c22e;font-size:20px}.admin-stat span{display:block;color:#777;font-size:9px;margin-top:4px}
-.admin-table-wrap{overflow:auto;border:1px solid #2c291f;border-radius:11px;background:#08090b;margin-bottom:18px}
-.admin-table{width:100%;border-collapse:collapse;min-width:650px;font-size:10px}
-.admin-table th,.admin-table td{padding:10px;border-bottom:1px solid #211f1a;text-align:left;vertical-align:top}
-.admin-table th{color:#e3b52b;background:#0d0e0f;position:sticky;top:0}.admin-table td{color:#aaa;max-width:260px;word-break:break-word}
-.admin-delete{border:1px solid #6b2424;background:#251012;color:#ff8585;padding:6px 9px;border-radius:7px;font-size:9px;font-weight:800;cursor:pointer}
-
-/* ALT NAV */
-.bottom-nav{
-  position:fixed;left:0;right:0;bottom:0;height:76px;background:#08090b;
-  border-top:1px solid #33290d;display:flex;justify-content:space-around;
-  align-items:center;z-index:2000
-}
-.nav{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:4px;color:#707887;font-size:9px;min-width:62px;cursor:pointer
-}
-.nav-icon{font-size:23px;line-height:1}
-.nav.active{color:#f0c12d;text-shadow:0 0 9px rgba(225,180,43,.35)}
-
-/* MOBİL */
-@media(max-width:700px){
-  body{padding-bottom:74px}
-  .top-strip{font-size:7px;height:27px}
-  .top-strip span{margin:0 11px}
-  header{height:65px;padding:0 13px}
-  .logo{font-size:27px}
-  .login-btn{display:none}
-  .add-btn{padding:9px 14px;font-size:11px}
-  .container{padding:9px}
-  .socials{gap:18px;margin:13px 0 16px}
-  .social{width:45px;height:45px;font-size:19px}
-  .hero{min-height:285px;border-radius:16px}
-  .hero:after{inset:8px;border-radius:12px}
-  .hero-content{padding:28px 24px}
-  .hero-small{font-size:10px;letter-spacing:3px}
-  .hero h1{font-size:28px;max-width:65%;line-height:1.12}
-  .hero p{font-size:11px;max-width:60%;line-height:1.4}
-  .search{max-width:70%}
-  .search input{height:44px;font-size:12px}
-  .search button{width:72px}
-  .tom-live{
-    width:245px;height:220px;right:-20px;bottom:-3px;
-    transform:scale(.82);transform-origin:bottom right
-  }
-  .categories{grid-template-columns:repeat(3,1fr);gap:7px}
-  .category{padding:11px 4px;font-size:10px}
-  .category .icon{font-size:21px}
-  .section-head h2{font-size:21px}
-  .section-head a{font-size:11px}
-  .sites,.sponsor-grid{grid-template-columns:repeat(2,1fr);gap:7px}
-  .site-card{min-height:128px;padding:10px}
-  .site-icon{width:38px;height:38px;font-size:19px}
-  .site-name{font-size:12px}
-  .site-desc{font-size:9px}
-  .site-link{font-size:9px}
-  .sponsor-card{padding:11px}
-  .sponsor-card h3{font-size:13px}
-  .sponsor-card p{font-size:9px}
-  .bottom-nav{height:73px}
-  .nav{font-size:8px;min-width:58px}
-  .nav-icon{font-size:21px}
-}
-
-/* ===== TOMHUB / MOMO REIS TARZINDAN İLHAM ALAN CANLI-VIP-ÖNERİLEN ALANLARI ===== */
-.tomhub-live-wrap{margin:22px 0 26px}
-.tomhub-live-title{display:flex;align-items:center;gap:10px;margin:0 0 12px}
-.tomhub-live-title h2{margin:0;font-size:22px;color:#f0c42f}
-.tomhub-live-title .live-dot{width:9px;height:9px;border-radius:50%;background:#e33;box-shadow:0 0 12px #e33;animation:tomPulse 1.4s infinite}
-@keyframes tomPulse{50%{opacity:.35;transform:scale(.72)}}
-.tomhub-live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.tomhub-live-card,.tomhub-small-card{background:linear-gradient(145deg,#101c29,#09131e);border:1px solid #1b3044;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.22)}
-.tomhub-live-card .media{height:170px;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle,#162b40,#09131e)}
-.tomhub-live-card .media img,.tomhub-small-card img{max-width:88%;max-height:110px;object-fit:contain}
-.tomhub-live-card .body{padding:12px}.tomhub-live-card .name,.tomhub-small-card .name{font-size:14px;font-weight:900;color:#fff}.tomhub-live-card .desc{min-height:30px}
-.tomhub-play{display:flex;align-items:center;justify-content:center;margin-top:10px;height:38px;border-radius:10px;background:linear-gradient(#ffd83e,#dcae20);color:#111;font-weight:900}
-.tomhub-mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
-.tomhub-small-card{padding:9px}.tomhub-small-card .logo{height:78px;width:100%;display:flex;align-items:center;justify-content:center;background:#0b1722;border-radius:11px}.tomhub-small-card .logo img{max-height:58px}.tomhub-small-card .name{margin-top:8px;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tomhub-small-card .tomhub-play{height:31px;margin-top:7px;font-size:10px}
-.tomhub-admin-sites{margin-top:18px}.tomhub-admin-sites table{width:100%;border-collapse:collapse}.tomhub-admin-sites th,.tomhub-admin-sites td{padding:8px;border-bottom:1px solid #2a261c;font-size:10px;text-align:left}.tomhub-admin-sites select{background:#08090b;color:#fff;border:1px solid #3a321f;border-radius:7px;padding:7px}.tomhub-admin-save{margin-top:10px}
-@media(max-width:700px){.tomhub-live-grid{grid-template-columns:repeat(2,1fr);gap:8px}.tomhub-live-card .media{height:120px;padding:10px}.tomhub-live-card .body{padding:9px}.tomhub-live-card .name{font-size:11px}.tomhub-live-card .desc{font-size:8px;min-height:24px}.tomhub-mini-grid{grid-template-columns:repeat(4,1fr);gap:6px}.tomhub-small-card{padding:6px;border-radius:12px}.tomhub-small-card .logo{height:58px}.tomhub-small-card .logo img{max-height:42px}.tomhub-small-card .name{font-size:8px;margin-top:5px}.tomhub-small-card .tomhub-play{height:27px;font-size:8px;margin-top:5px}}
-
+@media(min-width:1100px){.app{padding-bottom:20px}.bottom{display:none}}
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 </head>
-
 <body>
+<div class="app">
+  <header class="top">
+    <button class="topbtn" onclick="openDrawer()">☰</button>
+    <div class="logo"><div class="tom">🐱</div>TomHub</div>
+    <div class="top-spacer"></div>
+    <button class="topbtn" onclick="openAdmin()">⚙️ <span>Yönetim</span></button>
+  </header>
 
-<div class="top-strip">
-  <span>✦ <b>TOMHUB</b> BURADA</span>
-  <span>◆</span><span>FAYDALI SİTELER</span>
-  <span>◆</span><span>GÜVENİLİR VE HIZLI ERİŞİM</span>
-  <span>◆</span><span>7/24 AÇIK</span>
+  <main>
+    <div class="hero">
+      <h1>TomHub Sponsorlar</h1>
+      <p>Yayında kullanılan siteler, VIP siteler ve TomHub tarafından önerilen siteler tek yerde.</p>
+      <div class="coins">🪙👑</div>
+    </div>
+    <div class="notice">TomHub • Siteleri yönetmek için sağ üstteki <b>Yönetim</b> bölümünü kullanabilirsin.</div>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title">YAYINDA OYNANILAN SİTELER</div><div id="liveCount" class="count"></div></div>
+      <div id="liveGrid" class="live-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title">VIP SİTELER</div><div id="vipCount" class="count"></div></div>
+      <div id="vipGrid" class="grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title">ÖNERDİĞİMİZ SİTELER</div><div id="recCount" class="count"></div></div>
+      <div id="recGrid" class="grid"></div>
+    </section>
+  </main>
 </div>
 
-<header>
-  <a href="#" class="logo" onclick="showPage('home');return false;">Tom<span>Hub</span></a>
-  <div class="header-buttons">
-    <a href="#siteler" class="login-btn" onclick="showPage('sites');return false;">🔍 Ara</a>
-    <a href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Ekle" class="add-btn">Site Ekle</a>
-  </div>
-</header>
-
-<main class="container">
-
-<!-- ANA SAYFA -->
-<section id="home" class="page active">
-
-  <div class="socials">
-    <a class="social telegram" href="https://t.me/" target="_blank">✈</a>
-    <a class="social instagram" href="https://www.instagram.com/" target="_blank">◎</a>
-    <a class="social youtube" href="https://www.youtube.com/" target="_blank">▶</a>
-  </div>
-
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-small">TOMHUB</div>
-      <h1>İnternette ne arıyorsan <span>TomHub'da bul.</span></h1>
-      <p>Faydalı ve kaliteli internet sitelerini keşfet.</p>
-
-      <div class="search">
-        <input id="searchInput" type="text" placeholder="Site veya kategori ara..." onkeyup="searchSites()">
-        <button onclick="searchSites();showPage('sites')">Ara</button>
-      </div>
-    </div>
-
-    <div class="tom-live">
-      <svg class="tom-svg" viewBox="0 0 520 430" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="tgold" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#fff6ad"/><stop offset=".28" stop-color="#ffd83d"/>
-            <stop offset=".65" stop-color="#e3a916"/><stop offset="1" stop-color="#805306"/>
-          </linearGradient>
-          <radialGradient id="tfur"><stop offset="0" stop-color="#eef1f3"/><stop offset=".42" stop-color="#b5bbc2"/><stop offset=".78" stop-color="#727982"/><stop offset="1" stop-color="#3d434a"/></radialGradient>
-          <linearGradient id="tglass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#333941"/><stop offset=".5" stop-color="#050607"/><stop offset="1" stop-color="#242930"/></linearGradient>
-          <linearGradient id="tmoney" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff5a0"/><stop offset=".5" stop-color="#d9b52b"/><stop offset="1" stop-color="#8a5d09"/></linearGradient>
-          <filter id="tshadow"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000" flood-opacity=".7"/></filter>
-          <filter id="tglow"><feGaussianBlur stdDeviation="8"/></filter>
-        </defs>
-
-        <ellipse cx="345" cy="245" rx="155" ry="145" fill="#ffc928" opacity=".16" filter="url(#tglow)">
-          <animate attributeName="opacity" values=".10;.24;.10" dur="3s" repeatCount="indefinite"/>
-        </ellipse>
-
-        <g class="coin-float" style="animation-delay:.2s">
-          <circle cx="450" cy="65" r="27" fill="url(#tgold)" stroke="#8b610b" stroke-width="4" filter="url(#tshadow)"/>
-          <text x="450" y="74" text-anchor="middle" font-size="27" font-weight="bold" fill="#76500a">$</text>
-        </g>
-        <g class="coin-float" style="animation-delay:.8s">
-          <circle cx="475" cy="155" r="23" fill="url(#tgold)" stroke="#8b610b" stroke-width="4" filter="url(#tshadow)"/>
-          <text x="475" y="163" text-anchor="middle" font-size="22" font-weight="bold" fill="#76500a">₺</text>
-        </g>
-
-        <g class="dice-float">
-          <rect x="28" y="72" width="62" height="62" rx="13" fill="url(#tgold)" stroke="#8b610b" stroke-width="5" transform="rotate(-14 59 103)" filter="url(#tshadow)"/>
-          <circle cx="47" cy="91" r="6" fill="#674706"/><circle cx="72" cy="116" r="6" fill="#674706"/>
-          <circle cx="72" cy="91" r="6" fill="#674706"/><circle cx="47" cy="116" r="6" fill="#674706"/>
-        </g>
-        <g class="dice-float" style="animation-delay:1s">
-          <rect x="23" y="305" width="57" height="57" rx="12" fill="url(#tgold)" stroke="#8b610b" stroke-width="5" transform="rotate(14 51 333)" filter="url(#tshadow)"/>
-          <circle cx="41" cy="323" r="5" fill="#674706"/><circle cx="61" cy="343" r="5" fill="#674706"/><circle cx="61" cy="323" r="5" fill="#674706"/>
-        </g>
-
-        <path d="M170 125 C132 77 135 32 180 43 C212 51 216 90 202 126Z" fill="url(#tfur)" stroke="#292e35" stroke-width="8"/>
-        <path d="M350 125 C388 77 385 32 340 43 C308 51 304 90 318 126Z" fill="url(#tfur)" stroke="#292e35" stroke-width="8"/>
-        <path d="M169 104 C150 76 158 61 177 67 C192 72 195 91 188 108Z" fill="#e88491"/>
-        <path d="M351 104 C370 76 362 61 343 67 C328 72 325 91 332 108Z" fill="#e88491"/>
-
-        <ellipse cx="260" cy="170" rx="112" ry="105" fill="url(#tfur)" stroke="#292e35" stroke-width="9" filter="url(#tshadow)"/>
-        <ellipse cx="225" cy="118" rx="42" ry="28" fill="#fff" opacity=".12"/>
-
-        <g>
-          <rect x="170" y="145" width="82" height="55" rx="17" fill="url(#tglass)" stroke="url(#tgold)" stroke-width="7"/>
-          <rect x="268" y="145" width="82" height="55" rx="17" fill="url(#tglass)" stroke="url(#tgold)" stroke-width="7"/>
-          <rect x="248" y="158" width="24" height="10" rx="5" fill="#e9b52a"/>
-          <path d="M181 157 L213 151" stroke="#fff" stroke-width="5" opacity=".32" stroke-linecap="round"/>
-          <path d="M279 157 L311 151" stroke="#fff" stroke-width="5" opacity=".32" stroke-linecap="round"/>
-        </g>
-
-        <ellipse cx="260" cy="211" rx="22" ry="15" fill="#e48791" stroke="#79333d" stroke-width="4"/>
-        <path d="M242 225 Q260 244 278 225" fill="none" stroke="#272c31" stroke-width="6" stroke-linecap="round"/>
-
-        <g class="crown-float" filter="url(#tshadow)">
-          <path d="M176 70 L165 20 L203 48 L232 7 L260 48 L288 7 L317 48 L355 20 L344 70Z" fill="url(#tgold)" stroke="#8c610b" stroke-width="6"/>
-          <circle cx="232" cy="25" r="6" fill="#e94141"/><circle cx="260" cy="47" r="6" fill="#39c7ff"/><circle cx="288" cy="25" r="6" fill="#50d878"/>
-        </g>
-
-        <path d="M178 278 Q260 235 342 278 L365 410 L155 410Z" fill="url(#tfur)" stroke="#292e35" stroke-width="10" filter="url(#tshadow)"/>
-        <text x="260" y="315" text-anchor="middle" font-size="28" fill="url(#tgold)">✦ ✦ ✦</text>
-
-        <g class="money-float" transform="rotate(-10 120 345)" filter="url(#tshadow)">
-          <rect x="65" y="320" width="105" height="58" rx="8" fill="url(#tmoney)" stroke="#80600c" stroke-width="4"/>
-          <rect x="70" y="313" width="105" height="58" rx="8" fill="url(#tmoney)" stroke="#80600c" stroke-width="4"/>
-          <rect x="75" y="306" width="105" height="58" rx="8" fill="url(#tmoney)" stroke="#80600c" stroke-width="4"/>
-          <text x="128" y="348" text-anchor="middle" font-size="35" font-weight="bold" fill="#79560b">$</text>
-        </g>
-
-        <g transform="rotate(-5 395 370)" filter="url(#tshadow)">
-          <path d="M350 350 L438 350 L425 395 L362 395Z" fill="url(#tgold)" stroke="#80590b" stroke-width="5"/>
-          <text x="395" y="378" text-anchor="middle" font-size="13" font-weight="bold" fill="#80590b">GOLD</text>
-        </g>
-
-        <g class="money-float" style="animation-delay:.6s" transform="rotate(-14 405 300)" filter="url(#tshadow)">
-          <rect x="345" y="260" width="125" height="80" rx="13" fill="#111" stroke="url(#tgold)" stroke-width="6"/>
-          <rect x="360" y="282" width="25" height="17" rx="3" fill="url(#tgold)"/>
-          <text x="407" y="320" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffd32e">$</text>
-          <text x="450" y="330" text-anchor="end" font-size="8" fill="#dca81c">TOMHUB</text>
-        </g>
-
-        <g class="coin-float" style="animation-delay:.5s" filter="url(#tshadow)">
-          <circle cx="420" cy="225" r="28" fill="url(#tgold)" stroke="#855b09" stroke-width="4"/>
-          <text x="420" y="235" text-anchor="middle" font-size="28" font-weight="bold" fill="#79540a">$</text>
-        </g>
-
-        <g fill="#ffd633">
-          <text x="105" y="190" font-size="27">✦</text>
-          <text x="425" y="100" font-size="22">✦</text>
-          <text x="455" y="275" font-size="29">✦</text>
-          <text x="120" y="280" font-size="20">✦</text>
-        </g>
-      </svg>
-    </div>
-  </section>
-
-
-
-  <!-- TOMHUB CANLI / VIP / ÖNERİLEN SİTELER -->
-  <section id="tomhubSections" class="tomhub-live-wrap">
-    <div id="tomhubLiveBlock"></div>
-    <div id="tomhubVipBlock" style="margin-top:24px"></div>
-    <div id="tomhubRecommendedBlock" style="margin-top:24px"></div>
-  </section>
-
-  <div class="section-head">
-    <h2>Kategoriler</h2>
-    <a href="#" onclick="showPage('sites');return false;">Tümünü Gör →</a>
-  </div>
-
-  <div class="categories">
-    <button class="category active" onclick="filterCategory('all',this)"><span class="icon">⭐</span>Tümü</button>
-    <button class="category" onclick="filterCategory('oyun',this)"><span class="icon">🎮</span>Oyun</button>
-    <button class="category" onclick="filterCategory('teknoloji',this)"><span class="icon">💻</span>Teknoloji</button>
-    <button class="category" onclick="filterCategory('alisveris',this)"><span class="icon">🛒</span>Alışveriş</button>
-    <button class="category" onclick="filterCategory('egitim',this)"><span class="icon">📚</span>Eğitim</button>
-    <button class="category" onclick="filterCategory('eglence',this)"><span class="icon">🎬</span>Eğlence</button>
-  </div>
-
-</section>
-
-<!-- SPONSOR -->
-<section id="sponsor" class="page">
-  <div class="section-head">
-    <h2>Sponsor</h2>
-  </div>
-
-  <div class="sponsor-grid">
-    <article class="sponsor-card">
-      <div class="sponsor-badge">★ SPONSORLU SİTE</div>
-      <h3>Yeni Sponsor</h3>
-      <p>Siteni TomHub'da öne çıkar ve daha fazla ziyaretçiye ulaş.</p>
-      <a class="sponsor-btn" href="mailto:tomhub2026@gmail.com?subject=TomHub%20Sponsor">Siteyi Tanıt →</a>
-    </article>
-
-    <article class="sponsor-card">
-      <div class="sponsor-badge">★ ÖNE ÇIKAN</div>
-      <h3>TomHub Reklam Alanı</h3>
-      <p>Markanı ve internet siteni TomHub ziyaretçilerine göster.</p>
-      <a class="sponsor-btn" href="mailto:tomhub2026@gmail.com?subject=TomHub%20Reklam">Bilgi Al →</a>
-    </article>
-  </div>
-</section>
-
-<!-- SİTELER -->
-<section id="sites" class="page">
-  <div class="section-head">
-    <h2>Siteler</h2>
-    <a href="#" onclick="showPage('home');return false;">Ana Sayfa →</a>
-  </div>
-
-  <div class="search" style="max-width:100%;margin-bottom:14px">
-    <input id="siteSearchInput" type="text" placeholder="Site veya kategori ara..." onkeyup="syncSearch()">
-    <button onclick="syncSearch()">Ara</button>
-  </div>
-
-  <div class="sites" id="sitesGrid">
-    <article class="site-card" data-category="teknoloji" data-name="google arama teknoloji">
-      <div class="site-top"><div class="site-icon">G</div><div><div class="site-name">Google</div><div class="site-desc">İnternette arama yap.</div></div></div>
-      <a class="site-link" href="https://www.google.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="eglence" data-name="youtube video eğlence">
-      <div class="site-top"><div class="site-icon">▶</div><div><div class="site-name">YouTube</div><div class="site-desc">Video ve içerik keşfet.</div></div></div>
-      <a class="site-link" href="https://www.youtube.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="teknoloji" data-name="github kod yazılım">
-      <div class="site-top"><div class="site-icon">🐙</div><div><div class="site-name">GitHub</div><div class="site-desc">Kod ve projeleri keşfet.</div></div></div>
-      <a class="site-link" href="https://github.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="egitim" data-name="wikipedia bilgi eğitim">
-      <div class="site-top"><div class="site-icon">📖</div><div><div class="site-name">Wikipedia</div><div class="site-desc">Bilgi ve kaynakları keşfet.</div></div></div>
-      <a class="site-link" href="https://www.wikipedia.org" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="eglence" data-name="reddit topluluk">
-      <div class="site-top"><div class="site-icon">💬</div><div><div class="site-name">Reddit</div><div class="site-desc">Toplulukları keşfet.</div></div></div>
-      <a class="site-link" href="https://www.reddit.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="teknoloji" data-name="stack overflow yazılım">
-      <div class="site-top"><div class="site-icon">💻</div><div><div class="site-name">Stack Overflow</div><div class="site-desc">Yazılım sorularına cevap bul.</div></div></div>
-      <a class="site-link" href="https://stackoverflow.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="eglence" data-name="spotify müzik">
-      <div class="site-top"><div class="site-icon">🎵</div><div><div class="site-name">Spotify</div><div class="site-desc">Müzik ve podcast keşfet.</div></div></div>
-      <a class="site-link" href="https://www.spotify.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="egitim" data-name="canva tasarım">
-      <div class="site-top"><div class="site-icon">🎨</div><div><div class="site-name">Canva</div><div class="site-desc">Tasarım oluştur.</div></div></div>
-      <a class="site-link" href="https://www.canva.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="oyun" data-name="steam oyun">
-      <div class="site-top"><div class="site-icon">🎮</div><div><div class="site-name">Steam</div><div class="site-desc">Oyunları keşfet.</div></div></div>
-      <a class="site-link" href="https://store.steampowered.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-
-    <article class="site-card" data-category="alisveris" data-name="amazon alışveriş">
-      <div class="site-top"><div class="site-icon">🛒</div><div><div class="site-name">Amazon</div><div class="site-desc">Ürünleri ve alışverişi keşfet.</div></div></div>
-      <a class="site-link" href="https://www.amazon.com" target="_blank">Siteyi ziyaret et →</a>
-    </article>
-  </div>
-</section>
-
-<!-- SİTE EKLE -->
-<section id="add" class="page">
-  <div class="section-head"><h2>Site Ekle</h2></div>
-  <div class="info-box">
-    <h2>🚀 Siteni TomHub'a Ekle</h2>
-    <p>İnternet siteni TomHub'da tanıtmak için bize ulaş. Site adı, bağlantısı ve kısa açıklamasını gönderebilirsin.</p>
-    <a class="sponsor-btn" href="mailto:tomhub2026@gmail.com?subject=TomHub%20Site%20Ekle">E-posta Gönder →</a>
-  </div>
-</section>
-
-<!-- MENÜ -->
-<section id="menu" class="page">
-  <div class="section-head"><h2>Menü</h2></div>
-  <div class="menu-list">
-    <div class="menu-item" onclick="showPage('home')">Ana Sayfa <span>→</span></div>
-    <div class="menu-item" onclick="showPage('sponsor')">Sponsor <span>→</span></div>
-    <div class="menu-item" onclick="showPage('sites')">Siteler <span>→</span></div>
-    <div class="menu-item" onclick="showPage('add')">Site Ekle <span>→</span></div>
-    <div class="menu-item" onclick="showPage('admin');initAdmin()">⚙️ Yönetim Paneli <span>→</span></div>
-  </div>
-</section>
-
-
-<!-- YÖNETİM -->
-<section id="admin" class="page">
-
-  <div class="section-head">
-    <h2>Yönetim</h2>
-  </div>
-
-  <div id="adminLoginBox" class="admin-login">
-    <h3>🔐 TomHub Yönetim Girişi</h3>
-    <p class="admin-muted">
-      Yönetim paneline yalnızca Supabase üzerinde yönetici yetkisi bulunan hesap girebilir.
-    </p>
-
-    <form class="admin-form" onsubmit="adminLogin(event)">
-      <input id="adminEmail" type="email" placeholder="Yönetici e-posta" required>
-      <input id="adminPassword" type="password" placeholder="Şifre" required>
-      <button class="admin-btn" type="submit">Giriş Yap</button>
-    </form>
-
-    <div id="adminLoginStatus" class="admin-status"></div>
-  </div>
-
-  <div id="adminPanelBox" class="admin-panel" style="display:none">
-    <h3>💰 TomHub Yönetim Paneli</h3>
-    <div id="adminWelcome" class="admin-muted"></div>
-
-    <div class="admin-actions">
-      <button class="admin-btn" onclick="loadAdminData()">↻ Yenile</button>
-      <button class="admin-btn dark" onclick="adminLogout()">Çıkış Yap</button>
-    </div>
-
-    <div class="admin-stats">
-      <div class="admin-stat">
-        <b id="adminUsersCount">0</b>
-        <span>Kullanıcı kaydı</span>
-      </div>
-      <div class="admin-stat">
-        <b id="adminPostsCount">0</b>
-        <span>Gönderi</span>
-      </div>
-      <div class="admin-stat">
-        <b id="adminSiteCount">10</b>
-        <span>Site kartı</span>
-      </div>
-    </div>
-
-    <div class="section-head">
-      <h2 style="font-size:17px">Kullanıcılar</h2>
-    </div>
-    <div class="admin-table-wrap">
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Kullanıcı ID</th>
-            <th>Oluşturulma</th>
-          </tr>
-        </thead>
-        <tbody id="adminUsersTable">
-          <tr><td colspan="3">Yükleniyor...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-head">
-      <h2 style="font-size:17px">Gönderiler</h2>
-    </div>
-    <div class="admin-table-wrap">
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Kullanıcı ID</th>
-            <th>İçerik</th>
-            <th>Tarih</th>
-            <th>İşlem</th>
-          </tr>
-        </thead>
-        <tbody id="adminPostsTable">
-          <tr><td colspan="5">Yükleniyor...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div id="adminDataStatus" class="admin-status"></div>
-
-    <div class="tomhub-admin-sites">
-      <div class="section-head"><h2 style="font-size:17px">Site Bölümü Yönetimi</h2></div>
-      <p class="admin-muted">Bir siteyi <b>Yayında</b>, <b>VIP</b> veya <b>Önerilen</b> olarak seç. Yayında seçilenler ana sayfadaki “YAYINDA OYNANILAN SİTELER” bölümünde görünür.</p>
-      <div class="admin-table-wrap">
-        <table class="admin-table">
-          <thead><tr><th>Site</th><th>Durum</th><th>Bölüm</th></tr></thead>
-          <tbody id="tomhubAdminSitesTable"><tr><td colspan="3">Yükleniyor...</td></tr></tbody>
-        </table>
-      </div>
-      <button class="admin-btn tomhub-admin-save" onclick="saveTomHubSections()">💾 Bölümleri Kaydet</button>
-      <div id="tomhubSectionStatus" class="admin-status"></div>
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-<footer style="margin-top:35px;padding:20px;text-align:center;border-top:1px solid #171719;color:#555;font-size:9px">
-© 2026 TomHub – Tüm hakları saklıdır.
-</footer>
-
-<nav class="bottom-nav">
-  <a class="nav active" data-page="home" onclick="showPage('home')"><span class="nav-icon">⌂</span>Ana Sayfa</a>
-  <a class="nav" data-page="sponsor" onclick="showPage('sponsor')"><span class="nav-icon">♛</span>Sponsor</a>
-  <a class="nav" data-page="sites" onclick="showPage('sites')"><span class="nav-icon">★</span>Siteler</a>
-  <a class="nav" data-page="add" onclick="showPage('add')"><span class="nav-icon">＋</span>Site Ekle</a>
-  <a class="nav" data-page="menu" onclick="showPage('menu')"><span class="nav-icon">☰</span>Menü</a>
-
-
+<nav class="bottom">
+  <button class="nav active" onclick="scrollToId('liveGrid')">🔴<br>Yayında</button>
+  <button class="nav" onclick="scrollToId('vipGrid')">👑<br>VIP</button>
+  <button class="nav" onclick="scrollToId('recGrid')">⭐<br>Önerilen</button>
+  <button class="nav" onclick="openDrawer()">☰<br>Menü</button>
 </nav>
 
+<div id="drawer" class="drawer" onclick="closeDrawer(event)">
+  <aside class="drawerbox" onclick="event.stopPropagation()">
+    <div class="drawerhead"><div class="logo"><div class="tom">🐱</div>TomHub</div><button class="close" onclick="closeDrawer()">✕</button></div>
+    <button class="menuitem" onclick="scrollToId('liveGrid');closeDrawer()">🔴 Yayında Oynanan Siteler</button>
+    <button class="menuitem" onclick="scrollToId('vipGrid');closeDrawer()">👑 VIP Siteler</button>
+    <button class="menuitem" onclick="scrollToId('recGrid');closeDrawer()">⭐ Önerdiğimiz Siteler</button>
+    <button class="menuitem" onclick="openAdmin();closeDrawer()">⚙️ Yönetim Paneli</button>
+    <button class="menuitem" onclick="contact()">✉️ Sponsorluk için İletişim</button>
+    <div style="height:18px"></div>
+    <div class="muted">TomHub © 2026</div>
+  </aside>
+</div>
+
+<div id="adminPanel" class="panel">
+  <div class="adminbox">
+    <div class="adminhead"><h2>TomHub Yönetim</h2><button class="close" onclick="closeAdmin()">✕</button></div>
+    <div class="tabs">
+      <button class="tab active" id="tabSites" onclick="showTab('sites')">Siteler</button>
+      <button class="tab" id="tabAdd" onclick="showTab('add')">Site Ekle</button>
+    </div>
+
+    <div id="adminSites">
+      <div class="muted">Buradaki değişiklikler bu tarayıcıda anında çalışır. Test için gerçek bir Supabase hesabı gerekmez.</div>
+      <div id="adminList" class="list"></div>
+    </div>
+
+    <div id="adminAdd" style="display:none">
+      <div class="form">
+        <div class="field"><label>Site adı</label><input id="fName" placeholder="Örn. Google"></div>
+        <div class="field"><label>Site URL</label><input id="fUrl" placeholder="https://..."></div>
+        <div class="field full"><label>Açıklama</label><textarea id="fDesc" placeholder="Kısa açıklama"></textarea></div>
+        <div class="field"><label>Bölüm</label>
+          <select id="fSection">
+            <option value="live">Yayında Oynanılan Siteler</option>
+            <option value="vip">VIP Siteler</option>
+            <option value="recommended">Önerdiğimiz Siteler</option>
+          </select>
+        </div>
+        <div class="field"><label>Logo / Emoji</label><input id="fLogo" placeholder="🎮"></div>
+      </div>
+      <div class="admin-actions"><button class="goldbtn" onclick="addSite()">Siteyi Ekle</button></div>
+    </div>
+  </div>
+</div>
+
 <script>
-let currentCategory="all";
-let tomhubSectionFlags={};
-let tomhubSectionSites=[];
+const KEY="tomhub_momo_style_v1";
+let sites=[
+ {id:1,name:"Google",url:"https://www.google.com",desc:"TomHub test sitesi",logo:"G",section:"live",active:true},
+ {id:2,name:"TomHub Test",url:"https://example.com",desc:"Örnek sponsor sitesi",logo:"T",section:"vip",active:true},
+ {id:3,name:"GitHub",url:"https://github.com",desc:"Kod ve proje platformu",logo:"GH",section:"vip",active:true},
+ {id:4,name:"YouTube",url:"https://www.youtube.com",desc:"Video platformu",logo:"▶",section:"recommended",active:true},
+ {id:5,name:"Wikipedia",url:"https://www.wikipedia.org",desc:"Bilgi kaynağı",logo:"W",section:"recommended",active:true},
+ {id:6,name:"Spotify",url:"https://open.spotify.com",desc:"Müzik platformu",logo:"S",section:"recommended",active:true}
+];
 
-function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  const page=document.getElementById(id);
-  if(page) page.classList.add("active");
-
-  document.querySelectorAll(".nav").forEach(n=>{
-    n.classList.toggle("active",n.dataset.page===id);
-  });
-
-  window.scrollTo({top:0,behavior:"smooth"});
+function load(){
+ try{
+   const saved=localStorage.getItem(KEY);
+   if(saved) sites=JSON.parse(saved);
+ }catch(e){}
+ render();
 }
-
-function filterCategory(category,button){
-  currentCategory=category;
-  document.querySelectorAll(".category").forEach(item=>item.classList.remove("active"));
-  button.classList.add("active");
-  showPage("sites");
-  searchSites();
+function save(){localStorage.setItem(KEY,JSON.stringify(sites));render();}
+function esc(s){
+ return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 }
-
-function searchSites(){
-  const input=document.getElementById("searchInput");
-  const text=input ? input.value.toLowerCase().trim() : "";
-  const second=document.getElementById("siteSearchInput");
-  if(second) second.value=text;
-  filterSiteCards(text);
+function safeUrl(u){
+ try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:"#"}catch(e){return "#"}
 }
-
-function syncSearch(){
-  const input=document.getElementById("siteSearchInput");
-  const text=input ? input.value.toLowerCase().trim() : "";
-  const first=document.getElementById("searchInput");
-  if(first) first.value=text;
-  filterSiteCards(text);
+function card(s,live=false){
+ const u=safeUrl(s.url);
+ if(live) return `<article class="card live-card">
+   <div class="cover"><span class="live-badge">● CANLI</span><div class="mark">${esc(s.logo||"★")}</div></div>
+   <div class="cardbody"><div class="name">${esc(s.name)}</div><div class="desc">${esc(s.desc||"")}</div>
+   <div class="cardfoot"><a class="play" href="${u}" target="_blank" rel="noopener">Oyna</a></div></div></article>`;
+ return `<article class="card mini"><div class="logoBox">${esc(s.logo||"★")}</div><div class="name">${esc(s.name)}</div><a class="play" href="${u}" target="_blank" rel="noopener">Oyna</a></article>`;
 }
-
-function filterSiteCards(text){
-  document.querySelectorAll(".site-card").forEach(card=>{
-    const category=card.dataset.category;
-    const name=card.dataset.name||"";
-    const categoryOK=currentCategory==="all" || category===currentCategory;
-    const searchOK=!text || name.includes(text);
-    card.style.display=(categoryOK&&searchOK)?"block":"none";
-  });
+function sectionHtml(arr,live){
+ return arr.length?arr.map(s=>card(s,live)).join(""):`<div class="empty" style="grid-column:1/-1">Bu bölümde henüz site yok.</div>`;
 }
-
-
-
-
-/* ===== TOMHUB CANLI/VIP/ÖNERİLEN SİSTEMİ ===== */
-function tomhubSafeUrl(v){try{const u=new URL(String(v||'').trim());return /^https?:$/.test(u.protocol)?u.href:''}catch(e){return''}}
-function tomhubEsc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
-function tomhubSectionOf(id){const f=tomhubSectionFlags[String(id)]||{};if(f.live)return'live';if(f.vip)return'vip';if(f.recommended)return'recommended';return''}
-async function loadTomHubSections(){
-  const liveEl=document.getElementById('tomhubLiveBlock'),vipEl=document.getElementById('tomhubVipBlock'),recEl=document.getElementById('tomhubRecommendedBlock');
-  if(!liveEl||!window.supabase||!supabaseClient)return;
-  try{
-    const setRes=await supabaseClient.from('site_settings').select('key,value').eq('key','site_flags').maybeSingle();
-    if(!setRes.error&&setRes.data?.value){try{tomhubSectionFlags=JSON.parse(setRes.data.value)||{}}catch(e){tomhubSectionFlags={}}}
-    else { tomhubSectionFlags={}; }
-    const {data,error}=await supabaseClient.from('promoted_sites').select('id,name,description,logo_url,site_url,affiliate_url,is_active,sort_order').eq('is_active',true).order('sort_order').order('created_at',{ascending:false});
-    if(error)throw error;
-    tomhubSectionSites=data||[];
-  }catch(e){console.warn('TomHub bölüm verileri:',e.message);return}
-  const makeCard=(site,large)=>{const u=tomhubSafeUrl(site.affiliate_url)||tomhubSafeUrl(site.site_url);if(!u)return'';const logo=tomhubSafeUrl(site.logo_url);const img=logo?'<img src="'+tomhubEsc(logo)+'" alt="'+tomhubEsc(site.name)+'" loading="lazy">':'<b>'+tomhubEsc(String(site.name||'T').slice(0,1).toUpperCase())+'</b>';return large?'<article class="tomhub-live-card"><div class="media">'+img+'</div><div class="body"><div class="name">'+tomhubEsc(site.name)+'</div><div class="desc">'+tomhubEsc(site.description||'TomHub’da keşfet.')+'</div><a class="tomhub-play" href="'+tomhubEsc(u)+'" target="_blank" rel="noopener noreferrer" onclick="tomhubClick('+Number(site.id)+')">Oyna</a></div></article>':'<article class="tomhub-small-card"><a href="'+tomhubEsc(u)+'" target="_blank" rel="noopener noreferrer" onclick="tomhubClick('+Number(site.id)+')"><div class="logo">'+img+'</div><div class="name">'+tomhubEsc(site.name)+'</div><div class="tomhub-play">Oyna</div></a></article>'};
-  let live=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='live'),vip=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='vip'),rec=tomhubSectionSites.filter(s=>tomhubSectionOf(s.id)==='recommended');
-  const hasExplicitFlags=Object.keys(tomhubSectionFlags||{}).length>0;
-  if(!hasExplicitFlags){
-    live=[];
-    vip=tomhubSectionSites.filter(s=>s.is_featured===true);
-    rec=tomhubSectionSites.filter(s=>s.is_featured!==true);
-  }
-  const block=(title,items,large,liveTitle)=>items.length?'<div class="tomhub-live-title">'+(liveTitle?'<span class="live-dot"></span>':'<span style="color:#f0c42f">◆</span>')+'<h2>'+title+'</h2><span class="count">'+items.length+' site</span></div>'+(large?'<div class="tomhub-live-grid">':'<div class="tomhub-mini-grid">')+items.map(x=>makeCard(x,large)).join('')+'</div>':'';
-  liveEl.innerHTML=block('YAYINDA OYNANILAN SİTELER',live,true,true);
-  vipEl.innerHTML=block('VIP SİTELER',vip,false,false);
-  recEl.innerHTML=block('ÖNERDİĞİMİZ SİTELER',rec,false,false);
+function render(){
+ const active=sites.filter(s=>s.active);
+ const live=active.filter(s=>s.section==="live");
+ const vip=active.filter(s=>s.section==="vip");
+ const rec=active.filter(s=>s.section==="recommended");
+ document.getElementById("liveGrid").innerHTML=sectionHtml(live,true);
+ document.getElementById("vipGrid").innerHTML=sectionHtml(vip,false);
+ document.getElementById("recGrid").innerHTML=sectionHtml(rec,false);
+ document.getElementById("liveCount").textContent=live.length+" site";
+ document.getElementById("vipCount").textContent=vip.length+" site";
+ document.getElementById("recCount").textContent=rec.length+" site";
+ renderAdmin();
 }
-async function tomhubClick(id){try{await supabaseClient.from('site_clicks').insert({promoted_site_id:Number(id)})}catch(e){}}
-async function loadTomHubAdminSections(){
-  const tbody=document.getElementById('tomhubAdminSitesTable');if(!tbody||!adminIsAllowed)return;
-  const {data:flagsRow}=await supabaseClient.from('site_settings').select('value').eq('key','site_flags').maybeSingle();
-  try{tomhubSectionFlags=flagsRow?.value?JSON.parse(flagsRow.value)||{}:{}}catch(e){tomhubSectionFlags={}}
-  const {data,error}=await supabaseClient.from('promoted_sites').select('id,name,is_active,sort_order').order('sort_order').order('created_at',{ascending:false});
-  if(error){tbody.innerHTML='<tr><td colspan="3">Siteler okunamadı: '+escapeHtml(error.message)+'</td></tr>';return}
-  tomhubSectionSites=data||[];
-  if(!tomhubSectionSites.length){tbody.innerHTML='<tr><td colspan="3">Henüz site yok.</td></tr>';return}
-  tbody.innerHTML=tomhubSectionSites.map(s=>{const f=tomhubSectionOf(s.id);return '<tr><td>'+escapeHtml(s.name||'İsimsiz')+'</td><td>'+ (s.is_active?'Aktif':'Pasif') +'</td><td><select data-tomhub-section="'+Number(s.id)+'"><option value="" '+(!f?'selected':'')+'>Genel</option><option value="live" '+(f==='live'?'selected':'')+'>Yayında</option><option value="vip" '+(f==='vip'?'selected':'')+'>VIP</option><option value="recommended" '+(f==='recommended'?'selected':'')+'>Önerilen</option></select></td></tr>'}).join('');
+function renderAdmin(){
+ document.getElementById("adminList").innerHTML=sites.map(s=>`
+ <div class="row">
+   <div class="grow"><b>${esc(s.name)}</b><div class="muted">${esc(s.url)}</div></div>
+   <span class="badge ${s.section==="live"?"live":s.section==="vip"?"vip":""}">${s.section==="live"?"YAYINDA":s.section==="vip"?"VIP":"ÖNERİ"}</span>
+   <button class="smallbtn" onclick="toggleActive(${s.id})">${s.active?"Kapat":"Aç"}</button>
+   <button class="redbtn" onclick="removeSite(${s.id})">Sil</button>
+ </div>`).join("");
 }
-async function saveTomHubSections(){
-  if(!adminIsAllowed)return;
-  const selects=[...document.querySelectorAll('[data-tomhub-section]')],next={};
-  selects.forEach(sel=>{const id=sel.getAttribute('data-tomhub-section'),v=sel.value;if(v)next[id]={[v]:true}});
-  setAdminStatus('tomHubSectionStatus','Bölümler kaydediliyor...');
-  const {error}=await supabaseClient.from('site_settings').upsert({key:'site_flags',value:JSON.stringify(next),updated_at:new Date().toISOString()},{onConflict:'key'});
-  if(error){setAdminStatus('tomHubSectionStatus','Kaydedilemedi: '+error.message,'err');return}
-  tomhubSectionFlags=next;setAdminStatus('tomHubSectionStatus','Bölümler kaydedildi.','ok');await loadTomHubSections();
+function addSite(){
+ const name=document.getElementById("fName").value.trim();
+ const url=document.getElementById("fUrl").value.trim();
+ const desc=document.getElementById("fDesc").value.trim();
+ const logo=document.getElementById("fLogo").value.trim()||"★";
+ const section=document.getElementById("fSection").value;
+ if(!name||!/^https?:\/\//i.test(url)){alert("Site adı ve http/https ile başlayan URL gir.");return}
+ sites.push({id:Date.now(),name,url,desc,logo,section,active:true});
+ ["fName","fUrl","fDesc","fLogo"].forEach(id=>document.getElementById(id).value="");
+ save();showTab("sites");
 }
-
-/* =========================
-   SUPABASE + YÖNETİM
-   ========================= */
-
-const SUPABASE_URL = "https://pkwyvdrqglqcqwukyssp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ayvjaaHD6lvLDiB9Au24g_z3L3W4PW";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-
-let adminInitialized = false;
-let adminIsAllowed = false;
-
-function setAdminStatus(id, message, type=""){
-  const el=document.getElementById(id);
-  if(!el) return;
-  el.textContent=message || "";
-  el.className="admin-status " + type;
+function toggleActive(id){const s=sites.find(x=>x.id===id);if(s){s.active=!s.active;save()}}
+function removeSite(id){if(confirm("Bu site silinsin mi?")){sites=sites.filter(x=>x.id!==id);save()}}
+function showTab(tab){
+ const add=tab==="add";
+ document.getElementById("adminSites").style.display=add?"none":"block";
+ document.getElementById("adminAdd").style.display=add?"block":"none";
+ document.getElementById("tabSites").classList.toggle("active",!add);
+ document.getElementById("tabAdd").classList.toggle("active",add);
 }
-
-async function initAdmin(){
-  if(adminInitialized) return;
-  adminInitialized=true;
-
-  try{
-    const {data:{session}} = await supabaseClient.auth.getSession();
-
-    if(session){
-      await checkAdmin(session);
-    }
-  }catch(error){
-    setAdminStatus("adminLoginStatus","Bağlantı kurulamadı: "+error.message,"err");
-  }
-}
-
-async function checkAdmin(session){
-  try{
-    const {data,error} = await supabaseClient.rpc("is_admin");
-
-    if(error){
-      adminIsAllowed=false;
-      showAdminLogin();
-      setAdminStatus(
-        "adminLoginStatus",
-        "Yönetici kontrolü çalışmadı. Supabase'teki is_admin() fonksiyonunu kontrol et.",
-        "err"
-      );
-      return;
-    }
-
-    adminIsAllowed = data === true;
-
-    if(adminIsAllowed){
-      showAdminPanel(session.user);
-      await loadAdminData();
-    }else{
-      showAdminLogin();
-      setAdminStatus(
-        "adminLoginStatus",
-        "Bu hesap yönetici yetkisine sahip değil.",
-        "err"
-      );
-    }
-  }catch(error){
-    showAdminLogin();
-    setAdminStatus("adminLoginStatus","Yönetici kontrolü: "+error.message,"err");
-  }
-}
-
-function showAdminLogin(){
-  const login=document.getElementById("adminLoginBox");
-  const panel=document.getElementById("adminPanelBox");
-  if(login) login.style.display="block";
-  if(panel) panel.style.display="none";
-}
-
-function showAdminPanel(user){
-  const login=document.getElementById("adminLoginBox");
-  const panel=document.getElementById("adminPanelBox");
-  if(login) login.style.display="none";
-  if(panel) panel.style.display="block";
-
-  const welcome=document.getElementById("adminWelcome");
-  if(welcome){
-    welcome.textContent="Giriş yapan: " + (user.email || "Yönetici");
-  }
-}
-
-async function adminLogin(event){
-  event.preventDefault();
-
-  const email=document.getElementById("adminEmail").value.trim();
-  const password=document.getElementById("adminPassword").value;
-
-  setAdminStatus("adminLoginStatus","Giriş yapılıyor...");
-
-  const {data,error}=await supabaseClient.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  if(error){
-    setAdminStatus("adminLoginStatus","Giriş başarısız: "+error.message,"err");
-    return;
-  }
-
-  await checkAdmin(data.session);
-}
-
-async function adminLogout(){
-  await supabaseClient.auth.signOut();
-  adminIsAllowed=false;
-  showAdminLogin();
-  setAdminStatus("adminLoginStatus","Çıkış yapıldı.","ok");
-}
-
-async function loadAdminData(){
-  if(!adminIsAllowed) return;
-
-  setAdminStatus("adminDataStatus","Veriler yükleniyor...");
-
-  const usersResult=await supabaseClient
-    .from("users")
-    .select("id,user_id,created_at")
-    .order("created_at",{ascending:false});
-
-  if(usersResult.error){
-    document.getElementById("adminUsersTable").innerHTML =
-      '<tr><td colspan="3">Kullanıcılar okunamadı: '+
-      escapeHtml(usersResult.error.message)+'</td></tr>';
-  }else{
-    renderUsers(usersResult.data || []);
-  }
-
-  const postsResult=await supabaseClient
-    .from("posts")
-    .select("id,user_id,content,created_at")
-    .order("created_at",{ascending:false});
-
-  if(postsResult.error){
-    document.getElementById("adminPostsTable").innerHTML =
-      '<tr><td colspan="5">Gönderiler okunamadı: '+
-      escapeHtml(postsResult.error.message)+'</td></tr>';
-  }else{
-    renderPosts(postsResult.data || []);
-  }
-
-  await loadTomHubAdminSections();
-
-  if(!usersResult.error && !postsResult.error){
-    setAdminStatus("adminDataStatus","Veriler güncellendi.","ok");
-  }else{
-    setAdminStatus("adminDataStatus","Bazı veriler okunamadı. RLS politikalarını kontrol et.","err");
-  }
-}
-
-function renderUsers(rows){
-  document.getElementById("adminUsersCount").textContent=rows.length;
-
-  const tbody=document.getElementById("adminUsersTable");
-
-  if(!rows.length){
-    tbody.innerHTML='<tr><td colspan="3">Kullanıcı kaydı yok.</td></tr>';
-    return;
-  }
-
-  tbody.innerHTML=rows.map(row=>`
-    <tr>
-      <td>${escapeHtml(row.id)}</td>
-      <td>${escapeHtml(row.user_id || "—")}</td>
-      <td>${formatDate(row.created_at)}</td>
-    </tr>
-  `).join("");
-}
-
-function renderPosts(rows){
-  document.getElementById("adminPostsCount").textContent=rows.length;
-
-  const tbody=document.getElementById("adminPostsTable");
-
-  if(!rows.length){
-    tbody.innerHTML='<tr><td colspan="5">Gönderi yok.</td></tr>';
-    return;
-  }
-
-  tbody.innerHTML=rows.map(row=>`
-    <tr>
-      <td>${escapeHtml(row.id)}</td>
-      <td>${escapeHtml(row.user_id || "—")}</td>
-      <td>${escapeHtml(row.content || "")}</td>
-      <td>${formatDate(row.created_at)}</td>
-      <td>
-        <button class="admin-delete"
-          onclick="deleteAdminPost(${Number(row.id)})">
-          Sil
-        </button>
-      </td>
-    </tr>
-  `).join("");
-}
-
-async function deleteAdminPost(id){
-  if(!adminIsAllowed) return;
-
-  if(!confirm("Bu gönderi silinsin mi?")) return;
-
-  const {error}=await supabaseClient
-    .from("posts")
-    .delete()
-    .eq("id",id);
-
-  if(error){
-    setAdminStatus("adminDataStatus","Silinemedi: "+error.message,"err");
-    return;
-  }
-
-  setAdminStatus("adminDataStatus","Gönderi silindi.","ok");
-  await loadAdminData();
-}
-
-function formatDate(value){
-  if(!value) return "—";
-  const d=new Date(value);
-  if(Number.isNaN(d.getTime())) return escapeHtml(value);
-  return d.toLocaleString("tr-TR");
-}
-
-function escapeHtml(value){
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-
-/* =========================
-   ADMIN PANEL SİTELERİ - SUPABASE
-   Mevcut site kartları ve tasarım korunur.
-   Admin panelinden eklenen aktif siteler otomatik eklenir.
-   ========================= */
-
-function safeSiteUrl(value){
-  try{
-    const url=new URL(String(value || '').trim());
-    if(url.protocol!=='http:' && url.protocol!=='https:') return '';
-    return url.href;
-  }catch(e){
-    return '';
-  }
-}
-
-function siteCategorySlug(category){
-  const text=String(category || '')
-    .toLocaleLowerCase('tr-TR')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,'');
-  if(text.includes('oyun')) return 'oyun';
-  if(text.includes('teknoloji')) return 'teknoloji';
-  if(text.includes('alisveris')) return 'alisveris';
-  if(text.includes('egitim')) return 'egitim';
-  if(text.includes('eglence')) return 'eglence';
-  return 'teknoloji';
-}
-
-function siteCategoryIcon(category){
-  const text=String(category || '').toLocaleLowerCase('tr-TR');
-  if(text.includes('oyun')) return '🎮';
-  if(text.includes('teknoloji')) return '💻';
-  if(text.includes('alışveriş') || text.includes('alisveris')) return '🛒';
-  if(text.includes('eğitim') || text.includes('egitim')) return '📚';
-  if(text.includes('eğlence') || text.includes('eglence')) return '🎬';
-  if(text.includes('sosyal')) return '💬';
-  if(text.includes('finans')) return '💰';
-  return '⭐';
-}
-
-
-/* TOMHUB_DIRECT_REST_FALLBACK */
-async function tomhubFetchPromotedSitesFallback(){
-  const endpoint =
-    SUPABASE_URL +
-    "/rest/v1/promoted_sites?select=id,name,description,category,logo_url,site_url,affiliate_url,is_active,is_featured,sort_order,created_at&is_active=eq.true&order=is_featured.desc,sort_order.asc,created_at.desc";
-
-  const response = await fetch(endpoint,{
-    method:"GET",
-    headers:{
-      "apikey":SUPABASE_PUBLISHABLE_KEY,
-      "Authorization":"Bearer "+SUPABASE_PUBLISHABLE_KEY,
-      "Accept":"application/json"
-    },
-    cache:"no-store"
-  });
-
-  if(!response.ok){
-    throw new Error("Supabase REST "+response.status);
-  }
-
-  return await response.json();
-}
-
-async function loadAdminPanelSites(){
-  const grid=document.getElementById('sitesGrid');
-  if(!grid || !window.supabase || !supabaseClient) return;
-
-  let sites=[];
-
-  try{
-    const {data,error}=await supabaseClient
-      .from('promoted_sites')
-      .select('id,name,description,category,logo_url,site_url,affiliate_url,is_active,is_featured,sort_order,created_at')
-      .eq('is_active',true)
-      .order('is_featured',{ascending:false})
-      .order('sort_order',{ascending:true})
-      .order('created_at',{ascending:false});
-
-    if(!error && Array.isArray(data)){
-      sites=data;
-    }else if(error){
-      console.warn('TomHub: Supabase client sorgusu başarısız, REST yedeği deneniyor:',error.message);
-    }
-  }catch(error){
-    console.warn('TomHub: Supabase client hatası, REST yedeği deneniyor:',error);
-  }
-
-  if(!sites.length){
-    try{
-      const fallbackSites=await tomhubFetchPromotedSitesFallback();
-      if(Array.isArray(fallbackSites)){
-        sites=fallbackSites;
-      }
-    }catch(error){
-      console.warn('TomHub: REST yedeği de başarısız:',error);
-    }
-  }
-
-  if(!sites.length) return;
-
-  const existingUrls=new Set();
-  const existingNames=new Set();
-
-  grid.querySelectorAll('a.site-link').forEach(link=>{
-    const url=safeSiteUrl(link.href);
-    if(url) existingUrls.add(url);
-  });
-
-  grid.querySelectorAll('.site-name').forEach(el=>{
-    const name=el.textContent.trim().toLocaleLowerCase('tr-TR');
-    if(name) existingNames.add(name);
-  });
-
-  const fragment=document.createDocumentFragment();
-
-  sites.forEach(site=>{
-    const siteUrl=safeSiteUrl(site.site_url);
-    if(!siteUrl) return;
-
-    const name=String(site.name || 'İsimsiz Site').trim();
-    const nameKey=name.toLocaleLowerCase('tr-TR');
-
-    /* Aynı site mevcut ana kodda varsa ikinci kez ekleme. */
-    if(existingUrls.has(siteUrl) || existingNames.has(nameKey)) return;
-
-    const category=String(site.category || 'Diğer');
-    const description=String(site.description || 'TomHub’da keşfet.');
-    const logoUrl=safeSiteUrl(site.logo_url);
-    const visitUrl=safeSiteUrl(site.affiliate_url) || siteUrl;
-
-    const article=document.createElement('article');
-    article.className='site-card';
-    article.dataset.category=siteCategorySlug(category);
-    article.dataset.name=(name+' '+description+' '+category).toLocaleLowerCase('tr-TR');
-
-    const icon=logoUrl
-      ? '<img src="'+escapeHtml(logoUrl)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:8px">'
-      : siteCategoryIcon(category);
-
-    article.innerHTML=
-      '<div class="site-top">'+
-        '<div class="site-icon">'+icon+'</div>'+ 
-        '<div>'+ 
-          '<div class="site-name" data-admin-site="true">'+escapeHtml(name)+'</div>'+ 
-          '<div class="site-desc">'+escapeHtml(description)+'</div>'+ 
-        '</div>'+ 
-      '</div>'+ 
-      '<a class="site-link" href="'+escapeHtml(visitUrl)+'" target="_blank" rel="noopener noreferrer">Siteyi ziyaret et →</a>';
-
-    fragment.appendChild(article);
-    existingUrls.add(siteUrl);
-    existingNames.add(nameKey);
-  });
-
-  grid.appendChild(fragment);
-
-  const searchInput=document.getElementById('siteSearchInput');
-  const text=searchInput ? searchInput.value.toLowerCase().trim() : '';
-  filterSiteCards(text);
-}
-
-/*
-   TOMHUB CANLI SİTE SENKRONİZASYONU
-   Admin Panelinden eklenen aktif siteleri güvenli şekilde tekrar dener.
-   Böylece GitHub Pages / mobil tarayıcı ilk yüklemede Supabase geç açılırsa
-   siteler yine ana sayfaya gelir.
-*/
-async function refreshAdminPanelSitesWithRetry(){
-  const delays=[0,800,2000,4000];
-
-  for(const delay of delays){
-    if(delay) await new Promise(resolve=>setTimeout(resolve,delay));
-
-    try{
-      await loadAdminPanelSites();
-
-      const grid=document.getElementById('sitesGrid');
-      if(grid && grid.querySelector('.site-name[data-admin-site="true"]')) return;
-    }catch(error){
-      console.warn('TomHub site senkronizasyon denemesi:',error);
-    }
-  }
-}
-
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',refreshAdminPanelSitesWithRetry);
-}else{
-  refreshAdminPanelSitesWithRetry();
-}
-
-window.addEventListener('pageshow',function(){
-  setTimeout(refreshAdminPanelSitesWithRetry,500);
-});
-
-loadTomHubSections();
-
-supabaseClient.auth.onAuthStateChange(async (_event,session)=>{
-  if(session){
-    await checkAdmin(session);
-  }else{
-    adminIsAllowed=false;
-    showAdminLogin();
-  }
-});
-
+function openAdmin(){document.getElementById("adminPanel").classList.add("open");showTab("sites")}
+function closeAdmin(){document.getElementById("adminPanel").classList.remove("open")}
+function openDrawer(){document.getElementById("drawer").classList.add("open")}
+function closeDrawer(e){if(!e||e.target.id==="drawer")document.getElementById("drawer").classList.remove("open")}
+function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})}
+function contact(){location.href="mailto:tomhub2026@gmail.com?subject=TomHub%20Sponsorluk"}
+load();
 </script>
-
 </body>
 </html>
