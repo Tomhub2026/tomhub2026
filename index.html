@@ -1037,7 +1037,7 @@ async function loadAdminPanelSites(){
       '<div class="site-top">'+
         '<div class="site-icon">'+icon+'</div>'+ 
         '<div>'+ 
-          '<div class="site-name">'+escapeHtml(name)+'</div>'+ 
+          '<div class="site-name" data-admin-site="true">'+escapeHtml(name)+'</div>'+ 
           '<div class="site-desc">'+escapeHtml(description)+'</div>'+ 
         '</div>'+ 
       '</div>'+ 
@@ -1055,11 +1055,38 @@ async function loadAdminPanelSites(){
   filterSiteCards(text);
 }
 
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',loadAdminPanelSites);
-}else{
-  loadAdminPanelSites();
+/*
+   TOMHUB CANLI SİTE SENKRONİZASYONU
+   Admin Panelinden eklenen aktif siteleri güvenli şekilde tekrar dener.
+   Böylece GitHub Pages / mobil tarayıcı ilk yüklemede Supabase geç açılırsa
+   siteler yine ana sayfaya gelir.
+*/
+async function refreshAdminPanelSitesWithRetry(){
+  const delays=[0,800,2000,4000];
+
+  for(const delay of delays){
+    if(delay) await new Promise(resolve=>setTimeout(resolve,delay));
+
+    try{
+      await loadAdminPanelSites();
+
+      const grid=document.getElementById('sitesGrid');
+      if(grid && grid.querySelector('.site-name[data-admin-site="true"]')) return;
+    }catch(error){
+      console.warn('TomHub site senkronizasyon denemesi:',error);
+    }
+  }
 }
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',refreshAdminPanelSitesWithRetry);
+}else{
+  refreshAdminPanelSitesWithRetry();
+}
+
+window.addEventListener('pageshow',function(){
+  setTimeout(refreshAdminPanelSitesWithRetry,500);
+});
 
 supabaseClient.auth.onAuthStateChange(async (_event,session)=>{
   if(session){
